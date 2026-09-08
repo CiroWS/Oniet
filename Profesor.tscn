@@ -31,6 +31,6 @@ frames = SubResource( 2 )
 position = Vector2( 2.5, 382.5 )
 shape = SubResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerGiro" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
