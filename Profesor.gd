@@ -44,6 +44,7 @@ func _evaluar_cambio_de_posicion():
 	if distancia_movida > margen_tolerancia:
 		print("¡Te atrapó! Te moviste ", distancia_movida, " píxeles.")
 		
+		
 
 		Global.vidas -= 1
 		print("Vidas restantes: ", Global.vidas)
