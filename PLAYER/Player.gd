@@ -5,6 +5,7 @@ onready var motion = Vector2.ZERO
 
 
 
+		
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
 	if axis.y == 0:
