@@ -2,10 +2,13 @@ extends KinematicBody2D
 
 var speed = 100
 onready var motion = Vector2.ZERO
-
 var ultimo_mov = "Frente"
 
-		
+export (PackedScene) var Cremona
+onready var radar=$Radar_Enemy
+
+#------ movietno ---------------
+
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
 	if axis.y == 0:
@@ -44,4 +47,26 @@ func _physics_process(delta):
 	motion_ctrl() 
 	motion = move_and_collide(motion * delta)
 	
+	
+	#-------- disparo cremona ----------.
 
+func Disparo_ctrl():
+	var enemigo_track = enemigo_cercano()
+	if enemigo_track:
+		var CREMONA = Cremona.instance()
+		CREMONA.global_position = global_position
+		CREMONA.set_target_node(enemigo_track)
+
+func enemigo_cercano() -> Node2D:
+	var cuerpos_superpuestos = radar.get_overlapping_bodies()
+	var enemigo_mas_cercano: Node2D = null
+	var distanciacorta: float = INF
+	
+	for body in cuerpos_superpuestos:
+		if body.is_in_group("Enemigo"):
+			var distancia = global_position.distance_to(body.global_position)
+			if distancia < distanciacorta:
+				distanciacorta=distancia
+				enemigo_mas_cercano=body
+				
+	return enemigo_mas_cercano

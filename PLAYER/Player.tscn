@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://PLAYER/Player.gd" type="Script" id=1]
 [ext_resource path="res://PLAYER/Assets/idle_espalda.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://PLAYER/Assets/Camina_costado.png" type="Texture" id=5]
 [ext_resource path="res://PLAYER/Assets/Camina_espalda.png" type="Texture" id=6]
 [ext_resource path="res://PLAYER/Assets/Camina_frente.png" type="Texture" id=7]
+[ext_resource path="res://Armas/Cremona/Cremona.tscn" type="PackedScene" id=8]
 
 [sub_resource type="AtlasTexture" id=9]
 flags = 4
@@ -134,9 +135,13 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 3, 5 )
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=21]
+radius = 26.2191
+
+[node name="Player" type="KinematicBody2D" groups=["Jugador"]]
 scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
+Cremona = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3125, 0.328125 )
@@ -150,3 +155,8 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="Radar_Enemy" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Radar_Enemy"]
+shape = SubResource( 21 )
