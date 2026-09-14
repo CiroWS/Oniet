@@ -1,9 +1,17 @@
 extends Node2D
 
+onready var hijo_camino = $Camino/Hijocamino
+onready var alumno_sprite = $AlumnoSprite
 
 func _ready():
-	$Alumno_Escape.position = $Path2D/PathFollow2D.position
+	alumno_sprite.position = hijo_camino.position
+
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		$Path2D/PathFollow2D.offset += 10
-		$Alumno_Escape.position = $Path2D/PathFollow2D.position
+		hijo_camino.offset += 10
+		alumno_sprite.position = hijo_camino.position
+
+# Función que invoca el profesor cuando detecta movimiento
+func reiniciar_alumno():
+	hijo_camino.offset = 0
+	alumno_sprite.position = hijo_camino.position

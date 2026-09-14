@@ -6,58 +6,84 @@ onready var campo_de_vision = $CampoDeVision
 var esta_mirando = false
 var jugador_en_zona = null
 
+# Bandera para evitar que el castigo se ejecute múltiples veces seguidas
+var ya_castigado = false
+
 # Variables para comparar la posición
 var posicion_inicial = Vector2.ZERO
 var margen_tolerancia = 2.0 # Píxeles de margen antes de castigar
 
 func _ready():
+	randomize()
 	timer_giro.connect("timeout", self, "_on_TimerGiro_timeout")
-	campo_de_vision.connect("body_entered", self, "_on_CampoDeVision_body_entered")
-	campo_de_vision.connect("body_exited", self, "_on_CampoDeVision_body_exited")
+	_reiniciar_timer_aleatorio()
 
-func _process(delta):
-	# Evaluamos continuamente mientras esté mirando y estés dentro de su área
-	if esta_mirando and jugador_en_zona != null:
+func _process(_delta):
+	# Solo evalúa si la profesora YA está mirando activamente
+	if esta_mirando and jugador_en_zona != null and not ya_castigado:
 		_evaluar_cambio_de_posicion()
 
 func _on_TimerGiro_timeout():
-	# Cambia alternadamente entre mirar y dar la espalda
+	ya_castigado = false
 	_cambiar_estado_mirada(!esta_mirando)
+	_reiniciar_timer_aleatorio()
+
+func _reiniciar_timer_aleatorio():
+	var tiempo_random = rand_range(2.0, 4.0)
+	timer_giro.wait_time = tiempo_random
+	timer_giro.start()
 
 func _cambiar_estado_mirada(debe_mirar: bool):
-	esta_mirando = debe_mirar
-	
-	if esta_mirando:
-		print("¡El profesor se dio vuelta y está MIRANDO!")
-		# Registrar la posición exacta del jugador en el momento en que se da vuelta
+	if debe_mirar:
+		# 1. Giramos el Sprite visualmente
+		$Sprite.rotation_degrees = 0
+		print("¡La profesora se está dando vuelta!")
+		
+		# Mantenemos esta_mirando en FALSE durante el medio segundo de gracia
+		esta_mirando = false
+		
+		# 2. Esperamos el tiempo de reacción
+		yield(get_tree().create_timer(0.5), "timeout")
+		
+		# 3. Guardamos la posición inicial DEL MOMENTO en que termina el medio segundo
 		if jugador_en_zona != null:
 			posicion_inicial = jugador_en_zona.global_position
+		
+		# 4. AHORA SÍ activamos la mirada activa para empezar a castigar
+		esta_mirando = true
+		print("¡La profesora está MIRANDO ATENTAMENTE!")
 	else:
-		print("El profesor se volvió a dar de espaldas.")
+		# De espaldas: desactivamos la mirada inmediatamente
+		esta_mirando = false
+		$Sprite.rotation_degrees = 180
+		print("La profesora se volvió a dar de espaldas.")
 
 func _evaluar_cambio_de_posicion():
 	var distancia_movida = jugador_en_zona.global_position.distance_to(posicion_inicial)
 	
-	# Si el jugador superó el margen de tolerancia de movimiento
 	if distancia_movida > margen_tolerancia:
-		print("¡TE ATRAPÓ! Restando 1 vida y volviendo a darse vuelta...")
+		ya_castigado = true
 		
-		# 1. Restamos la vida en la variable global
+		print("¡TE ATRAPÓ! Restando 1 vida y volviendo al principio...")
 		Global.Llamdos_de_atencion += 1
-		print("Llamados de atencion: ", Global.Llamdos_de_atencion)
+		print("Llamados de atención: ", Global.Llamdos_de_atencion)
 		
-		# 2. Obligamos al profesor a ponerse de espaldas INMEDIATAMENTE
+		# Mandar al alumno al inicio del camino
+		var aula = get_tree().current_scene
+		if aula.has_method("reiniciar_alumno"):
+			aula.reiniciar_alumno()
+		
+		# Espera 1.5 segundos antes de volver a ponerse de espaldas
+		yield(get_tree().create_timer(1.5), "timeout")
+		
+		# Volver a ponerse de espaldas
 		_cambiar_estado_mirada(false)
-		
-		# 3. Reiniciamos el Timer para que empiece a contar desde cero de espaldas
-		timer_giro.start()
+		_reiniciar_timer_aleatorio()
 
-func _on_CampoDeVision_body_entered(body):
-	if body.is_in_group("Jugador"):
-		jugador_en_zona = body
-		if esta_mirando:
-			posicion_inicial = jugador_en_zona.global_position
+func _on_CampoDeVision_area_entered(area):
+	if area.is_in_group("Jugador"):
+		jugador_en_zona = area
 
-func _on_CampoDeVision_body_exited(body):
-	if body == jugador_en_zona:
+func _on_CampoDeVision_area_exited(area):
+	if area == jugador_en_zona:
 		jugador_en_zona = null
