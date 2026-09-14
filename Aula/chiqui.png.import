@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chiqui.png-6ecceed461fd89e1943d1c7934c50363.stex"
+path="res://.import/chiqui.png-6076ae54b5f225b997641661957a3a08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://chiqui.png"
-dest_files=[ "res://.import/chiqui.png-6ecceed461fd89e1943d1c7934c50363.stex" ]
+source_file="res://Aula/chiqui.png"
+dest_files=[ "res://.import/chiqui.png-6076ae54b5f225b997641661957a3a08.stex" ]
 
 [params]
 

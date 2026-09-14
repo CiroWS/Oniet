@@ -1,7 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Profesor.gd" type="Script" id=1]
-[ext_resource path="res://chiqui.png" type="Texture" id=2]
+[ext_resource path="res://Aula/Profesor.gd" type="Script" id=1]
+[ext_resource path="res://Aula/chiqui.png" type="Texture" id=2]
+
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/aula.png-8e0e2d574527f23faa593941878a3618.stex"
+path="res://.import/aula.png-0bfd7fae7151a957ef3a9927694c1810.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://aula.png"
-dest_files=[ "res://.import/aula.png-8e0e2d574527f23faa593941878a3618.stex" ]
+source_file="res://Aula/aula.png"
+dest_files=[ "res://.import/aula.png-0bfd7fae7151a957ef3a9927694c1810.stex" ]
 
 [params]
 
