@@ -160,3 +160,17 @@ current = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Radar_Enemy"]
 shape = SubResource( 21 )
+
+[node name="Abajo" type="Position2D" parent="."]
+position = Vector2( 0.2, 7.6 )
+
+[node name="Arriba" type="Position2D" parent="."]
+position = Vector2( 0, -5.8 )
+scale = Vector2( 1, 1 )
+
+[node name="Derecha" type="Position2D" parent="."]
+position = Vector2( 5.2, 0 )
+scale = Vector2( 1, 1 )
+
+[node name="Izquierda" type="Position2D" parent="."]
+position = Vector2( -4.4, 0 )
