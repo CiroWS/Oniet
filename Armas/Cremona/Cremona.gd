@@ -1,15 +1,13 @@
-extends KinematicBody2D
+extends Node2D
 
 
 var direccion_recta: Vector2 = Vector2.ZERO
-export (int) var speed = 100
+export (int) var speed = 300
 export (int) var rotacion = 15
 
 var enemigo: Node2D = null
 var velocidad: Vector2 = Vector2.ZERO
 
-func _ready():
-	pass # Replace with function body.
 	
 func _physics_process(delta):
 	$Sprite.rotation_degrees+=1
@@ -33,4 +31,13 @@ func set_target_node(enemy: Node2D):
 	
 
 func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+	
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("Enemigo"):
+		queue_free()
+
+
+func _on_Desas_timeout():
 	queue_free()

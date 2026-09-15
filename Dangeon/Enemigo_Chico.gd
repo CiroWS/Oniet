@@ -47,4 +47,10 @@ func recibir_danio(cantidad):
 	vida -= cantidad
 	if vida <= 0:
 		queue_free()
+	
 
+
+
+func _on_Aradao_area_entered(area):
+	if area.is_in_group("Cremona"):
+		queue_free()

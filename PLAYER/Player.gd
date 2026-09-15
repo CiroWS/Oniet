@@ -1,8 +1,10 @@
 extends KinematicBody2D
 
-var speed = 100
+export (int) var speed = 100
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Frente"
+
+var canshoot = true
 
 var ultima_direccion: Vector2 = Vector2.DOWN
 onready var punto_disparo = $Abajo
@@ -13,8 +15,10 @@ onready var radar=$Radar_Enemy
 #------ movietno ---------------
 
 func _input(event):
-	if event.is_action_pressed("espacio"):
+	if event.is_action_pressed("espacio") and canshoot:
 		Disparo_ctrl()
+		canshoot=false
+		$cooldown.start()
 		
 
 
@@ -90,3 +94,7 @@ func enemigo_cercano() -> Node2D:
 				enemigo_mas_cercano=body
 				
 	return enemigo_mas_cercano
+
+
+func _on_cooldown_timeout():
+	canshoot = true
