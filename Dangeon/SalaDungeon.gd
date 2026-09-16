@@ -1,13 +1,11 @@
 extends Node2D
 
-var EnemigoEscena = preload("res://Dangeon/Enemigo_Chico.tscn")
+var EnemigoEscena = preload("res://Dangeon/Enemigo_Peque.tscn")
 
 var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
 
-
-# Configuración de enemigos a aparecer en cada una de las 5 hordas
 var enemigos_por_horda = {
 	1: 3,
 	2: 6,
@@ -17,50 +15,51 @@ var enemigos_por_horda = {
 }
 
 onready var spawn_points = $SpawnPoints.get_children()
+onready var texto_horda = $CanvasLayer/TextoHorda
 
 func _ready():
 	randomize()
 	iniciar_horda(horda_actual)
-	
+
+func mostrar_cartel_horda(numero):
+	texto_horda.text = "HORDA " + str(numero)
+	texto_horda.visible = true
+	yield(get_tree().create_timer(1.5), "timeout")
+	texto_horda.visible = false
 
 func iniciar_horda(numero_horda):
-	print("=== INICIANDO HORDA ", numero_horda, " ===")
+	yield(mostrar_cartel_horda(numero_horda), "completed")
 	var cantidad = enemigos_por_horda[numero_horda]
 	
 	for i in range(cantidad):
 		spawn_enemigo()
-		# Pausa breve entre apariciones para que no salgan encimados
-		yield(get_tree().create_timer(0.3), "timeout")
+		yield(get_tree().create_timer(0.4), "timeout")
 
 func spawn_enemigo():
 	var nuevo_enemigo = EnemigoEscena.instance()
 	
-	# Elegir un Position2D al azar
-	var punto_azar_x = randi() % 1024+1
-	print(punto_azar_x)
-	var punto_azar_y = randi() % 600+1
-	nuevo_enemigo.position.x = punto_azar_x
-	print(nuevo_enemigo.global_position.x)
-	nuevo_enemigo.position.y = punto_azar_y
+	# Usar los Position2D creados en SpawnPoints
+	if spawn_points.size() > 0:
+		var punto_spawn = spawn_points[randi() % spawn_points.size()]
+		nuevo_enemigo.global_position = punto_spawn.global_position
+	else:
+		# Posicionamiento seguro en pantalla por defecto
+		nuevo_enemigo.global_position = Vector2(rand_range(100, 900), rand_range(100, 500))
 	
-	# Detectar cuándo se elimina el nodo para descontar del contador
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")
-	
 	add_child(nuevo_enemigo)
 	enemigos_vivos += 1
 
 func _on_enemigo_muerto():
 	enemigos_vivos -= 1
-	print("Enemigo eliminado. Quedan: ", enemigos_vivos)
-	
 	if enemigos_vivos <= 0:
 		siguiente_horda()
 
 func siguiente_horda():
 	if horda_actual < hordas_totales:
 		horda_actual += 1
-		print("¡Horda superada! Preparando horda ", horda_actual)
-		yield(get_tree().create_timer(3.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		iniciar_horda(horda_actual)
 	else:
-		print("¡DESAFÍO COMPLETADO! Sobreviviste a las 5 hordas.")
+		texto_horda.text = "¡NIVEL COMPLETADO!"
+		texto_horda.visible = true
