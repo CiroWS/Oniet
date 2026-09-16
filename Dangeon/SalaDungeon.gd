@@ -1,10 +1,11 @@
 extends Node2D
 
-var EnemigoEscena = preload("res://Enemigo.tscn")
+var EnemigoEscena = preload("res://Dangeon/Enemigo_Chico.tscn")
 
 var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
+
 
 # Configuración de enemigos a aparecer en cada una de las 5 hordas
 var enemigos_por_horda = {
@@ -20,6 +21,7 @@ onready var spawn_points = $SpawnPoints.get_children()
 func _ready():
 	randomize()
 	iniciar_horda(horda_actual)
+	
 
 func iniciar_horda(numero_horda):
 	print("=== INICIANDO HORDA ", numero_horda, " ===")
@@ -34,8 +36,12 @@ func spawn_enemigo():
 	var nuevo_enemigo = EnemigoEscena.instance()
 	
 	# Elegir un Position2D al azar
-	var punto_azar = spawn_points[randi() % spawn_points.size()]
-	nuevo_enemigo.global_position = punto_azar.global_position
+	var punto_azar_x = randi() % 1024+1
+	print(punto_azar_x)
+	var punto_azar_y = randi() % 600+1
+	nuevo_enemigo.position.x = punto_azar_x
+	print(nuevo_enemigo.global_position.x)
+	nuevo_enemigo.position.y = punto_azar_y
 	
 	# Detectar cuándo se elimina el nodo para descontar del contador
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")

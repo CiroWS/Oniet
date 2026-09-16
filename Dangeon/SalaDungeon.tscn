@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
+[ext_resource path="res://Dangeon/Enemigo_Chico.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Dangeon/New Piskel (3).png" type="Texture" id=3]
+[ext_resource path="res://PLAYER/Player.tscn" type="PackedScene" id=4]
+
+[node name="SalaDungeon" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 514, 300 )
+scale = Vector2( 2.0293, 2.05333 )
+texture = ExtResource( 3 )
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Spawn_1" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 320, 315 )
+
+[node name="Spawn_2" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 896, 112 )
+
+[node name="Spawn_3" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 788, 464 )
+
+[node name="Enemigo" parent="." groups=["Enemigos"] instance=ExtResource( 2 )]
+position = Vector2( 157, 1134 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]

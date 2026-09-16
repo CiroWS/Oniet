@@ -155,26 +155,4 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-
-[node name="Radar_Enemy" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Radar_Enemy"]
-shape = SubResource( 21 )
-
-[node name="Abajo" type="Position2D" parent="."]
-position = Vector2( 0.2, 7.6 )
-
-[node name="Arriba" type="Position2D" parent="."]
-position = Vector2( 0, -5.8 )
-
-[node name="Derecha" type="Position2D" parent="."]
-position = Vector2( 5.2, 0 )
-
-[node name="Izquierda" type="Position2D" parent="."]
-position = Vector2( -4.4, 0 )
-
-[node name="cooldown" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+zoom = Vector2( 0.5, 0.5 )
