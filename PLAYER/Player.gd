@@ -1,100 +1,79 @@
 extends KinematicBody2D
 
 export (int) var speed = 100
+export (int) var vida = 100
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Frente"
-
 var canshoot = true
 
-var ultima_direccion: Vector2 = Vector2.DOWN
-onready var punto_disparo = $Abajo
-
 export (PackedScene) var Cremona
-onready var radar=$Radar_Enemy
 
-#------ movietno ---------------
+func _ready():
+	add_to_group("Jugador")
 
 func _input(event):
-	if event.is_action_pressed("espacio") and canshoot:
+	if event.is_action_pressed("Disparo") and canshoot:
 		Disparo_ctrl()
-		canshoot=false
+		canshoot = false
 		$cooldown.start()
-		
-
 
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
 	if axis.y == 0:
-		axis.x = int(Input.is_action_pressed("ui_right"))-int(Input.is_action_pressed("ui_left"))
+		axis.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
 	if axis.x == 0:
-		axis.y = int(Input.is_action_pressed("ui_down"))-int(Input.is_action_pressed("ui_up"))
+		axis.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
 	return axis
 
 func motion_ctrl(): 
 	if get_axis() == Vector2.ZERO:
 		motion = Vector2.ZERO
 	else:
-		motion = get_axis().normalized()*speed
-	if motion==Vector2(0,-100):
+		motion = get_axis().normalized() * speed
+		
+	if motion == Vector2(0, -100):
 		$AnimatedSprite.play("Espalda")
-		ultimo_mov="Espalda"
-		punto_disparo = $Arriba
-	elif motion==Vector2(0,100):
+		ultimo_mov = "Espalda"
+	elif motion == Vector2(0, 100):
 		$AnimatedSprite.play("Caminar")
-		ultimo_mov="Frente"
-		punto_disparo = $Abajo
-	elif motion==Vector2(100,0):
-		$AnimatedSprite.flip_h=true
+		ultimo_mov = "Frente"
+	elif motion == Vector2(100, 0):
+		$AnimatedSprite.flip_h = true
 		$AnimatedSprite.play("Costado")
-		ultimo_mov="Costado"
-		punto_disparo = $Derecha
-	elif motion==Vector2(-100,0):
-		$AnimatedSprite.flip_h=false
+		ultimo_mov = "Costado"
+	elif motion == Vector2(-100, 0):
+		$AnimatedSprite.flip_h = false
 		$AnimatedSprite.play("Costado")
-		ultimo_mov="Costado"
-		punto_disparo = $Izquierda
-	elif motion==Vector2.ZERO:
+		ultimo_mov = "Costado"
+	elif motion == Vector2.ZERO:
 		if ultimo_mov == "Espalda":
 			$AnimatedSprite.play("Idle_Espalda")
 		elif ultimo_mov == "Frente":
 			$AnimatedSprite.play("Idle_Frente")
 		elif ultimo_mov == "Costado":
 			$AnimatedSprite.play("Idle_Costado")
-	if motion != Vector2.ZERO: 
-		ultima_direccion = motion.normalized()
+
 func _physics_process(delta):
 	motion_ctrl() 
 	motion = move_and_collide(motion * delta)
-	
-	
-#-------- disparo cremona ---------
 
 func Disparo_ctrl():
-	var enemigo_track = enemigo_cercano()
-	
+	if Cremona == null:
+		print("null")
+		return
 	var CREMONA = Cremona.instance()
 	get_parent().add_child(CREMONA)
-	CREMONA.global_position = punto_disparo.global_position
-	
-	if enemigo_track:
-		CREMONA.set_target_node(enemigo_track)
-	else:
-		CREMONA.set_forward_direction(ultima_direccion)
+	CREMONA.global_position = global_position
+	var direccion_mouse = (get_global_mouse_position() - global_position).normalized()
 
-func enemigo_cercano() -> Node2D:
-	var cuerpos_superpuestos = radar.get_overlapping_bodies()
-	var enemigo_mas_cercano: Node2D = null
-	var distanciacorta: float = INF
-	
-	for body in cuerpos_superpuestos:
-		if body.is_in_group("Enemigo"):
-			var distancia = global_position.distance_to(body.global_position)
-			if distancia < distanciacorta:
-				distanciacorta=distancia
-				enemigo_mas_cercano=body
-				
-	return enemigo_mas_cercano
+	CREMONA.set_forward_direction(direccion_mouse)
 
+func recibir_danio(cantidad):
+	vida -= cantidad
+	print("Jugador recibió daño. Vida restante: ", vida)
+	if vida <= 0:
+		print("¡Jugador Muerto!")
+		queue_free()
 
 func _on_cooldown_timeout():
 	canshoot = true

@@ -1,33 +1,23 @@
-extends KinematicBody2D
+extends Area2D
 
-export (int) var speed = 100
-export (int) var rotacion = 15
+export var velocidad = 300
+export var danio = 25
 
-var enemigo: Node2D = null
-var velocidad: Vector2 = Vector2.ZERO
+var direccion = Vector2.ZERO
 
-func _ready():
-	pass # Replace with function body.
-	
-func _physics_process(delta):
-	$Sprite.rotation_degrees+=1
-	if is_instance_valid(enemigo):
-		var velocidadactual = (enemigo.global_position - global_position).normalized() * speed
-		velocidad = velocidad.linear_interpolate(velocidadactual, rotacion * delta)
-		rotation = velocidad.angle()
-
-
-func set_target_node(enemy: Node2D):
-	enemigo = enemy
-	var direccioninicial = (enemy.global_position - global_position).normalized()
-	velocidad = direccioninicial * speed
-	rotacion = velocidad.angle()
 func set_forward_direction(dir: Vector2):
-	target_node = null
-	velocity = dir.normalized() * speed
-	rotation = velocity.angle()	
-	
-	
+	direccion = dir
+	# Opcional: orientar el sprite de la bala hacia donde viaja
+	rotation = dir.angle()
 
-func _on_VisibilityNotifier2D_screen_exited():
-	queue_free()
+func _process(delta):
+	# Mueve la bala en la dirección fijada
+	position += direccion * velocidad * delta
+
+func _on_Cremona_body_entered(body):
+	if body.is_in_group("Enemigo"):
+		if body.has_method("recibir_danio"):
+			body.recibir_danio(danio)
+		queue_free()
+	elif body is TileMap:
+		queue_free()
