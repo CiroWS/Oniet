@@ -7,11 +7,11 @@ var hordas_totales = 5
 var enemigos_vivos = 0
 
 var enemigos_por_horda = {
-	1: 3,
-	2: 6,
-	3: 9,
-	4: 12,
-	5: 16
+	1: 10,
+	2: 20,
+	3: 25,
+	4: 30,
+	5: 35
 }
 
 onready var spawn_points = $SpawnPoints.get_children()
@@ -24,6 +24,7 @@ func _ready():
 func mostrar_cartel_horda(numero):
 	texto_horda.text = "HORDA " + str(numero)
 	texto_horda.visible = true
+	# CORRECCIÓN: yield permite devolver el timer a la función principal
 	yield(get_tree().create_timer(1.5), "timeout")
 	texto_horda.visible = false
 
@@ -38,12 +39,10 @@ func iniciar_horda(numero_horda):
 func spawn_enemigo():
 	var nuevo_enemigo = EnemigoEscena.instance()
 	
-	# Usar los Position2D creados en SpawnPoints
 	if spawn_points.size() > 0:
 		var punto_spawn = spawn_points[randi() % spawn_points.size()]
 		nuevo_enemigo.global_position = punto_spawn.global_position
 	else:
-		# Posicionamiento seguro en pantalla por defecto
 		nuevo_enemigo.global_position = Vector2(rand_range(100, 900), rand_range(100, 500))
 	
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")
