@@ -5,8 +5,8 @@
 [ext_resource path="res://Dangeon/Muerte.png" type="Texture" id=3]
 [ext_resource path="res://Dangeon/Enemigo_Peque.gd" type="Script" id=4]
 
-[sub_resource type="CircleShape2D" id=24]
-radius = 160.2
+[sub_resource type="CircleShape2D" id=26]
+radius = 279.716
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -81,7 +81,7 @@ animations = [ {
 "frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
 "loop": false,
 "name": "Ataque",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
 "loop": false,
@@ -97,8 +97,8 @@ animations = [ {
 [sub_resource type="CapsuleShape2D" id=20]
 height = 2.0
 
-[sub_resource type="CircleShape2D" id=23]
-radius = 21.0
+[sub_resource type="CircleShape2D" id=25]
+radius = 39.3192
 
 [sub_resource type="RectangleShape2D" id=22]
 extents = Vector2( 8, 8.5 )
@@ -110,7 +110,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="aggro"]
 modulate = Color( 0.00392157, 0, 0, 1 )
-shape = SubResource( 24 )
+shape = SubResource( 26 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 19 )
@@ -125,7 +125,7 @@ shape = SubResource( 20 )
 [node name="AtaqueEnemigo" type="Area2D" parent="Position2D"]
 
 [node name="EnemigoAtaque" type="CollisionShape2D" parent="Position2D/AtaqueEnemigo"]
-shape = SubResource( 23 )
+shape = SubResource( 25 )
 disabled = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

@@ -134,12 +134,15 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.57628e-08, 0.4 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+limit_left = 0
+limit_top = 0
+limit_right = 1024
+limit_bottom = 600
 
 [node name="cooldown" type="Timer" parent="."]
 one_shot = true
@@ -148,5 +151,13 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource( 21 )
+
+[node name="BarraVida" type="ProgressBar" parent="."]
+margin_left = -6.0
+margin_top = -9.2
+margin_right = 6.0
+margin_bottom = -4.2
+rect_min_size = Vector2( 5, 5 )
+percent_visible = false
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

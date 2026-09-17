@@ -39,7 +39,7 @@ func check_player():
 			atacar() 
 		else:
 			var dir = (player.global_position - global_position).normalized()
-			var velocity = dir * 100
+			var velocity = dir * 140
 			
 			if dir.x < 0:
 				$AnimatedSprite.flip_h = true

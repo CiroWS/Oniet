@@ -5,11 +5,12 @@ export (int) var vida = 100
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Frente"
 var canshoot = true
-
+var vida_player = 100
 export (PackedScene) var Cremona
 
 func _ready():
 	add_to_group("Jugador")
+	$BarraVida.value = vida_player
 
 func _input(event):
 	if event.is_action_pressed("Disparo") and canshoot:
@@ -70,6 +71,7 @@ func Disparo_ctrl():
 
 func recibir_danio(cantidad):
 	vida -= cantidad
+	$BarraVida.value = vida_player
 	print("Jugador recibió daño. Vida restante: ", vida)
 	if vida <= 0:
 		print("¡Jugador Muerto!")
