@@ -62,3 +62,4 @@ func siguiente_horda():
 	else:
 		texto_horda.text = "¡NIVEL COMPLETADO!"
 		texto_horda.visible = true
+

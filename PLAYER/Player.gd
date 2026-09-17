@@ -7,6 +7,9 @@ var ultimo_mov = "Frente"
 var canshoot = true
 var vida_player = 100
 export (PackedScene) var Cremona
+export (PackedScene) var Cartulina
+var arma = "cartulina"
+
 
 func _ready():
 	add_to_group("Jugador")
@@ -17,6 +20,12 @@ func _input(event):
 		Disparo_ctrl()
 		canshoot = false
 		$cooldown.start()
+	elif event.is_action_pressed("cartulina"):
+		arma = "cartulina"
+	elif event.is_action_pressed("cremona"):
+		arma = "cremona"
+		
+		
 
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
@@ -59,15 +68,23 @@ func _physics_process(delta):
 	motion = move_and_collide(motion * delta)
 
 func Disparo_ctrl():
-	if Cremona == null:
-		print("null")
-		return
-	var CREMONA = Cremona.instance()
-	get_parent().add_child(CREMONA)
-	CREMONA.global_position = global_position
 	var direccion_mouse = (get_global_mouse_position() - global_position).normalized()
+	if arma == "cremona":
+		if Cremona == null:
+			return
+		var CREMONA = Cremona.instance()
+		get_parent().add_child(CREMONA)
+		CREMONA.global_position = global_position
+		CREMONA.set_forward_direction(direccion_mouse)
 
-	CREMONA.set_forward_direction(direccion_mouse)
+	elif arma == "cartulina":
+		if Cartulina == null:
+			return
+		var CARTULINA = Cartulina.instance()
+		add_child(CARTULINA)               
+		CARTULINA.position = Vector2.ZERO    
+		CARTULINA.rotation = direccion_mouse.angle()
+	
 
 func recibir_danio(cantidad):
 	vida -= cantidad

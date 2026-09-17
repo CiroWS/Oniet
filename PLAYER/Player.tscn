@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://PLAYER/Player.gd" type="Script" id=1]
 [ext_resource path="res://PLAYER/Assets/idle_espalda.png" type="Texture" id=2]
@@ -8,76 +8,95 @@
 [ext_resource path="res://PLAYER/Assets/Camina_espalda.png" type="Texture" id=6]
 [ext_resource path="res://PLAYER/Assets/Camina_frente.png" type="Texture" id=7]
 [ext_resource path="res://Armas/Cremona/Cremona.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Armas/Cartulina/Cartulina.tscn" type="PackedScene" id=9]
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=12]
+flags = 4
 atlas = ExtResource( 7 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=13]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=14]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=17]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=18]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=19]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 64, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=20]
+flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 96, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 32, 0, 32, 32 )
 
@@ -125,6 +144,7 @@ height = 2.8
 scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
 Cremona = ExtResource( 8 )
+Cartulina = ExtResource( 9 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3125, 0.328125 )
@@ -145,6 +165,7 @@ limit_right = 1024
 limit_bottom = 600
 
 [node name="cooldown" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 
 [node name="HurtBox" type="Area2D" parent="."]
