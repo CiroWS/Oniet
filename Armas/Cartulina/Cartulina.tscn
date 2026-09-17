@@ -8,13 +8,20 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, 4 )
-rotation = -0.855211
+rotation = -0.776672
 scale = Vector2( 0.0232808, 0.0232808 )
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -36, -60 )
+position = Vector2( 119, 13 )
 scale = Vector2( 1.125, 1.6875 )
 polygon = PoolVector2Array( 32, 30, 37, 30, 40, 31, 43, 33, 45, 36, 45, 40, 19, 40, 19, 36, 21, 33, 24, 31, 27, 30 )
+
+[node name="pegada" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="pegada" to="." method="_on_pegada_timeout"]
