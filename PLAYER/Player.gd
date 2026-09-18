@@ -96,3 +96,4 @@ func recibir_danio(cantidad):
 
 func _on_cooldown_timeout():
 	canshoot = true
+
