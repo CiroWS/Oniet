@@ -420,6 +420,7 @@ position = Vector2( -1061, 9 )
 shape = SubResource( 12 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( -315, -512 )
 
 [connection signal="body_shape_entered" from="puertas" to="." method="_on_puertas_body_shape_entered"]
 [connection signal="body_shape_exited" from="puertas" to="." method="_on_puertas_body_shape_exited"]
