@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Menus/Menu_Pausa/Menu_Paused.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Menu_Pausa/Label.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 6
+outline_color = Color( 0.196078, 0.341176, 0.945098, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 1 )
+
+[node name="Menu_paused" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Pausad" type="VBoxContainer" parent="."]
+visible = false
+anchor_top = 0.386
+anchor_right = 1.0
+anchor_bottom = 0.386
+
+[node name="Label" type="Label" parent="Pausad"]
+margin_right = 1024.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "PAUSA"
+align = 1
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pausad"]
+margin_top = 68.0
+margin_right = 1024.0
+margin_bottom = 94.0
+alignment = 1
+
+[node name="Cont" type="Button" parent="Pausad/HBoxContainer"]
+margin_left = 404.0
+margin_right = 540.0
+margin_bottom = 26.0
+custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "CONTINUAR"
+flat = true
+
+[node name="Sal" type="Button" parent="Pausad/HBoxContainer"]
+margin_left = 544.0
+margin_right = 619.0
+margin_bottom = 26.0
+custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "SALIR"
+flat = true
+
+[connection signal="pressed" from="Pausad/HBoxContainer/Cont" to="." method="_on_Cont_pressed"]
+[connection signal="pressed" from="Pausad/HBoxContainer/Sal" to="." method="_on_Sal_pressed"]
