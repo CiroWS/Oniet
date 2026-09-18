@@ -22,11 +22,18 @@ font_data = ExtResource( 1 )
 pause_mode = 2
 script = ExtResource( 2 )
 
+[node name="BG" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0156863, 0.0156863, 0.0156863, 0.521569 )
+
 [node name="Pausad" type="VBoxContainer" parent="."]
 visible = false
 anchor_top = 0.386
 anchor_right = 1.0
 anchor_bottom = 0.386
+margin_bottom = 94.0
 
 [node name="Label" type="Label" parent="Pausad"]
 margin_right = 1024.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://PLAYER/Player.gd" type="Script" id=1]
 [ext_resource path="res://PLAYER/Assets/idle_espalda.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://PLAYER/Assets/Camina_frente.png" type="Texture" id=7]
 [ext_resource path="res://Armas/Cremona/Cremona.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Armas/Cartulina/Cartulina.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Menus/Menu_Pausa/Menu_Paused.tscn" type="PackedScene" id=10]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 7 )
@@ -125,6 +126,8 @@ height = 2.8
 [node name="Player" type="KinematicBody2D" groups=["Jugador", "player"]]
 scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
+speed = 100
+vida_max = 100
 Cremona = ExtResource( 8 )
 Cartulina = ExtResource( 9 )
 
@@ -136,7 +139,6 @@ playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3.57628e-08, 3.4 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 
 [node name="cooldown" type="Timer" parent="."]
@@ -160,9 +162,9 @@ percent_visible = false
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-limit_left = 0
-limit_top = 0
 limit_right = 1024
 limit_bottom = 600
+
+[node name="Menu_paused" parent="." instance=ExtResource( 10 )]
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

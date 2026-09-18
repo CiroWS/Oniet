@@ -53,20 +53,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -214.0
+margin_left = -185.0
 margin_top = -134.0
 margin_right = 214.0
 margin_bottom = -96.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
-margin_right = 428.0
+margin_right = 410.0
 margin_bottom = 38.0
 custom_constants/separation = 178
 alignment = 1
 
 [node name="Button" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 9.0
-margin_right = 131.0
+margin_right = 122.0
 margin_bottom = 38.0
 custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
 custom_fonts/font = SubResource( 2 )
@@ -76,8 +75,8 @@ align = 0
 icon_align = 1
 
 [node name="Button2" type="Button" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 309.0
-margin_right = 419.0
+margin_left = 300.0
+margin_right = 410.0
 margin_bottom = 38.0
 custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
 custom_fonts/font = SubResource( 3 )
