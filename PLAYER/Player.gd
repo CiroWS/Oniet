@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
-export (int) var speed = 100
-export (int) var vida = 100
+export (int) var speed = 300
+export (int) var vida_max = 1000
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Frente"
 var canshoot = true
-var vida_player = 100
+var vida_player
 export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
 var arma = "cartulina"
@@ -13,6 +13,8 @@ var arma = "cartulina"
 
 func _ready():
 	add_to_group("Jugador")
+	vida_player = vida_max
+	$BarraVida.max_value = vida_max
 	$BarraVida.value = vida_player
 
 func _input(event):
@@ -24,8 +26,8 @@ func _input(event):
 		arma = "cartulina"
 	elif event.is_action_pressed("cremona"):
 		arma = "cremona"
-		
-		
+
+
 
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
@@ -35,12 +37,12 @@ func get_axis() -> Vector2:
 		axis.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
 	return axis
 
-func motion_ctrl(): 
+func motion_ctrl():
 	if get_axis() == Vector2.ZERO:
 		motion = Vector2.ZERO
 	else:
 		motion = get_axis().normalized() * speed
-		
+
 	if motion == Vector2(0, -100):
 		$AnimatedSprite.play("Espalda")
 		ultimo_mov = "Espalda"
@@ -64,7 +66,7 @@ func motion_ctrl():
 			$AnimatedSprite.play("Idle_Costado")
 
 func _physics_process(delta):
-	motion_ctrl() 
+	motion_ctrl()
 	motion = move_and_collide(motion * delta)
 
 func Disparo_ctrl():
@@ -81,17 +83,24 @@ func Disparo_ctrl():
 		if Cartulina == null:
 			return
 		var CARTULINA = Cartulina.instance()
-		add_child(CARTULINA)               
-		CARTULINA.position = Vector2.ZERO    
+		add_child(CARTULINA)
+		CARTULINA.position = Vector2.ZERO
 		CARTULINA.rotation = direccion_mouse.angle()
-	
+
 
 func recibir_danio(cantidad):
-	vida -= cantidad
+	# Sin invulnerabilidad: si te pegan dos enemigos juntos, se suman los dos golpes.
+	# El control de "no me peguen demasiado seguido" ahora vive en cada enemigo
+	# (cooldown de ataque en Enemigo_Peque.gd).
+	vida_player -= cantidad
 	$BarraVida.value = vida_player
-	print("Jugador recibió daño. Vida restante: ", vida)
-	if vida <= 0:
-		print("¡Jugador Muerto!")
+
+	# Flash rojo solo como feedback visual, no bloquea nada
+	modulate = Color(1, 0.4, 0.4)
+	yield(get_tree().create_timer(0.15), "timeout")
+	modulate = Color(1, 1, 1)
+
+	if vida_player <= 0:
 		queue_free()
 
 func _on_cooldown_timeout():

@@ -30,13 +30,22 @@ texture = ExtResource( 3 )
 position = Vector2( 320, 315 )
 
 [node name="Spawn_2" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 896, 112 )
+position = Vector2( 958, 55 )
 
 [node name="Spawn_3" type="Position2D" parent="SpawnPoints"]
-position = Vector2( 788, 464 )
+position = Vector2( 938, 551 )
+
+[node name="Spawn_4" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 521, 284 )
+
+[node name="Spawn_5" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 210, 45 )
+
+[node name="Spawn_6" type="Position2D" parent="SpawnPoints"]
+position = Vector2( 55, 562 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 547, 288 )
+position = Vector2( 55.0001, 291 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
