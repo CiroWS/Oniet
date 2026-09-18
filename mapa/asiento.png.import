@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Camina_espalda.png-4a8d7cc90afbc55789dd25d8085413fd.stex"
+path="res://.import/asiento.png-5d564def3f9616ca04e290648cf6436c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PLAYER/Assets/Camina_espalda.png"
-dest_files=[ "res://.import/Camina_espalda.png-4a8d7cc90afbc55789dd25d8085413fd.stex" ]
+source_file="res://mapa/asiento.png"
+dest_files=[ "res://.import/asiento.png-5d564def3f9616ca04e290648cf6436c.stex" ]
 
 [params]
 

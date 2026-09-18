@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Camina_espalda.png-4a8d7cc90afbc55789dd25d8085413fd.stex"
+path="res://.import/escalera para bajo.png-c8e2cfb018ba5fe50e28e9e2122e7c5d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PLAYER/Assets/Camina_espalda.png"
-dest_files=[ "res://.import/Camina_espalda.png-4a8d7cc90afbc55789dd25d8085413fd.stex" ]
+source_file="res://mapa/escalera para bajo.png"
+dest_files=[ "res://.import/escalera para bajo.png-c8e2cfb018ba5fe50e28e9e2122e7c5d.stex" ]
 
 [params]
 
