@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/prueba1 musica de tension.wav-0615bdfb2eb037fa663ec21d6ae51362.sample"
+
+[deps]
+
+source_file="res://musica/prueba1 musica de tension.wav"
+dest_files=[ "res://.import/prueba1 musica de tension.wav-0615bdfb2eb037fa663ec21d6ae51362.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

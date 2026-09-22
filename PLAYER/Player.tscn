@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://PLAYER/Player.gd" type="Script" id=1]
 [ext_resource path="res://PLAYER/Assets/idle_espalda.png" type="Texture" id=2]
@@ -123,10 +123,20 @@ extents = Vector2( 1.8, 1.2 )
 radius = 2.2
 height = 2.8
 
+[sub_resource type="Gradient" id=22]
+offsets = PoolRealArray( 0, 0.00757576, 0.772727 )
+colors = PoolColorArray( 0.588235, 0.588235, 0.588235, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture2D" id=23]
+gradient = SubResource( 22 )
+fill = 1
+fill_from = Vector2( 0.5, 0.5 )
+fill_to = Vector2( 1, 1 )
+
 [node name="Player" type="KinematicBody2D" groups=["Jugador", "player"]]
 scale = Vector2( 5, 5 )
 script = ExtResource( 1 )
-speed = 100
+speed = 400
 vida_max = 100
 Cremona = ExtResource( 8 )
 Cartulina = ExtResource( 9 )
@@ -166,5 +176,13 @@ limit_right = 1024
 limit_bottom = 600
 
 [node name="Menu_paused" parent="." instance=ExtResource( 10 )]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0.2, 4.41089 )
+scale = Vector2( 1.85625, 1.52603 )
+texture = SubResource( 23 )
+offset = Vector2( 0, -3 )
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
