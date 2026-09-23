@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Menu_Pausa/Menu_Paused.gd" type="Script" id=2]
 [ext_resource path="res://Menus/Menu_Pausa/Label.gd" type="Script" id=3]
+[ext_resource path="res://musica/pausa.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -67,5 +68,9 @@ custom_fonts/font = SubResource( 3 )
 text = "SALIR"
 flat = true
 
+[node name="pausa" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
 [connection signal="pressed" from="Pausad/HBoxContainer/Cont" to="." method="_on_Cont_pressed"]
 [connection signal="pressed" from="Pausad/HBoxContainer/Sal" to="." method="_on_Sal_pressed"]
+[connection signal="finished" from="pausa" to="." method="_on_pausa_finished"]

@@ -8,6 +8,8 @@ var canshoot = true
 var vida_player
 export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
+export (PackedScene) var Lapiz
+export (PackedScene) var Piedrapapeltijera
 var arma = "cartulina"
 
 
@@ -28,7 +30,12 @@ func _input(event):
 	elif event.is_action_pressed("cremona"):
 		$cooldown.wait_time = 0.5
 		arma = "cremona"
-
+	elif event.is_action_pressed("lapiz"):
+		$cooldown.wait_time = 0.5
+		arma = "lapiz"
+	elif event.is_action_pressed("piedrapapeltijera"):
+		$cooldown.wait_time = 1.0
+		arma = "piedrapapeltijera"
 
 
 func get_axis() -> Vector2:
@@ -88,7 +95,23 @@ func Disparo_ctrl():
 		add_child(CARTULINA)
 		CARTULINA.position = Vector2.ZERO
 		CARTULINA.rotation = direccion_mouse.angle()
-
+	elif arma == "lapiz":
+		var LAPIZ = Lapiz.instance()
+		add_child(LAPIZ)
+		var direccion = (get_global_mouse_position() - global_position).normalized()
+		var distancia = 5.0
+		var inicio = global_position
+		LAPIZ.position = Vector2.ZERO
+		LAPIZ.rotation = direccion_mouse.angle()
+		LAPIZ.position = (direccion * distancia)
+		global_position = inicio + (direccion * (distancia+10))
+		yield(get_tree().create_timer(0.2), "timeout")
+		LAPIZ.queue_free()
+	elif arma == "piedrapapeltijera":
+		var PIEDRA = Piedrapapeltijera.instance()
+		add_child(PIEDRA)
+		PIEDRA.set_forward_direction(direccion_mouse)
+	
 
 func recibir_danio(cantidad):
 	# Sin invulnerabilidad: si te pegan dos enemigos juntos, se suman los dos golpes.

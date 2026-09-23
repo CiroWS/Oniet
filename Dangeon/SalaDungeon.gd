@@ -24,6 +24,7 @@ onready var texto_horda = $CanvasLayer/TextoHorda
 var spawn_queue = []  # cola de puntos de spawn "barajados" para no repetir seguido
 
 func _ready():
+	$musica_pelea.play()
 	var contenedor_spawn = $SpawnPoints
 	$Player/Light2D.visible=false
 	$Player/Camera2D.limit_left = 0
@@ -135,3 +136,7 @@ func siguiente_horda():
 		texto_horda.text = "¡NIVEL COMPLETADO!"
 		texto_horda.visible = true
 
+
+
+func _on_musica_pelea_finished():
+	$musica_pelea.play()

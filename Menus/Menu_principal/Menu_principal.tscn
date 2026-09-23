@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Menus/Menu_principal/ChatGPT Image 18 sept 2026, 11_11_57 a.m..png" type="Texture" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Menus/Menu_principal/Menu_principal.gd" type="Script" id=3]
+[ext_resource path="res://musica/musica del menu.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -84,5 +85,10 @@ text = "SALIR"
 flat = true
 align = 2
 
+[node name="musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer2/HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="finished" from="musica" to="." method="_on_musica_finished"]

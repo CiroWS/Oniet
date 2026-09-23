@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/freesound_community-classroom-background-54177.mp3-4b3d5f3eb38435c117a9b20305b5d9c3.mp3str"
+
+[deps]
+
+source_file="res://musica/freesound_community-classroom-background-54177.mp3"
+dest_files=[ "res://.import/freesound_community-classroom-background-54177.mp3-4b3d5f3eb38435c117a9b20305b5d9c3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

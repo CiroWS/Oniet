@@ -1,0 +1,81 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Armas/piedrapapeltijera/piedrapapeltijera.png" type="Texture" id=1]
+[ext_resource path="res://piedrapapeltijera.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 10.6301
+
+[sub_resource type="CircleShape2D" id=3]
+
+[sub_resource type="CircleShape2D" id=4]
+
+[node name="piedrapapeltijera" type="Node2D"]
+scale = Vector2( 0.2, 0.2 )
+script = ExtResource( 2 )
+
+[node name="ataque" type="Sprite" parent="."]
+position = Vector2( 3, -3 )
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="Area2D" type="Area2D" parent="ataque" groups=["PIEDRA"]]
+position = Vector2( -3, 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ataque/Area2D"]
+position = Vector2( -1, 1 )
+shape = SubResource( 1 )
+
+[node name="tijera" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.999996, -36 )
+rotation = -0.759218
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="secu" type="Area2D" parent="tijera" groups=["secu"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tijera/secu"]
+position = Vector2( -4.13013, 4.35224 )
+shape = SubResource( 2 )
+
+[node name="papel" type="Sprite" parent="."]
+visible = false
+position = Vector2( 30, 21 )
+rotation = 1.54462
+texture = ExtResource( 1 )
+hframes = 3
+frame = 2
+
+[node name="secu" type="Area2D" parent="papel" groups=["secu"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="papel/secu"]
+position = Vector2( -4.07716, 2.89426 )
+shape = SubResource( 3 )
+
+[node name="piedra" type="Sprite" parent="."]
+visible = false
+position = Vector2( -33, 20 )
+rotation = 3.07876
+texture = ExtResource( 1 )
+hframes = 3
+
+[node name="secu" type="Area2D" parent="piedra" groups=["secu"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="piedra/secu"]
+position = Vector2( -2.24721, 3.86653 )
+shape = SubResource( 4 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 7.15256e-07, -1.66893e-06 )
+scale = Vector2( 1.5, 1.5 )
+
+[connection signal="body_entered" from="ataque/Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="tijera/secu" to="." method="_on_secu_body_entered"]
+[connection signal="body_entered" from="papel/secu" to="." method="_on_secu_body_entered"]
+[connection signal="body_entered" from="piedra/secu" to="." method="_on_secu_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
