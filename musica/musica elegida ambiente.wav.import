@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/prueba1 musica mazmorra.wav-228c91bb7e52935aac3a2a7f9d875888.sample"
+path="res://.import/musica elegida ambiente.wav-4aff2645579ce0bd414b0ab3f7b83663.sample"
 
 [deps]
 
-source_file="res://musica/prueba1 musica mazmorra.wav"
-dest_files=[ "res://.import/prueba1 musica mazmorra.wav-228c91bb7e52935aac3a2a7f9d875888.sample" ]
+source_file="res://musica/musica elegida ambiente.wav"
+dest_files=[ "res://.import/musica elegida ambiente.wav-4aff2645579ce0bd414b0ab3f7b83663.sample" ]
 
 [params]
 

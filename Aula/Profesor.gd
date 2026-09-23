@@ -35,6 +35,7 @@ func _reiniciar_timer_aleatorio():
 
 func _cambiar_estado_mirada(debe_mirar: bool):
 	if debe_mirar:
+		$tension.play()
 		# 1. Giramos el Sprite visualmente
 		$Sprite.rotation_degrees = 0
 		print("¡La profesora se está dando vuelta!")
@@ -57,6 +58,7 @@ func _cambiar_estado_mirada(debe_mirar: bool):
 		esta_mirando = false
 		$Sprite.rotation_degrees = 180
 		print("La profesora se volvió a dar de espaldas.")
+		$tension.stop()
 
 func _evaluar_cambio_de_posicion():
 	var distancia_movida = jugador_en_zona.global_position.distance_to(posicion_inicial)

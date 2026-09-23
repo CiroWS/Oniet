@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
 export (int) var speed = 300
-export (int) var vida_max = 1000
+export (int) var vida_max = 200
 onready var motion = Vector2.ZERO
-var ultimo_mov = "Frente"
+var ultimo_mov = "Idle_Costado"
 var canshoot = true
 var vida_player
 export (PackedScene) var Cremona

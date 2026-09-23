@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Aula/Profesor.gd" type="Script" id=1]
 [ext_resource path="res://Aula/chiqui.png" type="Texture" id=2]
-
+[ext_resource path="res://musica/musica cuando se esta dando vuelta.wav" type="AudioStream" id=3]
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -37,6 +37,9 @@ shape = SubResource( 3 )
 [node name="TimerGiro" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="tension" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="area_entered" from="CampoDeVision" to="." method="_on_CampoDeVision_area_entered"]
 [connection signal="area_exited" from="CampoDeVision" to="." method="_on_CampoDeVision_area_exited"]
