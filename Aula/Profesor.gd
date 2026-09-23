@@ -37,7 +37,7 @@ func _cambiar_estado_mirada(debe_mirar: bool):
 	if debe_mirar:
 		$tension.play()
 		# 1. Giramos el Sprite visualmente
-		$Sprite.rotation_degrees = 0
+		$Sprite.play("Vuelta")
 		print("¡La profesora se está dando vuelta!")
 		
 		# Mantenemos esta_mirando en FALSE durante el medio segundo de gracia
@@ -56,7 +56,7 @@ func _cambiar_estado_mirada(debe_mirar: bool):
 	else:
 		# De espaldas: desactivamos la mirada inmediatamente
 		esta_mirando = false
-		$Sprite.rotation_degrees = 180
+		$Sprite.play("Volver")
 		print("La profesora se volvió a dar de espaldas.")
 		$tension.stop()
 

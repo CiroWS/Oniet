@@ -3,7 +3,7 @@ extends KinematicBody2D
 export (String) var type_enemy
 var player
 var perseguir = false
-var danioenemy = 35
+var danioenemy = 15
 var esta_atacando = false
 var vida_enemy = 100
 var regresando = false
@@ -29,7 +29,6 @@ func _physics_process(delta):
 
 func aim():
 	$RayCast2D.cast_to = to_local(player.global_position + Vector2(0, 15))
-
 
 func check_player():
 	if esta_atacando:

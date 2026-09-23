@@ -136,7 +136,7 @@ fill_to = Vector2( 1, 1 )
 [node name="Player" type="KinematicBody2D" groups=["Jugador", "player"]]
 scale = Vector2( 5, 5 )
 script = ExtResource( 7 )
-speed = 400
+speed = 100
 vida_max = 100
 Cremona = ExtResource( 8 )
 Cartulina = ExtResource( 9 )

@@ -9,9 +9,9 @@ var enemigos_vivos = 0
 var horda_generando = false  # true mientras todavía se están spawneando enemigos de la horda
 
 var enemigos_por_horda = {
-	1: 10,
-	2: 20,
-	3: 25,
+	1: 6,
+	2: 15,
+	3: 22,
 	4: 30,
 	5: 35
 }

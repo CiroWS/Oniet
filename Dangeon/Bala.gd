@@ -1,7 +1,7 @@
 extends Area2D
 
 export var velocidad := 20.0
-var danio := 10
+var danio := 5
 var direccion := Vector2.RIGHT
 var origen: Node = null   # quién disparó esta bala (para ignorarlo)
 
