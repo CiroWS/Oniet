@@ -8,4 +8,8 @@ func _on_Button2_pressed():
 
 
 func _on_Button_pressed():
-	get_tree().change_scene("res://mapa/mapa.tscn")
+	get_tree().change_scene("res://Aula/Aula.tscn")
+
+
+func _on_musica_finished():
+	$musica.play()

@@ -101,7 +101,13 @@ func _on_TimerAtaque_timeout():
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group(\"Cremona\"):
 		recibir_danio(50)
-		area.queue_free() 
+		area.queue_free()
+	elif area.is_in_group(\"Lapiz\"):
+		recibir_danio(15)
+	elif area.is_in_group(\"PIEDRA\"):
+		recibir_danio(30)
+	elif area.is_in_group(\"secu\"):
+		recibir_danio(10)
 "
 
 [sub_resource type="AtlasTexture" id=5]

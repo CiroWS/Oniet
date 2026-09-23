@@ -36,3 +36,7 @@ func _on_Area2D_area_entered(area):
 
 func _on_musica_tensionante_finished():
 	$musica_tensionante.play()
+
+
+func _on_murmullo_finished():
+	$murmullo.play()

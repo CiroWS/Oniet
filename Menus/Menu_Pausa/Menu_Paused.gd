@@ -22,3 +22,7 @@ func _on_Sal_pressed():
 	$BG.visible = false
 	get_tree().paused = false
 	get_tree().change_scene("res://Menus/Menu_principal/Menu_principal.tscn")
+
+
+func _on_pausa_finished():
+	$pausa.play()

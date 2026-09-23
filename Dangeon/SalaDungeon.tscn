@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Dangeon/New Piskel (3).png" type="Texture" id=3]
 [ext_resource path="res://PLAYER/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://musica/musica de mazmorra.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -84,3 +85,8 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/StaticBody2D3"]
 position = Vector2( 503, 619 )
 shape = SubResource( 3 )
+
+[node name="musica_pelea" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="finished" from="musica_pelea" to="." method="_on_musica_pelea_finished"]
