@@ -45,7 +45,7 @@ position = Vector2( 210, 45 )
 position = Vector2( 55, 562 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 55.0001, 291 )
+position = Vector2( 491, 291 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

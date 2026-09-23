@@ -1,8 +1,11 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Dangeon/Torreta.png" type="Texture" id=1]
 [ext_resource path="res://Dangeon/Torreta.gd" type="Script" id=2]
-[ext_resource path="res://Bala.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Dangeon/Bala.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=40]
+extents = Vector2( 10, 26 )
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
@@ -170,12 +173,11 @@ __meta__ = {
 "_edit_group_": true
 }
 bala_scene = ExtResource( 3 )
-velocidad_bala = 1.0
 vida_maxima = 10000000
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-build_mode = 1
-polygon = PoolVector2Array( -9, 32, 10, 32, 17, 27, 17, 10, 10, 5, 10, -18, 4, -23, -4, -23, -11, -17, -11, 6, -17, 10, -17, 27 )
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+shape = SubResource( 40 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 39 )

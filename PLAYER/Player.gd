@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export (int) var speed = 300
+export (int) var speed = 150
 export (int) var vida_max = 1000
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Frente"

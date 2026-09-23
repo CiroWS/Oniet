@@ -21,7 +21,6 @@ func _ready():
 	match type_enemy:
 		"Chico":
 			$AnimatedSprite.play("Idle")
-
 func _physics_process(delta):
 	if not esta_atacando:
 		aim()
@@ -118,8 +117,6 @@ func death():
 	muriendo = true
 	esta_atacando = true
 	perseguir = false
-	# Apagamos las colisiones para que el cadáver no siga bloqueando
-	# ni interactuando con el player mientras se reproduce la animación.
 	$CollisionShape2D.set_deferred("disabled", true)
 	$HurtArea/HurtColision.set_deferred("disabled", true)
 	$RayCast2D.enabled = false
