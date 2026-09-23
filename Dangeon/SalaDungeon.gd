@@ -131,6 +131,7 @@ func siguiente_horda():
 	if horda_actual < hordas_totales:
 		horda_actual += 1
 		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		iniciar_horda(horda_actual)
 	else:
 		texto_horda.text = "¡NIVEL COMPLETADO!"
