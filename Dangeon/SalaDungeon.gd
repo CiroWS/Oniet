@@ -25,7 +25,14 @@ var spawn_queue = []  # cola de puntos de spawn "barajados" para no repetir segu
 
 func _ready():
 	var contenedor_spawn = $SpawnPoints
-	
+	$Player/Light2D.visible=false
+	$Player/Camera2D.limit_left = 0
+	$Player/Camera2D.limit_top = 0
+	$Player/Camera2D.limit_bottom = 600
+	$Player/Camera2D.limit_right = 1024
+	var nuevo_tamano = Vector2(1360, 768)
+	OS.set_window_size(nuevo_tamano)
+	OS.center_window()
 	for i in contenedor_spawn.get_children():
 		torretas_pos.append(i.position)
 	randomize()
@@ -122,7 +129,7 @@ func verificar_horda_completa():
 func siguiente_horda():
 	if horda_actual < hordas_totales:
 		horda_actual += 1
-		yield(get_tree().create_timer(2.0), "timssseout")
+		yield(get_tree().create_timer(2.0), "timeout")
 		iniciar_horda(horda_actual)
 	else:
 		texto_horda.text = "¡NIVEL COMPLETADO!"
