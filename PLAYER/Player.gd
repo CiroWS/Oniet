@@ -23,8 +23,10 @@ func _input(event):
 		canshoot = false
 		$cooldown.start()
 	elif event.is_action_pressed("cartulina"):
+		$cooldown.wait_time = 0.2
 		arma = "cartulina"
 	elif event.is_action_pressed("cremona"):
+		$cooldown.wait_time = 0.5
 		arma = "cremona"
 
 
