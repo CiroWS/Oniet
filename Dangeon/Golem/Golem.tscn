@@ -49,27 +49,44 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 35, 23 )
+extents = Vector2( 49.5, 33 )
 
-[node name="Golem" type="KinematicBody2D"]
+[node name="Golem" type="KinematicBody2D" groups=["Enemigos"]]
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 9.53674e-07 )
+scale = Vector2( 1.42188, 1.42188 )
 frames = SubResource( 7 )
 animation = "IDLE_frente"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 9 )
+position = Vector2( -0.5, 12 )
 shape = SubResource( 8 )
 
 [node name="PechoPosition" type="Position2D" parent="."]
-position = Vector2( 0, 15 )
+position = Vector2( 0, 18 )
 
 [node name="Disparo_golem" parent="PechoPosition" instance=ExtResource( 4 )]
+visible = false
 
-[node name="LineOfSight" type="RayCast2D" parent="."]
+[node name="Tween" type="Tween" parent="."]
 
-[node name="AtaqueTimer" type="Timer" parent="."]
+[node name="BossUI" type="CanvasLayer" parent="."]
 
-[node name="CooldownTimer" type="Timer" parent="."]
+[node name="NombreBoss" type="Label" parent="BossUI"]
+anchor_left = 0.25
+anchor_right = 0.75
+margin_top = 14.0
+margin_bottom = 32.0
+text = "GÓLEM GUARDIÁN"
+align = 1
+
+[node name="BarraVida" type="ProgressBar" parent="BossUI"]
+self_modulate = Color( 0.9, 0.1, 0.1, 1 )
+anchor_left = 0.25
+anchor_right = 0.75
+margin_top = 34.0
+margin_bottom = 50.0
+percent_visible = false

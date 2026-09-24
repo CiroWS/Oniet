@@ -47,7 +47,6 @@ position = Vector2( 55, 562 )
 
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 491, 291 )
-vida_max = 900
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

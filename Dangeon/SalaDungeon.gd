@@ -2,18 +2,20 @@ extends Node2D
 
 var EnemigoEscena = preload("res://Dangeon/Enemigo_Peque.tscn")
 var TorretaEscena = preload("res://Dangeon/Torreta.tscn")
+var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
+
 
 var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
-var horda_generando = false  # true mientras todavía se están spawneando enemigos de la horda
+var horda_generando = false 
 
 var enemigos_por_horda = {
 	1: 6,
 	2: 15,
 	3: 22,
 	4: 30,
-	5: 35
+	5: 15
 }
 
 var torretas_pos : Array=[]
@@ -50,6 +52,10 @@ func iniciar_horda(numero_horda):
 	yield(mostrar_cartel_horda(numero_horda), "completed")
 	spawn_torreta()
 	horda_generando = true
+
+	if numero_horda == hordas_totales:
+			spawn_golem_boss()
+	
 	var cantidad = enemigos_por_horda[numero_horda]
 	
 	for i in range(cantidad):
@@ -86,7 +92,19 @@ func spawn_enemigo():
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")
 	add_child(nuevo_enemigo)
 	enemigos_vivos += 1
-
+func spawn_golem_boss():
+	var golem = GolemEscena.instance()
+	
+	# Lo colocamos preferentemente en el centro de la sala o en un spawn point clave
+	if spawn_points.size() > 0:
+		golem.global_position = spawn_points[0].global_position
+	else:
+		golem.global_position = Vector2(512, 300)
+		
+	golem.connect("tree_exited", self, "_on_enemigo_muerto")
+	add_child(golem)
+	enemigos_vivos += 1
+	
 func spawn_torreta():
 	var nueva_torreta = TorretaEscena.instance()
 
