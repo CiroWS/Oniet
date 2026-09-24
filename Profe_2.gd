@@ -7,16 +7,16 @@ onready var input_box = $Panel/VBoxContainer/InputBox
 
 # Secuencia de frases iniciales
 var dialog_lines = [
-	"¡ Buenas !",
-	"¿Que haces a esta hora fuera del curso ?",
-	"Si lo que quieres es encontrar tus figuritas deberas resolver el siguiente acertijo :",
-	"En una granja escolar hay gallinas y conejos. En total se cuentan 20 cabezas y 56 patas.",
-	"Si planteas un sistema de ecuaciones para saber cuántos animales de cada tipo hay,",
-	"¿cuantos conejos hay exactamente en la granja?"
+	"¡ Hola !",
+	"Me imagino que no estas saltenado tus clases, no ?",
+	"Si lo que quieres es recuperar tus figuritas tienes que contestarme una simple pregunta ",
+	"¿ Cuál elemento de la tabla periódica cumple con la siguiente caracteristica ?",
+	"Es el único elemento cuyo isótopo más abundante no tiene neutrones"
+
 ]
 
 # Respuestas que se aceptan como correctas
-const RESPUESTAS_CORRECTAS = ["8", "8 conejos", "8 conejos."]
+const RESPUESTAS_CORRECTAS = ["Hidrogeno","hidrogeno"]
 
 # Estados posibles del diálogo (reemplaza a las banderas sueltas)
 enum Estado {INACTIVO, HABLANDO, ESPERANDO_RESPUESTA, RESUELTO}

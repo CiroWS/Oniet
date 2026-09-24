@@ -13,6 +13,10 @@ export (PackedScene) var Piedrapapeltijera
 export (PackedScene) var Capacitor
 var arma = "cartulina"
 
+# True mientras el jugador está en un diálogo (por ej. con Profe_1).
+# Mientras esté activo, no se mueve ni dispara.
+var dialog_active = false
+
 
 func _ready():
 	add_to_group("Jugador")
@@ -20,7 +24,11 @@ func _ready():
 	$BarraVida.max_value = vida_max
 	$BarraVida.value = vida_player
 
+
 func _input(event):
+	if dialog_active:
+		return
+
 	if event.is_action_pressed("Disparo") and canshoot:
 		Disparo_ctrl()
 		canshoot = false
@@ -42,13 +50,24 @@ func _input(event):
 		arma = "capacitor"
 
 
+# Llamado por un NPC (ej. Profe_1) para bloquear/desbloquear al jugador
+# mientras dura el diálogo.
+func set_dialog_active(value: bool) -> void:
+	dialog_active = value
+	if value:
+		motion = Vector2.ZERO
+
+
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
+	if dialog_active:
+		return axis
 	if axis.y == 0:
 		axis.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
 	if axis.x == 0:
 		axis.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
 	return axis
+
 
 func motion_ctrl():
 	if get_axis() == Vector2.ZERO:
@@ -78,9 +97,11 @@ func motion_ctrl():
 		elif ultimo_mov == "Costado":
 			$AnimatedSprite.play("Idle_Costado")
 
+
 func _physics_process(delta):
 	motion_ctrl()
 	motion = move_and_collide(motion * delta)
+
 
 func Disparo_ctrl():
 	var direccion_mouse = (get_global_mouse_position() - global_position).normalized()
@@ -120,7 +141,7 @@ func Disparo_ctrl():
 		add_child(cap)
 		cap.rotation = direccion_mouse.angle()
 		cap.set_forward_direction(direccion_mouse)
-	
+
 
 func recibir_danio(cantidad):
 	# Sin invulnerabilidad: si te pegan dos enemigos juntos, se suman los dos golpes.
@@ -137,6 +158,6 @@ func recibir_danio(cantidad):
 	if vida_player <= 0:
 		queue_free()
 
+
 func _on_cooldown_timeout():
 	canshoot = true
-

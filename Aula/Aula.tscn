@@ -31,6 +31,7 @@ position = Vector2( 453, 129 )
 
 [node name="AlumnoSprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
 hframes = 2
 
 [node name="Alumno" type="Area2D" parent="AlumnoSprite" groups=["Jugador"]]
