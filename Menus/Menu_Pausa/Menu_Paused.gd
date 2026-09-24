@@ -1,12 +1,20 @@
 extends CanvasLayer
 
-
+var flag = false
+var cantina = false
 
 func _input(event):
-	if event.is_action_pressed("esc"):
-		$Pausad.visible = true
-		$BG.visible = true
-		get_tree().paused = true
+	if not cantina:
+		if event.is_action_pressed("esc") and not flag:
+			flag = true
+			$Pausad.visible = true
+			$BG.visible = true
+			get_tree().paused = true
+		elif event.is_action_pressed("esc") and flag:
+			flag = false
+			$Pausad.visible = false
+			$BG.visible = false
+			get_tree().paused = false
 
 
 

@@ -213,6 +213,8 @@ func recibir_dano(cantidad ):
 
 
 func morir():
+	Global.bicho="golem"
+	Global.posicion = global_position
 	estado = Estado.MURIENDO
 	rayo.detener_disparo()
 	remove_from_group("Enemigo")

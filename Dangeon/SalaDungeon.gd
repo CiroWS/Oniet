@@ -4,6 +4,7 @@ var EnemigoEscena = preload("res://Dangeon/Enemigo_Peque.tscn")
 var TorretaEscena = preload("res://Dangeon/Torreta.tscn")
 var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 
+export (PackedScene) var MONEDA
 
 var horda_actual = 1
 var hordas_totales = 5
@@ -134,10 +135,29 @@ func spawn_torreta():
 		nueva_torreta.position = torretas_pos[rng]
 		torretas_pos.remove(rng)
 	add_child(nueva_torreta)
-	
+
+
 func _on_enemigo_muerto():
 	enemigos_vivos -= 1
 	verificar_horda_completa()
+	if Global.bicho=="peque":
+		for i in range(2):
+			var moneda = MONEDA.instance()
+			add_child(moneda)
+			Global.posicion.x+=16.0
+			moneda.global_position = Global.posicion
+	elif Global.bicho=="golem":
+		for i in range(50):
+			var moneda = MONEDA.instance()
+			add_child(moneda)
+			if i<20:
+				Global.posicion.x+=10.0
+				Global.posicion.y-=10.0
+			elif i<40:
+				Global.posicion.y+=10.0
+			elif i<50:
+				Global.posicion.x-=10.0
+			moneda.global_position = Global.posicion
 
 func verificar_horda_completa():
 	# Solo avanzamos si ya terminamos de spawnear TODA la horda
@@ -148,7 +168,6 @@ func verificar_horda_completa():
 func siguiente_horda():
 	if horda_actual < hordas_totales:
 		horda_actual += 1
-		yield(get_tree().create_timer(2.0), "timeout")
 		yield(get_tree().create_timer(2.0), "timeout")
 		iniciar_horda(horda_actual)
 	else:

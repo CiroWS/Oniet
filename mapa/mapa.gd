@@ -1,5 +1,10 @@
 extends Node2D
 
+export (PackedScene) var CANTINA
+
+var cantina = null
+
+
 var y_inicio_escalera: float = 0.0
 var x_inicio_escalera: float = 0.0
 
@@ -144,3 +149,17 @@ func _on_escaleras_body_shape_exited(body_rid: RID, body: Node, body_shape_index
 
 func _on_AudioStreamPlayer_finished():
 	$musica_ambiente.play()
+
+func _input(event):
+	if event.is_action_pressed("esc") and $Player/Menu_paused.cantina==true:
+		$Player/Menu_paused.cantina = false
+		$Player.global_position=Vector2(-673, -897)
+		$Player.speed=100
+		cantina.queue_free()
+
+func _on_puertacantina_body_entered(body):
+	if body.is_in_group("player"):
+		$Player/Menu_paused.cantina = true
+		cantina = CANTINA.instance()
+		add_child(cantina)
+		$Player.speed=0

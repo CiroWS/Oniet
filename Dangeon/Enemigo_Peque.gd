@@ -99,6 +99,8 @@ func _on_AtaqueEnemigo_area_entered(area):
 func atacar():
 	if esta_atacando:
 		return
+	
+	
 	esta_atacando = true
 	ya_golpeo = false
 	$AnimatedSprite.play("Ataque")
@@ -113,6 +115,8 @@ func atacar():
 func death():
 	if muriendo:
 		return
+	Global.posicion = global_position
+	Global.bicho="peque"
 	muriendo = true
 	esta_atacando = true
 	perseguir = false
