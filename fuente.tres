@@ -3,7 +3,6 @@
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 9
+size = 20
 outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
 font_data = ExtResource( 1 )
