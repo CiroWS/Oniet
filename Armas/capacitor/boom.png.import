@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/piedrapapeltijera.png-f1f9bf5b2a6bc99df519f446621bfe84.stex"
+path="res://.import/boom.png-cea8ba72335e92ad52d99cb4ab6af3a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Armas/piedrapapeltijera/piedrapapeltijera.png"
-dest_files=[ "res://.import/piedrapapeltijera.png-f1f9bf5b2a6bc99df519f446621bfe84.stex" ]
+source_file="res://Armas/capacitor/boom.png"
+dest_files=[ "res://.import/boom.png-cea8ba72335e92ad52d99cb4ab6af3a5.stex" ]
 
 [params]
 

@@ -10,6 +10,7 @@ export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
 export (PackedScene) var Lapiz
 export (PackedScene) var Piedrapapeltijera
+export (PackedScene) var Capacitor
 var arma = "cartulina"
 
 
@@ -36,6 +37,9 @@ func _input(event):
 	elif event.is_action_pressed("piedrapapeltijera"):
 		$cooldown.wait_time = 1.0
 		arma = "piedrapapeltijera"
+	elif event.is_action_pressed("capacitor"):
+		$cooldown.wait_time = 0.5
+		arma = "capacitor"
 
 
 func get_axis() -> Vector2:
@@ -111,6 +115,11 @@ func Disparo_ctrl():
 		var PIEDRA = Piedrapapeltijera.instance()
 		add_child(PIEDRA)
 		PIEDRA.set_forward_direction(direccion_mouse)
+	elif arma == "capacitor":
+		var cap = Capacitor.instance()
+		add_child(cap)
+		cap.rotation = direccion_mouse.angle()
+		cap.set_forward_direction(direccion_mouse)
 	
 
 func recibir_danio(cantidad):
