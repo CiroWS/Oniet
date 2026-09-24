@@ -28,7 +28,7 @@ func _physics_process(delta):
 
 
 func aim():
-	$RayCast2D.cast_to = to_local(player.global_position + Vector2(0, 15))
+	$RayCast2D.cast_to =to_local(player.global_position + Vector2(0, 15))
 
 func check_player():
 	if esta_atacando:
