@@ -5,7 +5,6 @@ export (int) var vida_max = 200
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Idle_Costado"
 var canshoot = true
-var vida_player
 export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
 export (PackedScene) var Lapiz
@@ -20,9 +19,9 @@ var dialog_active = false
 
 func _ready():
 	add_to_group("Jugador")
-	vida_player = vida_max
+	Global.vidajugador = vida_max
 	$BarraVida.max_value = vida_max
-	$BarraVida.value = vida_player
+	$BarraVida.value = Global.vidajugador
 
 
 func _input(event):
@@ -99,6 +98,7 @@ func motion_ctrl():
 
 
 func _physics_process(delta):
+	$BarraVida.value = Global.vidajugador
 	motion_ctrl()
 	motion = move_and_collide(motion * delta)
 
@@ -147,15 +147,12 @@ func recibir_danio(cantidad):
 	# Sin invulnerabilidad: si te pegan dos enemigos juntos, se suman los dos golpes.
 	# El control de "no me peguen demasiado seguido" ahora vive en cada enemigo
 	# (cooldown de ataque en Enemigo_Peque.gd).
-	vida_player -= cantidad
-	$BarraVida.value = vida_player
-
+	Global.vidajugador -= cantidad
 	# Flash rojo solo como feedback visual, no bloquea nada
 	modulate = Color(1, 0.4, 0.4)
 	yield(get_tree().create_timer(0.15), "timeout")
 	modulate = Color(1, 1, 1)
-
-	if vida_player <= 0:
+	if Global.vidajugador <= 0:
 		queue_free()
 
 
