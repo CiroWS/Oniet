@@ -8,15 +8,15 @@ onready var input_box = $Panel/VBoxContainer/InputBox
 # Secuencia de frases iniciales
 var dialog_lines = [
 	"¡ Hola !",
-	"Me imagino que no estas saltenado tus clases, no ?",
-	"Si lo que quieres es recuperar tus figuritas tienes que contestarme una simple pregunta ",
-	"¿ Cuál elemento de la tabla periódica cumple con la siguiente caracteristica ?",
-	"Es el único elemento cuyo isótopo más abundante no tiene neutrones"
+	"¿ El profesor sabe que no estas en su clase ?",
+	"Te ayudare a encontrar tus figuritas si respondes mi pregunta y vuelves rapido a clases",
+	"¿ Cual es el organo mas grande del cuerpo humano ?"
+	
 
 ]
 
 # Respuestas que se aceptan como correctas
-const RESPUESTAS_CORRECTAS = ["Hidrogeno","hidrogeno"]
+const RESPUESTAS_CORRECTAS = ["Piel","La Piel","la piel","piel"]
 
 # Estados posibles del diálogo (reemplaza a las banderas sueltas)
 enum Estado {INACTIVO, HABLANDO, ESPERANDO_RESPUESTA, RESUELTO}
@@ -30,7 +30,7 @@ var player_ref = null
 func _ready():
 	$Panel.hide()
 	input_box.hide()
-	$AnimatedSprite.play("default")
+	$AnimatedSprite.play("idle")
 	if balloon:
 		balloon.hide()
 
@@ -54,7 +54,7 @@ func _process(_delta):
 			Estado.HABLANDO:
 				advance_dialog()
 			Estado.RESUELTO:
-				text_label.text = "Ya tienes lo que necesitas, anda a 5°B."
+				text_label.text = "¡ Ve a 4°B !"
 
 	# Esc cierra el diálogo en cualquier momento
 	if estado != Estado.INACTIVO and Input.is_action_just_pressed("ui_cancel"):
@@ -120,7 +120,7 @@ func _on_InputBox_text_entered(new_text):
 	var answer = new_text.strip_edges().to_lower()
 
 	if answer in RESPUESTAS_CORRECTAS:
-		text_label.text = "¡ Excelente ! Lo que buscas esta en 5°B"
+		text_label.text = "¡ Muy bien ! Ahora ve a 4°B antes de que te vean"
 		input_box.hide()
 		input_box.release_focus()
 		estado = Estado.RESUELTO

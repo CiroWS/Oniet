@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://mapa/paredinvisible.png" type="Texture" id=1]
 [ext_resource path="res://mapa/piso de piedra laja irregular.png" type="Texture" id=2]
@@ -19,8 +19,11 @@
 [ext_resource path="res://mapa/arbol.png" type="Texture" id=17]
 [ext_resource path="res://mapa/puerta.png" type="Texture" id=18]
 [ext_resource path="res://musica/musica elegida ambiente.wav" type="AudioStream" id=19]
-[ext_resource path="res://Profe_2.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Profe_1.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Profesores_Dialogo/Profe_2.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Profesores_Dialogo/Profe_1.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Profesores_Dialogo/Profe_3.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Profesores_Dialogo/Profe_4.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Profesores_Dialogo/Profe_5.tscn" type="PackedScene" id=24]
 
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 16, 16, 0, 15.9784, 0, 7.86522, 16, 7.99503 )
@@ -1077,11 +1080,22 @@ color = Color( 0.14902, 0.152941, 0.12549, 1 )
 stream = ExtResource( 19 )
 autoplay = true
 
-[node name="Profe_1" parent="." instance=ExtResource( 21 )]
-position = Vector2( -447, 76 )
+[node name="Node" type="Node" parent="."]
 
-[node name="Profe_2" parent="." instance=ExtResource( 20 )]
+[node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
+position = Vector2( -1194, 152 )
+
+[node name="Profe_2" parent="Node" instance=ExtResource( 20 )]
 position = Vector2( -390, -695 )
+
+[node name="Profe_3" parent="Node" instance=ExtResource( 22 )]
+position = Vector2( -1070, -286 )
+
+[node name="Profe_4" parent="Node" instance=ExtResource( 23 )]
+position = Vector2( 378, 506 )
+
+[node name="Profe_5" parent="Node" instance=ExtResource( 24 )]
+position = Vector2( 63, -80 )
 
 [connection signal="body_shape_entered" from="puertas" to="." method="_on_puertas_body_shape_entered"]
 [connection signal="body_shape_exited" from="puertas" to="." method="_on_puertas_body_shape_exited"]
