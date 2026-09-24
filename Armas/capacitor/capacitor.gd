@@ -20,9 +20,9 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemigos"):
 		if body.has_method("recibir_danio"):
 			if $Area2D/capacitor.disabled==false:
-				body.recibir_danio(25)
+				body.recibir_danio(45)
 			else:
-				body.recibir_danio(30)
+				body.recibir_danio(50)
 		boom()
 
 func boom():
