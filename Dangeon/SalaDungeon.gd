@@ -5,6 +5,7 @@ var TorretaEscena = preload("res://Dangeon/Torreta.tscn")
 var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 
 export (PackedScene) var MONEDA
+export (PackedScene) var VIDA
 
 var horda_actual = 1
 var hordas_totales = 5
@@ -178,3 +179,10 @@ func siguiente_horda():
 
 func _on_musica_pelea_finished():
 	$musica_pelea.play()
+
+
+func _on_generador_vida_timeout():
+	var vida = VIDA.instance()
+	add_child(vida)
+	vida.global_position=Vector2(Global.random(15, 990), Global.random(15,590))
+	$generador_vida.start()
