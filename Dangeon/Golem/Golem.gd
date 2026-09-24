@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var mov = true
 
 export (float) var velocidad = 55.0
 export (float) var margen_alineacion = 22.0 
@@ -71,19 +71,20 @@ func _physics_process(delta):
 			terminar_ataque()
 		buscar_jugador()
 		return
-
+	
 	match estado:
 		Estado.PERSIGUIENDO:
 			logica_persecucion(delta)
 		Estado.AVISANDO:
+			
 			tiempo_estado -= delta
 			if tiempo_estado <= 0.0:
 				iniciar_disparo()
 		Estado.DISPARANDO:
+	
 			tiempo_estado -= delta
 			if tiempo_estado <= 0.0:
 				terminar_ataque()
-
 
 func logica_persecucion(delta):
 	cooldown_ataque -= delta
@@ -154,16 +155,26 @@ func perseguir_jugador():
 
 
 func mirar_direccion(direccion: int):
-	match direccion:
-		Direccion.ABAJO:
-			poner_animacion("IDLE_frente", false)
-		Direccion.ARRIBA:
-			poner_animacion("Espalda", false)
-		Direccion.DERECHA:
-			poner_animacion("Costado", false)
-		Direccion.IZQUIERDA:
-			poner_animacion("Costado", true)
-
+	if mov:
+		match direccion:
+			Direccion.ABAJO:
+				poner_animacion("Caminata_Frente", false)
+			Direccion.ARRIBA:
+				poner_animacion("Caminata_Espalda", false)
+			Direccion.DERECHA:
+				poner_animacion("Caminata_Costado", false)
+			Direccion.IZQUIERDA:
+				poner_animacion("Caminata_Costado", true)
+	else:
+		match direccion:
+			Direccion.ABAJO:
+				poner_animacion("IDLE_Frente", false)
+			Direccion.ARRIBA:
+				poner_animacion("Espalda", false)
+			Direccion.DERECHA:
+				poner_animacion("Costado", false)
+			Direccion.IZQUIERDA:
+				poner_animacion("Costado", true)
 
 func poner_animacion(nombre: String, espejado: bool):
 	anim_sprite.flip_h = espejado
@@ -173,6 +184,7 @@ func poner_animacion(nombre: String, espejado: bool):
 
 
 func iniciar_aviso(direccion: int):
+	mov = false
 	estado = Estado.AVISANDO
 	tiempo_estado = tiempo_aviso
 	apuntar_pecho(direccion)
@@ -181,12 +193,14 @@ func iniciar_aviso(direccion: int):
 
 
 func iniciar_disparo():
+	mov = false
 	estado = Estado.DISPARANDO
 	tiempo_estado = tiempo_disparo
 	rayo.disparar()
 
 
 func terminar_ataque():
+	mov = true
 	rayo.detener_disparo()
 	estado = Estado.PERSIGUIENDO
 	cooldown_ataque = tiempo_espera
