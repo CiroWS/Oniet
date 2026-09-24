@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Armas/lapiz/lapiz.png" type="Texture" id=1]
+[ext_resource path="res://Armas/capacitor/capacitor bomba.png" type="Texture" id=2]
+[ext_resource path="res://Hud.gd" type="Script" id=3]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -60.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -62.0
+margin_top = -20.0
+margin_right = 62.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Button" type="Button" parent="Control/HBoxContainer"]
+margin_right = 44.0
+margin_bottom = 40.0
+icon = ExtResource( 2 )
+flat = true
+
+[node name="Button2" type="Button" parent="Control/HBoxContainer"]
+margin_left = 48.0
+margin_right = 76.0
+margin_bottom = 40.0
+icon = ExtResource( 1 )
+flat = true
+
+[node name="Button3" type="Button" parent="Control/HBoxContainer"]
+margin_left = 80.0
+margin_right = 124.0
+margin_bottom = 40.0
+icon = ExtResource( 2 )
+flat = true
