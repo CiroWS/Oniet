@@ -10,8 +10,8 @@ var dialog_lines = [
 	"¡ Buen Día !",
 	"Estas no son horas de recreo ¿ que te trae por aquí ?",
 	"Con que estas buscando tu colección de figuritas",
-	"Si las quieres recuperar debes constestar una pregunta muy simple",
-	"¿Cuáles son las dos magnitudes que se utilizan para ubicar de manera exacta cualquier punto sobre la superficie terrestre?"
+	"Si las quieres recuperar debes decirme algo simple",
+	"Las dos magnitudes que se usan para ubicar un punto exacto sobre la superficie terrestre?"
 	
 ]
 
