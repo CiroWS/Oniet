@@ -7,7 +7,7 @@ var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 
-var horda_actual = 1
+var horda_actual = 5
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 

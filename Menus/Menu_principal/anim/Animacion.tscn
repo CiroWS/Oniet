@@ -85,8 +85,8 @@ scale = Vector2( 1, 1.20751 )
 frames = SubResource( 3 )
 
 [node name="Chiri" type="AnimatedSprite" parent="."]
-position = Vector2( -961.129, 282.014 )
-scale = Vector2( 0.867715, 0.94746 )
+position = Vector2( -944.981, 195.463 )
+scale = Vector2( 0.386102, 1.76085 )
 frames = SubResource( 6 )
 
 [node name="Lau" type="AnimatedSprite" parent="."]
