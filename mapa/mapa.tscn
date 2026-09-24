@@ -1070,9 +1070,6 @@ shape = SubResource( 29 )
 position = Vector2( -557, -559 )
 shape = SubResource( 29 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 69, 113 )
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.14902, 0.152941, 0.12549, 1 )
 
@@ -1083,19 +1080,31 @@ autoplay = true
 [node name="Node" type="Node" parent="."]
 
 [node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
+visible = false
 position = Vector2( -1194, 152 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="Profe_2" parent="Node" instance=ExtResource( 20 )]
 position = Vector2( -390, -695 )
 
 [node name="Profe_3" parent="Node" instance=ExtResource( 22 )]
 position = Vector2( -1070, -286 )
+collision_layer = 4
+collision_mask = 4
 
 [node name="Profe_4" parent="Node" instance=ExtResource( 23 )]
 position = Vector2( 378, 506 )
+collision_layer = 2
+collision_mask = 2
 
 [node name="Profe_5" parent="Node" instance=ExtResource( 24 )]
+visible = false
 position = Vector2( 63, -80 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 69, 113 )
+speed = 500
 
 [connection signal="body_shape_entered" from="puertas" to="." method="_on_puertas_body_shape_entered"]
 [connection signal="body_shape_exited" from="puertas" to="." method="_on_puertas_body_shape_exited"]
