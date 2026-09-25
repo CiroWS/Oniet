@@ -2,7 +2,6 @@
 
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Menu_Pausa/Menu_Paused.gd" type="Script" id=2]
-[ext_resource path="res://Menus/Menu_Pausa/Label.gd" type="Script" id=3]
 [ext_resource path="res://musica/pausa.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,6 +9,16 @@ size = 64
 outline_size = 6
 outline_color = Color( 0.196078, 0.341176, 0.945098, 1 )
 font_data = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Label
+
+var tiempo := 0.0
+
+func _process(delta):
+	tiempo += delta
+	modulate.a = abs(sin(tiempo * 3))
+"
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
@@ -42,7 +51,7 @@ margin_bottom = 64.0
 custom_fonts/font = SubResource( 1 )
 text = "PAUSA"
 align = 1
-script = ExtResource( 3 )
+script = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Pausad"]
 margin_top = 68.0
