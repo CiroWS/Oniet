@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://cantina/moneda.tscn" type="PackedScene" id=6]
 [ext_resource path="res://cantina/vida.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hud.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Dangeon/figu.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -24,6 +25,7 @@ extents = Vector2( 550.5, 10 )
 script = ExtResource( 1 )
 MONEDA = ExtResource( 6 )
 VIDA = ExtResource( 7 )
+FIGURITA = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 514, 300 )
