@@ -6,8 +6,10 @@ var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
+export (PackedScene) var FIGURITA
 
-var horda_actual = 1
+
+var horda_actual = 5
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
@@ -151,14 +153,25 @@ func _on_enemigo_muerto():
 		for i in range(50):
 			var moneda = MONEDA.instance()
 			add_child(moneda)
-			if i<20:
+			if i<10:
 				Global.posicion.x+=10.0
 				Global.posicion.y-=10.0
-			elif i<40:
+			elif i<20:
 				Global.posicion.y+=10.0
-			elif i<50:
+				Global.posicion.x+=10.0
+			elif i<30:
 				Global.posicion.x-=10.0
+				Global.posicion.y+=10.0
+			elif i<40:
+				Global.posicion.x-=10.0
+				Global.posicion.y-=10.0
+			elif i<50:
+				Global.posicion.x+=10.0
 			moneda.global_position = Global.posicion
+			if i==49:
+				var figu = FIGURITA.instance()
+				add_child(figu)
+				figu.global_position = Global.posicion
 
 func verificar_horda_completa():
 	# Solo avanzamos si ya terminamos de spawnear TODA la horda

@@ -11,6 +11,9 @@ func _ready():
 	Vida.value = Global.vidajugador
 	var player = get_tree().get_nodes_in_group("player")[0]
 	player.connect("vida_cambiada", self, "_on_vida_cambiada")
+	
+func _process(delta):
+	$moneda/Label.text=str(Global.moneda)
 
 
 func _on_vida_cambiada(nueva_vida: int) -> void:

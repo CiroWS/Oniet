@@ -16,6 +16,9 @@ var posicion
 
 var bicho
 
+var figus : int = 1
+
+
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 func random(a, b):
 	rng.randomize()

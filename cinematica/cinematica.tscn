@@ -81,7 +81,7 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "Lujan"
+text = "Lujan BOT"
 align = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

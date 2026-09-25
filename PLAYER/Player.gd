@@ -99,6 +99,7 @@ func motion_ctrl():
 
 
 func _physics_process(delta):
+	emit_signal("vida_cambiada",Global.vidajugador)
 	motion_ctrl()
 	motion = move_and_collide(motion * delta)
 
@@ -154,7 +155,6 @@ func recibir_danio(cantidad):
 	modulate = Color(1, 1, 1)
 	if Global.vidajugador <= 0:
 		queue_free()
-	emit_signal("vida_cambiada",Global.vidajugador)
 
 
 func _on_cooldown_timeout():
