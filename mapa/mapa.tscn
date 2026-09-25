@@ -1109,7 +1109,7 @@ visible = false
 position = Vector2( 63, -80 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 69, 113 )
+position = Vector2( -1076, 273 )
 speed = 500
 
 [node name="puertacantina" type="Area2D" parent="."]

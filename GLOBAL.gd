@@ -16,6 +16,8 @@ var posicion
 
 var bicho
 
+var Armas_activas = false
+
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 func random(a, b):
 	rng.randomize()
