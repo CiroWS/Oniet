@@ -34,7 +34,10 @@ func _ready():
 	if balloon:
 		balloon.hide()
 
-
+func _input(event):
+	if event.is_action_pressed("esc"):
+		player_in_area = false
+		cerrar_dialogo()
 func _process(_delta):
 	if balloon:
 		balloon.visible = player_in_area and estado == Estado.INACTIVO
@@ -53,8 +56,10 @@ func _process(_delta):
 				Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
+				Global.emit_signal("nopausa", true)
 				advance_dialog()
 			Estado.RESUELTO:
+				Global.emit_signal("nopausa", true)
 				text_label.text = "No tengo nada mas que decir, debes ir a 7°C"
 
 	# Esc cierra el diálogo en cualquier momento
