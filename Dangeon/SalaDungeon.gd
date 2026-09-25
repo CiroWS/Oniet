@@ -8,10 +8,11 @@ export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 export (PackedScene) var FIGURITA
 
-var horda_actual = 5
+var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
+var saliendo = false
 
 var enemigos_por_horda = {
 	1: 6,
@@ -26,7 +27,7 @@ var torretas_pos : Array=[]
 
 onready var spawn_points = $SpawnPoints.get_children()
 onready var texto_horda = $CanvasLayer/TextoHorda
-var spawn_queue = []  # cola de puntos de spawn "barajados" para no repetir seguido
+var spawn_queue = []  
 
 func _ready():
 	$musica_pelea.play()
@@ -61,18 +62,17 @@ func iniciar_horda(numero_horda):
 	
 	var cantidad = enemigos_por_horda[numero_horda]
 	
+# warning-ignore:unused_variable
 	for i in range(cantidad):
 		spawn_enemigo()
 		yield(get_tree().create_timer(0.4), "timeout")
 
 	horda_generando = false
-	# Por si los primeros enemigos ya murieron mientras seguíamos spawneando
+
 	verificar_horda_completa()
 
 func siguiente_punto_spawn():
-	# Barajamos todos los puntos y los vamos sacando de a uno.
-	# Así, con 3 puntos, garantizamos que no se repita el mismo punto
-	# dos veces seguidas (cosa que SÍ podía pasar con randi() puro).
+
 	if spawn_queue.empty():
 		spawn_queue = spawn_points.duplicate()
 		spawn_queue.shuffle()
@@ -84,21 +84,20 @@ func spawn_enemigo():
 
 	if spawn_points.size() > 0:
 		var punto_spawn = siguiente_punto_spawn()
-		# offset más grande para que se vean claramente separados
+
 		var offset = Vector2(rand_range(-40, 40), rand_range(-40, 40))
 		nuevo_enemigo.global_position = punto_spawn.global_position + offset
 	else:
 		nuevo_enemigo.global_position = Vector2(rand_range(100, 900), rand_range(100, 500))
 
-	# antes decía "_on_enemigo_muerato" (typo), por eso nunca se restaban
-	# los enemigos vivos y las hordas no avanzaban
+
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")
 	add_child(nuevo_enemigo)
 	enemigos_vivos += 1
 func spawn_golem_boss():
 	var golem = GolemEscena.instance()
 	
-	# Lo colocamos preferentemente en el centro de la sala o en un spawn point clave
+
 	if spawn_points.size() > 0:
 		golem.global_position = spawn_points[0].global_position
 	else:
@@ -140,9 +139,12 @@ func spawn_torreta():
 
 
 func _on_enemigo_muerto():
+	if saliendo or not is_inside_tree():
+		return
 	enemigos_vivos -= 1
 	verificar_horda_completa()
 	if Global.bicho=="peque":
+# warning-ignore:unused_variable
 		for i in range(2):
 			var moneda = MONEDA.instance()
 			add_child(moneda)
@@ -173,12 +175,16 @@ func _on_enemigo_muerto():
 				figu.global_position = Global.posicion
 
 func verificar_horda_completa():
-	# Solo avanzamos si ya terminamos de spawnear TODA la horda
-	# y además no queda ningún enemigo vivo.
+	if saliendo or not is_inside_tree():
+		return
+
 	if not horda_generando and enemigos_vivos <= 0:
 		siguiente_horda()
 
 func siguiente_horda():
+	if saliendo or not is_inside_tree():
+		return
+
 	if horda_actual < hordas_totales:
 		horda_actual += 1
 		yield(get_tree().create_timer(2.0), "timeout")
@@ -186,6 +192,7 @@ func siguiente_horda():
 	else:
 		texto_horda.text = "¡NIVEL COMPLETADO!"
 		texto_horda.visible = true
+		Global.vidajugador = 100
 		yield(get_tree().create_timer(3.0), "timeout")
 		get_tree().change_scene("res://mapa/mapa.tscn")
 		
@@ -201,3 +208,21 @@ func _on_generador_vida_timeout():
 	add_child(vida)
 	vida.global_position=Vector2(Global.random(15, 990), Global.random(15,590))
 	$generador_vida.start()
+
+
+func _on_Player_muerte():
+	$gm.visible = true
+	get_tree().paused = true
+	
+
+
+func _on_Button_pressed():
+	saliendo = true
+	get_tree().paused = false
+	get_tree().change_scene("res://Dangeon/SalaDungeon.tscn")
+
+
+func _on_Button2_pressed():
+	saliendo = true
+	get_tree().paused = false
+	get_tree().change_scene("res://mapa/mapa.tscn")

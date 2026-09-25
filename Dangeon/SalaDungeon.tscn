@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://cantina/vida.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hud.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Dangeon/figu.tscn" type="PackedScene" id=9]
+[ext_resource path="res://fuente.tres" type="DynamicFont" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -20,6 +21,16 @@ extents = Vector2( 25, 308 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 550.5, 10 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+outline_size = 6
+outline_color = Color( 0.952941, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 2 )
 
 [node name="SalaDungeon" type="Node2D"]
 script = ExtResource( 1 )
@@ -102,5 +113,53 @@ autostart = true
 
 [node name="Hud" parent="." instance=ExtResource( 8 )]
 
+[node name="gm" type="CanvasLayer" parent="."]
+pause_mode = 2
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gm"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -194.0
+margin_top = -34.0
+margin_right = 194.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="gm/VBoxContainer"]
+margin_right = 388.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "GAME OVER"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="gm/VBoxContainer"]
+margin_top = 68.0
+margin_right = 388.0
+margin_bottom = 94.0
+alignment = 1
+
+[node name="Button" type="Button" parent="gm/VBoxContainer/HBoxContainer"]
+margin_left = 92.0
+margin_right = 216.0
+margin_bottom = 26.0
+custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
+custom_fonts/font = ExtResource( 10 )
+text = "REINICIAR"
+flat = true
+
+[node name="Button2" type="Button" parent="gm/VBoxContainer/HBoxContainer"]
+margin_left = 220.0
+margin_right = 295.0
+margin_bottom = 26.0
+custom_colors/font_color_hover = Color( 0.196078, 0.341176, 0.945098, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "SALIR"
+flat = true
+
+[connection signal="muerte" from="Player" to="." method="_on_Player_muerte"]
 [connection signal="finished" from="musica_pelea" to="." method="_on_musica_pelea_finished"]
 [connection signal="timeout" from="generador_vida" to="." method="_on_generador_vida_timeout"]
+[connection signal="pressed" from="gm/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="gm/VBoxContainer/HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
