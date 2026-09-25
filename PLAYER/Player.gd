@@ -11,10 +11,10 @@ export (PackedScene) var Piedrapapeltijera
 export (PackedScene) var Capacitor
 var arma = "cartulina"
 var canshoot = true
-# True mientras el jugador está en un diálogo (por ej. con Profe_1).
-# Mientras esté activo, no se mueve ni dispara.
+
 var dialog_active = false
 
+signal muerte
 
 signal vida_cambiada(nueva_vida)
 
@@ -33,25 +33,24 @@ func _input(event):
 		Disparo_ctrl()
 		canshoot = false
 		$cooldown.start()
-	elif event.is_action_pressed("cartulina"):
+	elif event.is_action_pressed("cartulina") :
 		$cooldown.wait_time = 0.2
 		arma = "cartulina"
-	elif event.is_action_pressed("cremona"):
+	elif event.is_action_pressed("cremona")and Global.armas[1]:
 		$cooldown.wait_time = 0.5
 		arma = "cremona"
-	elif event.is_action_pressed("lapiz"):
+	elif event.is_action_pressed("lapiz")and Global.armas[2]:
 		$cooldown.wait_time = 0.5
 		arma = "lapiz"
-	elif event.is_action_pressed("piedrapapeltijera"):
+	elif event.is_action_pressed("piedrapapeltijera")and Global.armas[4]:
 		$cooldown.wait_time = 1.0
 		arma = "piedrapapeltijera"
-	elif event.is_action_pressed("capacitor"):
+	elif event.is_action_pressed("capacitor")and Global.armas[3]:
 		$cooldown.wait_time = 0.5
 		arma = "capacitor"
 
 
-# Llamado por un NPC (ej. Profe_1) para bloquear/desbloquear al jugador
-# mientras dura el diálogo.
+
 func set_dialog_active(value: bool) -> void:
 	dialog_active = value
 	if value:
@@ -145,16 +144,18 @@ func Disparo_ctrl():
 
 
 func recibir_danio(cantidad):
-	# Sin invulnerabilidad: si te pegan dos enemigos juntos, se suman los dos golpes.
-	# El control de "no me peguen demasiado seguido" ahora vive en cada enemigo
-	# (cooldown de ataque en Enemigo_Peque.gd).
+	if Global.vidajugador <= 0:
+			emit_signal("muerte")
+
 	Global.vidajugador -= cantidad
-	# Flash rojo solo como feedback visual, no bloquea nada
 	modulate = Color(1, 0.4, 0.4)
 	yield(get_tree().create_timer(0.15), "timeout")
 	modulate = Color(1, 1, 1)
+
 	if Global.vidajugador <= 0:
-		queue_free()
+		emit_signal("muerte")
+			
+			
 
 
 func _on_cooldown_timeout():
