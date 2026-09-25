@@ -27,7 +27,7 @@ var player_in_area = false
 var player_ref = null
 
 
-func _ready():
+func _ready():	
 	$Panel.hide()
 	input_box.hide()
 	$AnimatedSprite.play("default")
@@ -50,6 +50,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		match estado:
 			Estado.INACTIVO:
+					Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
 				advance_dialog()
@@ -91,6 +92,10 @@ func _on_Area2D_body_entered(body):
 		player_in_area = true
 		player_ref = body
 
+func _input(event):
+	if event.is_action_pressed("esc"):
+		player_in_area = false
+		cerrar_dialogo()
 
 # Señal conectada del Area2D (body_exited)
 func _on_Area2D_body_exited(body):
@@ -110,6 +115,7 @@ func cerrar_dialogo():
 	if estado != Estado.RESUELTO:
 		estado = Estado.INACTIVO
 	current_line = 0
+	Global.emit_signal("nopausa", false)
 
 
 # Señal conectada del LineEdit (text_entered) -> Se activa al pulsar Enter

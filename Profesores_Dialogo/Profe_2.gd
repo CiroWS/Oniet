@@ -50,6 +50,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		match estado:
 			Estado.INACTIVO:
+				Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
 				advance_dialog()
@@ -110,6 +111,7 @@ func cerrar_dialogo():
 	if estado != Estado.RESUELTO:
 		estado = Estado.INACTIVO
 	current_line = 0
+	Global.emit_signal("nopausa", false)
 
 
 # Señal conectada del LineEdit (text_entered) -> Se activa al pulsar Enter

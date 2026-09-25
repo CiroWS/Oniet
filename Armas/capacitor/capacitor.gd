@@ -2,13 +2,12 @@ extends Node2D
 
 export (int) var speed = 100
 var direccion_recta: Vector2 = Vector2.ZERO
+export (PackedScene) var BOOM
+
 
 func _ready():
 	$Sprite.play("capacitor")
 	add_to_group("Capacitor")
-	$Sprite.scale=Vector2(1.0,1.0)
-	$Area2D/explosion.disabled=true
-	$Area2D/capacitor.disabled=false
 
 func _physics_process(delta):
 	position += direccion_recta * speed * delta
@@ -19,18 +18,15 @@ func set_forward_direction(direccion: Vector2):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemigos"):
 		if body.has_method("recibir_danio"):
-			if $Area2D/capacitor.disabled==false:
-				body.recibir_danio(45)
-			else:
-				body.recibir_danio(50)
+				body.recibir_danio(30)
 		boom()
 
 func boom():
-	$Sprite.play("boom")
 	speed = 0
-	$Sprite.scale=Vector2(1.5,1.5)
-	$Area2D/explosion.disabled=false
-	$Area2D/capacitor.disabled=true
+	var boom = BOOM.instance()
+	boom.global_position=$Position2D.global_position
+	get_tree().call_group("dun", "add_child", boom)
+	queue_free()
 	
 
 

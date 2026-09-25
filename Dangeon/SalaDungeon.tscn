@@ -21,7 +21,7 @@ extents = Vector2( 25, 308 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 550.5, 10 )
 
-[node name="SalaDungeon" type="Node2D"]
+[node name="SalaDungeon" type="Node2D" groups=["dun"]]
 script = ExtResource( 1 )
 MONEDA = ExtResource( 6 )
 VIDA = ExtResource( 7 )

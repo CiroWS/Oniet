@@ -16,9 +16,10 @@ var posicion
 
 var bicho
 
-var Armas_activas = false
+var Armas_activas = true
 var figus : int = 1
 
+signal nopausa(k)
 
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 func random(a, b):
