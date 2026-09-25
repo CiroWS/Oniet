@@ -8,7 +8,6 @@ func _ready():
 	Global.connect("nopausa", self, "a")
 
 func a(k):
-	print(k)
 	if k==true:
 		cantina= true
 	if k==false:

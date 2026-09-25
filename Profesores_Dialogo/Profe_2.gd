@@ -53,15 +53,20 @@ func _process(_delta):
 				Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
+				Global.emit_signal("nopausa", true)
 				advance_dialog()
 			Estado.RESUELTO:
+				Global.emit_signal("nopausa", true)
 				text_label.text = "No te deben ver, ve a 1°C"
 
 	# Esc cierra el diálogo en cualquier momento
 	if estado != Estado.INACTIVO and Input.is_action_just_pressed("ui_cancel"):
 		cerrar_dialogo()
 
-
+func _input(event):
+	if event.is_action_pressed("esc"):
+		player_in_area = false
+		cerrar_dialogo()
 func start_dialog():
 	estado = Estado.HABLANDO
 	current_line = 0

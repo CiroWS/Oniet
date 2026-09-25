@@ -35,6 +35,7 @@ func _on_puertas_body_shape_exited(body_rid: RID, body: Node, body_shape_index: 
 					$planta_alta.visible = false
 					$Player.collision_layer = 2
 					$Player.collision_mask = 2
+					$Node/Profe_2.visible=false
 					
 					$Player/Light2D.range_item_cull_mask = 3
 					$Player/Light2D.shadow_item_cull_mask = 2
@@ -45,7 +46,7 @@ func _on_puertas_body_shape_exited(body_rid: RID, body: Node, body_shape_index: 
 					$planta_alta.visible = false
 					$Player.collision_layer = 1
 					$Player.collision_mask = 1
-					
+					$Node/Profe_2.visible=true
 					$Player/Light2D.range_item_cull_mask = 1
 					$Player/Light2D.shadow_item_cull_mask = 1
 
@@ -128,7 +129,7 @@ func _on_escaleras_body_shape_exited(body_rid: RID, body: Node, body_shape_index
 					$planta_media.visible = false
 					$planta_alta.visible = true
 					$Node/Profe_5.visible = true
-					
+					$Node/Profe_2.visible=false
 					$Player.collision_layer = 4
 					$Player.collision_mask = 4
 					
@@ -142,7 +143,7 @@ func _on_escaleras_body_shape_exited(body_rid: RID, body: Node, body_shape_index
 					$Node/Profe_5.visible = false
 					$Player.collision_layer = 1
 					$Player.collision_mask = 1
-					
+					$Node/Profe_2.visible=true
 					$Player/Light2D.range_item_cull_mask = 1
 					$Player/Light2D.shadow_item_cull_mask = 1
 
