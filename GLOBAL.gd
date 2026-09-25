@@ -1,6 +1,6 @@
 extends Node
 
-var Vidas : int = 10
+var Vidas : int = 2
 
 var vidajugador : int = 200
 
