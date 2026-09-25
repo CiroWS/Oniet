@@ -15,3 +15,7 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	get_tree().change_scene("res://cinematica/cinematica.tscn")
+
+
+func _on_Chiri_frame_changed():
+	$AudioStreamPlayer.play()

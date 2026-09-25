@@ -151,7 +151,7 @@ func recibir_danio(cantidad):
 	modulate = Color(1, 0.4, 0.4)
 	yield(get_tree().create_timer(0.15), "timeout")
 	modulate = Color(1, 1, 1)
-
+	$"daño".play()
 	if Global.vidajugador <= 0:
 		emit_signal("muerte")
 			

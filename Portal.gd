@@ -21,5 +21,7 @@ func activar_portal(id: int):
 
 func _on_Portal_body_entered(body):
 	if body.is_in_group("player"):
+		$portal.play()
 		get_tree().change_scene("res://Dangeon/SalaDungeon.tscn")
 		Global.Armas_activas = true
+		

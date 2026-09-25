@@ -27,7 +27,7 @@ var vida: float = 0.0
 var tiempo_estado: float = 0.0
 var cooldown_ataque: float = 1.5 
 var tiempo_flash: float = 0.0
-
+var c : int =1
 
 func _ready():
 	vida = vida_max
@@ -54,7 +54,9 @@ func posicion_objetivo() -> Vector2:
 
 
 func _physics_process(delta):
-
+	if c==1:
+		c=2
+		$Timer.wait_time=Global.random(1, 10)
 	if tiempo_flash > 0.0:
 		tiempo_flash -= delta
 		if tiempo_flash <= 0.0 and estado != Estado.MURIENDO:
@@ -184,6 +186,7 @@ func poner_animacion(nombre: String, espejado: bool):
 
 
 func iniciar_aviso(direccion: int):
+	$cargarrayo.play()
 	mov = false
 	estado = Estado.AVISANDO
 	tiempo_estado = tiempo_aviso
@@ -193,6 +196,7 @@ func iniciar_aviso(direccion: int):
 
 
 func iniciar_disparo():
+	$disparorayo.play()
 	mov = false
 	estado = Estado.DISPARANDO
 	tiempo_estado = tiempo_disparo
@@ -241,3 +245,14 @@ func morir():
 	tween.interpolate_property(self, "modulate", Color(1, 0.45, 0.45, 1), Color(1, 0.45, 0.45, 0), 1.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	tween.connect("tween_all_completed", self, "queue_free")
 	tween.start()
+
+
+func _on_AnimatedSprite_frame_changed():
+	if $AnimatedSprite.animation=="Caminata_Costado" or $AnimatedSprite.animation=="Caminata_Frente" or $AnimatedSprite.animation=="Caminata_Espalda":
+		if $AnimatedSprite.frame==1 or $AnimatedSprite.frame==3:
+			$caminata.play() 
+
+
+func _on_Timer_timeout():
+	c=1
+	$rugidoaleo.play()

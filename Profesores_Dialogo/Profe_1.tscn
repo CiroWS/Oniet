@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Profesores/Profe2.png" type="Texture" id=1]
 [ext_resource path="res://Profesores_Dialogo/Profe_1.gd" type="Script" id=2]
 [ext_resource path="res://mapa/KGPrimaryPenmanshipAlt.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://musica/dialogo.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 14.0
@@ -125,6 +126,9 @@ placeholder_text = "0"
 placeholder_alpha = 1.0
 
 [node name="Balloon" type="CanvasLayer" parent="."]
+
+[node name="dialogo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

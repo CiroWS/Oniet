@@ -70,6 +70,7 @@ func _on_Timer_timeout() -> void:
 
 
 func _on_AnimatedSprite_frame_changed() -> void:
+	$cargarlaser.play()
 	# Activa el disparo exactamente en el frame 17
 	if $AnimatedSprite.frame == 17:
 		_disparar()
@@ -89,6 +90,7 @@ func _disparar() -> void:
 			_disparar_doble_espiral()
 
 	modo_index = randi() % MODOS.size()
+	$ataque.play()
 
 
 func _disparar_direcciones() -> void:

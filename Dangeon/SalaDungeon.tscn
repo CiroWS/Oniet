@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Hud.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Dangeon/figu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=10]
+[ext_resource path="res://musica/game_over.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -106,12 +107,17 @@ shape = SubResource( 3 )
 
 [node name="musica_pelea" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -10.0
 
 [node name="generador_vida" type="Timer" parent="."]
 wait_time = 20.0
 autostart = true
 
 [node name="Hud" parent="." instance=ExtResource( 8 )]
+
+[node name="gameover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
 
 [node name="gm" type="CanvasLayer" parent="."]
 pause_mode = 2

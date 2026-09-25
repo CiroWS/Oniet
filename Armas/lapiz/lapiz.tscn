@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://lapiz.gd" type="Script" id=1]
 [ext_resource path="res://Armas/lapiz/lapiz.png" type="Texture" id=2]
+[ext_resource path="res://musica/dash.wav" type="AudioStream" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 4, 15, -5, 15, -5, -8, 0, -17, 4, -8 )
@@ -19,5 +20,8 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource( 1 )
+
+[node name="dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

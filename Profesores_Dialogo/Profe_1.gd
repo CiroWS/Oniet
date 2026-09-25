@@ -48,6 +48,7 @@ func _process(_delta):
 		return
 
 	if Input.is_action_just_pressed("ui_accept"):
+		$dialogo.play()
 		match estado:
 			Estado.INACTIVO:
 				Global.emit_signal("nopausa", true)

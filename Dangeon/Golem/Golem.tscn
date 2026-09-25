@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Dangeon/Golem/Spirters/Espalda.png" type="Texture" id=1]
 [ext_resource path="res://Dangeon/Golem/Spirters/Idle_Costado.png" type="Texture" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://Dangeon/Golem/Spirters/Camina_costado.png" type="Texture" id=6]
 [ext_resource path="res://Dangeon/Golem/Spirters/Golem_camina_frente.png" type="Texture" id=7]
 [ext_resource path="res://Dangeon/Golem/Spirters/Camina_Espalda.png" type="Texture" id=8]
+[ext_resource path="res://musica/cargar_ataque.wav" type="AudioStream" id=9]
+[ext_resource path="res://musica/rayo_laser_mantenido.wav" type="AudioStream" id=10]
+[ext_resource path="res://musica/pasos_jefe_pesados.wav" type="AudioStream" id=11]
+[ext_resource path="res://musica/rugido_jefe.wav" type="AudioStream" id=12]
 
 [sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 6 )
@@ -156,3 +160,23 @@ anchor_right = 0.75
 margin_top = 34.0
 margin_bottom = 50.0
 percent_visible = false
+
+[node name="caminata" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="disparorayo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="cargarrayo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="rugidoaleo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = 10.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

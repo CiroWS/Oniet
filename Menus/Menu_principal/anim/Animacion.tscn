@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Menus/Menu_principal/anim/Animacion.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Menu_principal/anim/chiriylauti-removebg-preview.png" type="Texture" id=2]
 [ext_resource path="res://Menus/Menu_principal/anim/yoyishma.png" type="Texture" id=3]
 [ext_resource path="res://Menus/Menu_principal/ChatGPT Image 18 sept 2026, 11_11_57 a.m..png" type="Texture" id=4]
+[ext_resource path="res://musica/caminata.wav" type="AudioStream" id=5]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -18,7 +19,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=4]
@@ -50,7 +51,7 @@ animations = [ {
 "frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 5.0
 } ]
 
 [sub_resource type="AtlasTexture" id=10]
@@ -66,7 +67,7 @@ animations = [ {
 "frames": [ SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 5.0
 } ]
 
 [node name="Animacion" type="Node2D"]
@@ -99,8 +100,12 @@ position = Vector2( -835.003, 317.979 )
 frames = SubResource( 12 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="frame_changed" from="Chiri" to="." method="_on_Chiri_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

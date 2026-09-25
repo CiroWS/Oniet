@@ -8,7 +8,7 @@ export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 export (PackedScene) var FIGURITA
 
-var horda_actual = 1
+var horda_actual = 5
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
@@ -211,7 +211,9 @@ func _on_generador_vida_timeout():
 
 
 func _on_Player_muerte():
+	$gameover.play()
 	$gm.visible = true
+	yield(get_tree().create_timer(0.7), "timeout")
 	get_tree().paused = true
 	
 
