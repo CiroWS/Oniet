@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Aula/Profesor.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Aula/aula.png" type="Texture" id=2]
-[ext_resource path="res://PLAYER/Assets/idle_espalda.png" type="Texture" id=3]
+[ext_resource path="res://Aula/escena 6.png" type="Texture" id=2]
+[ext_resource path="res://Aula/alumno sentado.png" type="Texture" id=3]
 [ext_resource path="res://Aula/Aula.gd" type="Script" id=4]
 [ext_resource path="res://musica/musica de aula tensionante.wav" type="AudioStream" id=5]
 [ext_resource path="res://musica/freesound_community-classroom-background-54177.mp3" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 10, 13 )
+extents = Vector2( 127.5, 222.5 )
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -22,7 +22,7 @@ extents = Vector2( 70, 10 )
 script = ExtResource( 4 )
 
 [node name="bg" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.62378, 0.72367 )
 texture = ExtResource( 2 )
 centered = false
 
@@ -30,14 +30,16 @@ centered = false
 position = Vector2( 453, 129 )
 
 [node name="AlumnoSprite" type="Sprite" parent="."]
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 3 )
-hframes = 2
 
 [node name="Alumno" type="Area2D" parent="AlumnoSprite" groups=["Jugador"]]
+position = Vector2( 0, -0.000101725 )
+scale = Vector2( 1.33333, 1.33333 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlumnoSprite/Alumno"]
-position = Vector2( 0, 3 )
+position = Vector2( -7.5, 22.5001 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 4 )
 
 [node name="Camino" type="Path2D" parent="."]

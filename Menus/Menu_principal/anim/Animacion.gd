@@ -14,4 +14,4 @@ func _physics_process(delta):
 
 
 func _on_Timer_timeout():
-	get_tree().change_scene("res://Aula/Aula.tscn")
+	get_tree().change_scene("res://cinematica/cinematica.tscn")
