@@ -16,12 +16,13 @@ var arma = "cartulina"
 # Mientras esté activo, no se mueve ni dispara.
 var dialog_active = false
 
+signal vida_cambiada(nueva_vida)
+
 
 func _ready():
 	add_to_group("Jugador")
 	Global.vidajugador = vida_max
-	$BarraVida.max_value = vida_max
-	$BarraVida.value = Global.vidajugador
+
 
 
 func _input(event):
@@ -98,7 +99,6 @@ func motion_ctrl():
 
 
 func _physics_process(delta):
-	$BarraVida.value = Global.vidajugador
 	motion_ctrl()
 	motion = move_and_collide(motion * delta)
 
@@ -154,6 +154,7 @@ func recibir_danio(cantidad):
 	modulate = Color(1, 1, 1)
 	if Global.vidajugador <= 0:
 		queue_free()
+	emit_signal("vida_cambiada",Global.vidajugador)
 
 
 func _on_cooldown_timeout():

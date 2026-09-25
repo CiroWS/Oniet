@@ -21,3 +21,11 @@ func random(a, b):
 	rng.randomize()
 	return rng.randf_range(a, b)
  
+signal acertijo_resuelto(profe_id)
+
+var acertijos_resueltos = [false, false, false, false, false]
+
+func resolver_acertijo(profe_id: int):
+	if not acertijos_resueltos[profe_id - 1]:
+		acertijos_resueltos[profe_id - 1] = true
+		emit_signal("acertijo_resuelto", profe_id)

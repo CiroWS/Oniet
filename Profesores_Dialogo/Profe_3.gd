@@ -124,7 +124,8 @@ func _on_InputBox_text_entered(new_text):
 		input_box.hide()
 		input_box.release_focus()
 		estado = Estado.RESUELTO
-		_bloquear_jugador(false)  # ya puede moverse aunque siga leyendo el mensaje
+		_bloquear_jugador(false) 
+		Global.resolver_acertijo(3) # ya puede moverse aunque siga leyendo el mensaje
 	else:
 		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
 		input_box.text = ""
