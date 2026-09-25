@@ -8,7 +8,7 @@ var Llamdos_de_atencion : int = 0
 
 var monedas : int = 0
 
-var moneda : int = 0
+var moneda : int = 1000
 
 var armas = [true, false, false, false, false]
 
