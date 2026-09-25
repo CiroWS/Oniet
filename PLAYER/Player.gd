@@ -22,13 +22,13 @@ signal vida_cambiada(nueva_vida)
 func _ready():
 	add_to_group("Jugador")
 	Global.vidajugador = vida_max
+	$AnimatedSprite.connect("frame_changed", self, "_on_AnimatedSprite_frame_changed")
 
 
 
 func _input(event):
 	if dialog_active:
 		return
-
 	if event.is_action_pressed("Disparo") and canshoot and Global.Armas_activas:
 		Disparo_ctrl()
 		canshoot = false
@@ -100,7 +100,7 @@ func motion_ctrl():
 func _physics_process(delta):
 	emit_signal("vida_cambiada",Global.vidajugador)
 	motion_ctrl()
-	motion = move_and_collide(motion * delta)
+	var collision = move_and_collide(motion * delta)
 
 
 func Disparo_ctrl():
@@ -160,3 +160,9 @@ func recibir_danio(cantidad):
 
 func _on_cooldown_timeout():
 	canshoot = true
+
+
+func _on_AnimatedSprite_frame_changed():
+	if get_axis() != Vector2.ZERO:
+		$"sonido de caminata".pitch_scale = rand_range(0.85, 1.15)
+		$"sonido de caminata".play()

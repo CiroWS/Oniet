@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/campo_de_fuerza.wav-699da791caa23fbe837465583947899d.sample"
+
+[deps]
+
+source_file="res://musica/campo_de_fuerza.wav"
+dest_files=[ "res://.import/campo_de_fuerza.wav-699da791caa23fbe837465583947899d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

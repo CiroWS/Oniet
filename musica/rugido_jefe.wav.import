@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rugido_jefe.wav-38eec20724a90d59a54c87a3a989c84a.sample"
+
+[deps]
+
+source_file="res://musica/rugido_jefe.wav"
+dest_files=[ "res://.import/rugido_jefe.wav-38eec20724a90d59a54c87a3a989c84a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

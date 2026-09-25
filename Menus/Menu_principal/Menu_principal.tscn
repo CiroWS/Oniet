@@ -25,7 +25,7 @@ anchor_bottom = 1.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 565.25, 296 )
+position = Vector2( 563.25, 296 )
 scale = Vector2( 0.777279, 0.572744 )
 texture = ExtResource( 1 )
 
