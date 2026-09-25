@@ -4,17 +4,17 @@ export (int) var speed = 200
 export (int) var vida_max = 200
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Idle_Costado"
-var canshoot = true
 export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
 export (PackedScene) var Lapiz
 export (PackedScene) var Piedrapapeltijera
 export (PackedScene) var Capacitor
 var arma = "cartulina"
-
+var canshoot = true
 # True mientras el jugador está en un diálogo (por ej. con Profe_1).
 # Mientras esté activo, no se mueve ni dispara.
 var dialog_active = false
+
 
 signal vida_cambiada(nueva_vida)
 
@@ -29,7 +29,7 @@ func _input(event):
 	if dialog_active:
 		return
 
-	if event.is_action_pressed("Disparo") and canshoot:
+	if event.is_action_pressed("Disparo") and canshoot and Global.Armas_activas:
 		Disparo_ctrl()
 		canshoot = false
 		$cooldown.start()

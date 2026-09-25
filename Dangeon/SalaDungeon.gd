@@ -7,7 +7,7 @@ var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 
-var horda_actual = 1
+var horda_actual = 5
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
@@ -174,6 +174,9 @@ func siguiente_horda():
 	else:
 		texto_horda.text = "¡NIVEL COMPLETADO!"
 		texto_horda.visible = true
+		yield(get_tree().create_timer(3.0), "timeout")
+		get_tree().change_scene("res://mapa/mapa.tscn")
+		
 
 
 
