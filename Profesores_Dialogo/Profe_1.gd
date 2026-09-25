@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Referencias a los nodos hijos
-onready var balloon = $Balloon
+onready var balloon = $aaBalloon
 onready var text_label = $Panel/VBoxContainer/TextLabel
 onready var input_box = $Panel/VBoxContainer/InputBox
 
@@ -9,7 +9,7 @@ onready var input_box = $Panel/VBoxContainer/InputBox
 var dialog_lines = [
 	"¡ Buenas !",
 	"¿Que haces a esta hora fuera del curso ?",
-	"Si lo que quieres es encontrar tus figuritas deberas resolver el siguiente acertijo :",
+	"Si lo que quieres es encontrar tus figuwaritas deberas resolver el siguiente acertijo :",
 	"En una granja escolar hay gallinas y conejos. En total se cuentan 20 cabezas y 56 patas.",
 	"Si planteas un sistema de ecuaciones para saber cuántos animales de cada tipo hay,",
 	"¿cuantos conejos hay exactamente en la granja?"
@@ -53,8 +53,10 @@ func _process(_delta):
 				Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
+				Global.emit_signal("nopausa", true)
 				advance_dialog()
 			Estado.RESUELTO:
+				Global.emit_signal("nopausa", true)
 				text_label.text = "Ya tienes lo que necesitas, anda a 5°B."
 
 	# Esc cierra el diálogo en cualquier momento
