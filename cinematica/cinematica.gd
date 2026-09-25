@@ -44,6 +44,7 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("espacio") and cambiando==false:
+		$p.play()
 		cambiar()
 
 func cambiar():

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://cinematica/cinematica.gd" type="Script" id=1]
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Menus/Menu_principal/ChatGPT Image 18 sept 2026, 11_11_57 a.m..png" type="Texture" id=3]
+[ext_resource path="res://musica/puerta.wav" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.141176, 0.054902, 0.054902, 1 )
@@ -95,5 +96,9 @@ margin_right = 1118.0
 margin_bottom = 604.0
 custom_fonts/font = ExtResource( 2 )
 text = "Preciona ESPACIO para continuar"
+
+[node name="p" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -20.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
