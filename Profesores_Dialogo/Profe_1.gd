@@ -50,7 +50,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		match estado:
 			Estado.INACTIVO:
-					Global.emit_signal("nopausa", true)
+				Global.emit_signal("nopausa", true)
 				start_dialog()
 			Estado.HABLANDO:
 				advance_dialog()
