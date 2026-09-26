@@ -152,15 +152,25 @@ func _on_AudioStreamPlayer_finished():
 	$musica_ambiente.play()
 
 func _input(event):
-	if event.is_action_pressed("esc") and $Player/Menu_paused.cantina==true:
+	if event.is_action_pressed("esc") and is_instance_valid(cantina):
+		# Consumimos la tecla ESC para que no pause el juego
+		get_tree().set_input_as_handled()
+		
+		# Desactivamos el estado de cantina en el menú de pausa
 		$Player/Menu_paused.cantina = false
-		$Player.global_position=Vector2(-673, -897)
-		$Player.speed=100
+		
+		# Reposicionamos y devolvemos la velocidad al jugador
+		$Player.global_position = Vector2(-673, -897)
+		$Player.speed = 100
+		
+		# Ocultamos y destruimos la instancia de la Cantina
+		cantina.hide()
 		cantina.queue_free()
-
+		cantina = null
+			
 func _on_puertacantina_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player"): # O "Jugador" según cómo lo tengas en el resto del juego
 		$Player/Menu_paused.cantina = true
 		cantina = CANTINA.instance()
 		add_child(cantina)
-		$Player.speed=0
+		$Player.speed = 0

@@ -1087,7 +1087,6 @@ autoplay = true
 [node name="Node" type="Node" parent="."]
 
 [node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
-visible = false
 position = Vector2( -1194, 152 )
 collision_layer = 2
 collision_mask = 2
@@ -1106,7 +1105,6 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Profe_5" parent="Node" instance=ExtResource( 24 )]
-visible = false
 position = Vector2( 63, -80 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]

@@ -17,8 +17,6 @@ func _ready():
 
 func _process(delta):
 	$moneda/cant.text=str(Global.moneda)
-	
-
 
 func _on_comprar2_pressed():
 	if Global.moneda>=30:
@@ -41,6 +39,7 @@ func _on_comprar3_pressed():
 		$noplata.visible=true
 		yield(get_tree().create_timer(1), "timeout")		
 		$noplata.visible=false
+
 func _on_comprar4_pressed():
 	if Global.moneda>=70:
 		Global.armas[3]=true
@@ -51,6 +50,7 @@ func _on_comprar4_pressed():
 		$noplata.visible=true
 		yield(get_tree().create_timer(1), "timeout")		
 		$noplata.visible=false
+
 func _on_comprar5_pressed():
 	if Global.moneda>=100:
 		Global.armas[4]=true

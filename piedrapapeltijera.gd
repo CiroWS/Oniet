@@ -19,7 +19,7 @@ func _process(delta):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemigos"):
 		if body.has_method("recibir_danio"):
-			body.recibir_danio(30)
+			body.recibir_danio(60)
 			$ataque.visible=false
 			$tijera.visible=true
 			$papel.visible=true
@@ -30,7 +30,7 @@ func _on_secu_body_entered(body):
 	if body.is_in_group("Enemigos"):
 		if body.has_method("recibir_danio"):
 			print("aia")
-			body.recibir_danio(10)
+			body.recibir_danio(20)
 			$tijera.visible=false
 			$papel.visible=false
 			$piedra.visible=false

@@ -50,27 +50,29 @@ animation = "idle"
 [node name="AreaCollision" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 8 )
 
-[node name="Panel" type="Panel" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = -34.0
-margin_right = 62.0
-margin_bottom = 111.0
+margin_left = -132.0
+margin_top = -109.5
+margin_right = 132.0
+margin_bottom = 109.5
 
-[node name="ColorRect" type="ColorRect" parent="Panel"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="TextureRect" type="ColorRect" parent="Panel"]
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/Panel"]
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 0, 12 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 3.0
@@ -78,27 +80,27 @@ margin_top = 3.0
 margin_right = -2.0
 margin_bottom = -3.0
 
-[node name="NameLabel" type="Label" parent="Panel/VBoxContainer"]
-margin_right = 117.0
+[node name="NameLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_right = 259.0
 margin_bottom = 20.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Gabriel "
 align = 1
 
-[node name="TextLabel" type="Label" parent="Panel/VBoxContainer"]
+[node name="TextLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
 margin_top = 24.0
-margin_right = 117.0
-margin_bottom = 67.0
+margin_right = 259.0
+margin_bottom = 44.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Acertijo Quimico"
 autowrap = true
 
-[node name="InputBox" type="LineEdit" parent="Panel/VBoxContainer"]
-margin_top = 71.0
-margin_right = 117.0
-margin_bottom = 91.0
+[node name="InputBox" type="LineEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+margin_top = 48.0
+margin_right = 259.0
+margin_bottom = 68.0
 rect_min_size = Vector2( 24, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -113,4 +115,4 @@ stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
-[connection signal="text_entered" from="Panel/VBoxContainer/InputBox" to="." method="_on_InputBox_text_entered"]
+[connection signal="text_entered" from="CanvasLayer/Panel/VBoxContainer/InputBox" to="." method="_on_InputBox_text_entered"]

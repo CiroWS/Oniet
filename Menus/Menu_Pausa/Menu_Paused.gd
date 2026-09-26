@@ -14,20 +14,22 @@ func a(k):
 		cantina= false
 
 func _input(event):
-	if not cantina:
-		if event.is_action_pressed("esc") and not flag:
+	if event.is_action_pressed("esc"):
+		# Si la cantina está abierta, no hacemos nada aquí ni consumimos el evento,
+		# dejando que el script del MAPA maneje el cierre.
+		if cantina:
+			return
+			
+		if not flag:
 			flag = true
 			$Pausad.visible = true
 			$BG.visible = true
 			get_tree().paused = true
-		elif event.is_action_pressed("esc") and flag:
+		elif flag:
 			flag = false
 			$Pausad.visible = false
 			$BG.visible = false
 			get_tree().paused = false
-
-
-
 
 
 func _on_Cont_pressed():

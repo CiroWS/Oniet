@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://mapa/KGPrimaryPenmanshipAlt.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://mapa/dialogo.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 14
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0 )
+
+[node name="dialogo" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = -345.0
+margin_bottom = -166.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="ColorRect" parent="Panel"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 0, 12 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="NameLabel" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 167.0
+margin_bottom = 15.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Lujan Bot"
+align = 1
+
+[node name="TextLabel" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 19.0
+margin_right = 167.0
+margin_bottom = 115.0
+size_flags_vertical = 7
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Acertijo Matematico"
+align = 1
+autowrap = true
+
+[node name="InputBox" type="LineEdit" parent="Panel/VBoxContainer"]
+margin_top = 119.0
+margin_right = 167.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 24, 0 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+placeholder_text = "0"
+placeholder_alpha = 1.0
+
+[node name="Balloon" type="CanvasLayer" parent="."]

@@ -119,7 +119,7 @@ texture = ExtResource( 8 )
 
 [node name="nombre1" type="Label" parent="ITEM/tarjeta1"]
 margin_right = 103.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 1 )
 text = "
 Cartulina
@@ -127,17 +127,17 @@ Cartulina
 align = 1
 
 [node name="precio1" type="Label" parent="ITEM/tarjeta1"]
-margin_top = 58.0
+margin_top = 70.0
 margin_right = 103.0
-margin_bottom = 74.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
 text = "$10"
 align = 1
 
 [node name="comprar1" type="Button" parent="ITEM/tarjeta1"]
-margin_top = 78.0
+margin_top = 94.0
 margin_right = 103.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 text = "COMPRAR"
 icon = ExtResource( 5 )
 flat = true
@@ -161,7 +161,7 @@ texture = ExtResource( 7 )
 
 [node name="nombre2" type="Label" parent="ITEM/tarjeta2"]
 margin_right = 103.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 1 )
 text = "
 Cremona
@@ -169,17 +169,17 @@ Cremona
 align = 1
 
 [node name="precio2" type="Label" parent="ITEM/tarjeta2"]
-margin_top = 58.0
+margin_top = 70.0
 margin_right = 103.0
-margin_bottom = 74.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
 text = "$30"
 align = 1
 
 [node name="comprar2" type="Button" parent="ITEM/tarjeta2"]
-margin_top = 78.0
+margin_top = 94.0
 margin_right = 103.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 text = "COMPRAR"
 icon = ExtResource( 5 )
 flat = true
@@ -204,7 +204,7 @@ texture = ExtResource( 9 )
 
 [node name="nombre3" type="Label" parent="ITEM/tarjeta3"]
 margin_right = 103.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 1 )
 text = "
 Capacitor
@@ -212,17 +212,17 @@ Capacitor
 align = 1
 
 [node name="precio3" type="Label" parent="ITEM/tarjeta3"]
-margin_top = 58.0
+margin_top = 70.0
 margin_right = 103.0
-margin_bottom = 74.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
 text = "$50"
 align = 1
 
 [node name="comprar3" type="Button" parent="ITEM/tarjeta3"]
-margin_top = 78.0
+margin_top = 94.0
 margin_right = 103.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 text = "COMPRAR"
 icon = ExtResource( 5 )
 flat = true
@@ -247,7 +247,7 @@ texture = ExtResource( 12 )
 
 [node name="nombre4" type="Label" parent="ITEM/tarjeta4"]
 margin_right = 103.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 1 )
 text = "
 Lapiz
@@ -255,17 +255,17 @@ Lapiz
 align = 1
 
 [node name="precio4" type="Label" parent="ITEM/tarjeta4"]
-margin_top = 58.0
+margin_top = 70.0
 margin_right = 103.0
-margin_bottom = 74.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
 text = "$70"
 align = 1
 
 [node name="comprar4" type="Button" parent="ITEM/tarjeta4"]
-margin_top = 78.0
+margin_top = 94.0
 margin_right = 103.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 text = "COMPRAR"
 icon = ExtResource( 5 )
 flat = true
@@ -289,7 +289,7 @@ texture = ExtResource( 10 )
 
 [node name="nombre5" type="Label" parent="ITEM/tarjeta5"]
 margin_right = 103.0
-margin_bottom = 54.0
+margin_bottom = 66.0
 custom_fonts/font = ExtResource( 1 )
 text = "Piedra
 Papel
@@ -297,17 +297,17 @@ Tijera"
 align = 1
 
 [node name="precio5" type="Label" parent="ITEM/tarjeta5"]
-margin_top = 58.0
+margin_top = 70.0
 margin_right = 103.0
-margin_bottom = 74.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
 text = "$100"
 align = 1
 
 [node name="comprar5" type="Button" parent="ITEM/tarjeta5"]
-margin_top = 78.0
+margin_top = 94.0
 margin_right = 103.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 text = "COMPRAR"
 icon = ExtResource( 5 )
 flat = true

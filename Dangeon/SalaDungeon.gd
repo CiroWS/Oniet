@@ -8,7 +8,7 @@ export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 export (PackedScene) var FIGURITA
 
-var horda_actual = 5
+var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
