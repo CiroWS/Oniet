@@ -11,8 +11,8 @@ var dialog_lines = [
 	"¡ Hola !",
 	"Me imagino que no estas saltenado tus clases, no ?",
 	"Si lo que quieres es recuperar tus figuritas tienes que contestarme una simple pregunta ",
-	"¿ Cuál elemento de la tabla periódica cumple con la siguiente caracteristica ?",
-	"Es el único elemento cuyo isótopo más abundante no tiene neutrones"
+	"¿ Cual elemento de la tabla periodica cumple con la siguiente caracteristica ?",
+	"Es el único elemento cuyo isotopo más abundante no tiene neutrones"
 ]
 
 # Respuestas que se aceptan como correctas
@@ -130,7 +130,7 @@ func _on_InputBox_text_entered(new_text):
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(2)
 	else:
-		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
+		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
 		input_box.text = ""
 		input_box.grab_focus()
 

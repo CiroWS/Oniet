@@ -83,7 +83,7 @@ margin_left = 96.0
 margin_right = 140.0
 margin_bottom = 40.0
 disabled = true
-icon = ExtResource( 2 )
+icon = ExtResource( 9 )
 flat = true
 
 [node name="Button4" type="Button" parent="Control/HBoxContainer"]
@@ -91,7 +91,7 @@ margin_left = 144.0
 margin_right = 188.0
 margin_bottom = 40.0
 disabled = true
-icon = ExtResource( 9 )
+icon = ExtResource( 2 )
 flat = true
 
 [node name="Button5" type="Button" parent="Control/HBoxContainer"]

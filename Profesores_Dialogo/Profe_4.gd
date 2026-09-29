@@ -8,7 +8,7 @@ onready var input_box = $CanvasLayer/Panel/VBoxContainer/InputBox
 
 # Secuencia de frases iniciales
 var dialog_lines = [
-	"No me molestes niño",
+	"No me molestes nene",
 	"¿ Que es lo que quieres ?",
 	"Con que quieres recuperar tus figuritas",
 	"Primero debes contestar mi pregunta",
@@ -130,7 +130,7 @@ func _on_InputBox_text_entered(new_text):
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(4)
 	else:
-		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
+		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
 		input_box.text = ""
 		input_box.grab_focus()
 

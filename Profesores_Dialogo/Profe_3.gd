@@ -8,9 +8,9 @@ onready var input_box = $CanvasLayer/Panel/VBoxContainer/InputBox
 
 # Secuencia de frases iniciales
 var dialog_lines = [
-	"¡ Buen Día !",
-	"Estas no son horas de recreo ¿ que te trae por aquí ?",
-	"Con que estas buscando tu colección de figuritas",
+	"¡ Buen Dia !",
+	"Estas no son horas de recreo ¿ que te trae por aqui ?",
+	"Con que estas buscando tu coleccion de figuritas",
 	"Si las quieres recuperar debes decirme algo simple",
 	"Las dos magnitudes que se usan para ubicar un punto exacto sobre la superficie terrestre?"
 ]
@@ -123,14 +123,14 @@ func _on_InputBox_text_entered(new_text):
 	var answer = new_text.strip_edges().to_lower()
 
 	if answer in RESPUESTAS_CORRECTAS:
-		text_label.text = "¡ Perfecto ! Rápido, ve a 2°A"
+		text_label.text = "¡ Perfecto ! Rapido, ve a 2°A"
 		input_box.hide()
 		input_box.release_focus()
 		estado = Estado.RESUELTO
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(3)
 	else:
-		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
+		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
 		input_box.text = ""
 		input_box.grab_focus()
 

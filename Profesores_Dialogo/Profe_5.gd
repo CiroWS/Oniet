@@ -129,7 +129,7 @@ func _on_InputBox_text_entered(new_text):
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(5)
 	else:
-		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
+		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
 		input_box.text = ""
 		input_box.grab_focus()
 

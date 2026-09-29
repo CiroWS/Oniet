@@ -10,9 +10,9 @@ onready var input_box = $CanvasLayer/Panel/VBoxContainer/InputBox
 var dialog_lines = [
 	" Buenas ",
 	"¿Que haces a esta hora fuera del curso ?",
-	"Si lo que quieres es encontrar tus figuwaritas deberas resolver el siguiente acertijo :",
+	"Si lo que quieres es encontrar tus figuritas deberas resolver el siguiente acertijo :",
 	"En una granja escolar hay gallinas y conejos. En total se cuentan 20 cabezas y 56 patas.",
-	"Si planteas un sistema de ecuaciones para saber cuántos animales de cada tipo hay,",
+	"Si planteas un sistema de ecuaciones para saber cuantos animales de cada tipo hay,",
 	"¿cuantos conejos hay exactamente en la granja?"
 ]
 
@@ -138,7 +138,7 @@ func _on_InputBox_text_entered(new_text):
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(1) # Cambiar número de acertijo según el profe
 	else:
-		text_label.text = "Incorrecto. ¡Inténtalo de nuevo!"
+		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
 		input_box.text = ""
 		input_box.grab_focus()
 
