@@ -1105,10 +1105,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="Profe_5" parent="Node" instance=ExtResource( 24 )]
+visible = false
 position = Vector2( 63, -80 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 38, 126 )
+position = Vector2( 44, 122 )
 
 [node name="puertacantina" type="Area2D" parent="."]
 position = Vector2( 22, 0 )
@@ -1127,7 +1128,10 @@ position = Vector2( -716, -586 )
 profe_id = 2
 
 [node name="Portal3" parent="." instance=ExtResource( 26 )]
+visible = false
 position = Vector2( -726, -105 )
+collision_layer = 4
+collision_mask = 4
 profe_id = 3
 
 [node name="Portal4" parent="." instance=ExtResource( 26 )]
@@ -1135,6 +1139,7 @@ position = Vector2( 64, -229 )
 profe_id = 4
 
 [node name="Portal5" parent="." instance=ExtResource( 26 )]
+visible = false
 position = Vector2( 72, -584 )
 profe_id = 5
 

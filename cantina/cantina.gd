@@ -19,20 +19,9 @@ func _process(delta):
 	$moneda/cant.text=str(Global.moneda)
 
 func _on_comprar2_pressed():
-	if Global.moneda>=30:
+	if Global.moneda>=50:
 		Global.armas[1]=true
 		$ITEM/tarjeta2/comprar2.disabled=true
-		Global.moneda-=30
-		$moneda/cant.text=str(Global.moneda)
-	else:
-		$noplata.visible=true
-		yield(get_tree().create_timer(1), "timeout")		
-		$noplata.visible=false
-
-func _on_comprar3_pressed():
-	if Global.moneda>=50:
-		Global.armas[2]=true
-		$ITEM/tarjeta3/comprar3.disabled=true
 		Global.moneda-=50
 		$moneda/cant.text=str(Global.moneda)
 	else:
@@ -40,11 +29,22 @@ func _on_comprar3_pressed():
 		yield(get_tree().create_timer(1), "timeout")		
 		$noplata.visible=false
 
+func _on_comprar3_pressed():
+	if Global.moneda>=100:
+		Global.armas[2]=true
+		$ITEM/tarjeta3/comprar3.disabled=true
+		Global.moneda-=100
+		$moneda/cant.text=str(Global.moneda)
+	else:
+		$noplata.visible=true
+		yield(get_tree().create_timer(1), "timeout")		
+		$noplata.visible=false
+
 func _on_comprar4_pressed():
-	if Global.moneda>=70:
+	if Global.moneda>=200:
 		Global.armas[3]=true
 		$ITEM/tarjeta4/comprar4.disabled=true
-		Global.moneda-=70
+		Global.moneda-=200
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true
@@ -52,10 +52,10 @@ func _on_comprar4_pressed():
 		$noplata.visible=false
 
 func _on_comprar5_pressed():
-	if Global.moneda>=100:
+	if Global.moneda>=400:
 		Global.armas[4]=true
 		$ITEM/tarjeta5/comprar5.disabled=true
-		Global.moneda-=100
+		Global.moneda-=400
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true

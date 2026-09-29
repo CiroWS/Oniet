@@ -18,13 +18,14 @@ func set_forward_direction(direccion: Vector2):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Enemigos"):
 		if body.has_method("recibir_danio"):
-				body.recibir_danio(45)
+				body.recibir_danio(50)
 		boom()
 
 func boom():
 	speed = 0
 	var boom = BOOM.instance()
 	boom.global_position=$Position2D.global_position
+	$Sprite.play("boom")
 	get_tree().call_group("dun", "add_child", boom)
 	queue_free()
 	

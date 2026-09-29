@@ -16,7 +16,7 @@ var posicion
 
 var bicho
 
-var Armas_activas = true
+var Armas_activas = false
 var figus : int = 5
 
 signal nopausa(k)

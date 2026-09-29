@@ -5,8 +5,8 @@
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=3]
 [ext_resource path="res://musica/dialogo.wav" type="AudioStream" id=4]
 
-[sub_resource type="CircleShape2D" id=13]
-radius = 12.6842
+[sub_resource type="CapsuleShape2D" id=13]
+height = 10.6667
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
@@ -89,7 +89,7 @@ margin_right = 259.0
 margin_bottom = 20.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = ExtResource( 3 )
-text = "Gabriel "
+text = "Patricia"
 align = 1
 
 [node name="TextLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]

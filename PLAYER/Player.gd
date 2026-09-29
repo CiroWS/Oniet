@@ -39,13 +39,13 @@ func _input(event):
 	elif event.is_action_pressed("cremona")and Global.armas[1]:
 		$cooldown.wait_time = 0.5
 		arma = "cremona"
-	elif event.is_action_pressed("lapiz")and Global.armas[2]:
+	elif event.is_action_pressed("lapiz")and Global.armas[3]:
 		$cooldown.wait_time = 0.5
 		arma = "lapiz"
 	elif event.is_action_pressed("piedrapapeltijera")and Global.armas[4]:
 		$cooldown.wait_time = 1.0
 		arma = "piedrapapeltijera"
-	elif event.is_action_pressed("capacitor")and Global.armas[3]:
+	elif event.is_action_pressed("capacitor")and Global.armas[2]:
 		$cooldown.wait_time = 0.5
 		arma = "capacitor"
 

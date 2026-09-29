@@ -79,6 +79,15 @@ custom_fonts/font = SubResource( 7 )
 text = "Que andas buscando?"
 align = 1
 
+[node name="charla2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 26.0
+margin_right = 236.0
+margin_bottom = 46.0
+custom_fonts/font = SubResource( 7 )
+text = "Presione ESC para salir"
+align = 1
+
 [node name="titulo" type="Label" parent="."]
 anchor_left = 0.391602
 anchor_top = 0.0383333
@@ -173,7 +182,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$30"
+text = "$50"
 align = 1
 
 [node name="comprar2" type="Button" parent="ITEM/tarjeta2"]
@@ -216,7 +225,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$50"
+text = "$100"
 align = 1
 
 [node name="comprar3" type="Button" parent="ITEM/tarjeta3"]
@@ -259,7 +268,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$70"
+text = "$200"
 align = 1
 
 [node name="comprar4" type="Button" parent="ITEM/tarjeta4"]
@@ -301,7 +310,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$100"
+text = "$400"
 align = 1
 
 [node name="comprar5" type="Button" parent="ITEM/tarjeta5"]

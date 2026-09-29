@@ -7,7 +7,8 @@ var cantina = null
 
 var y_inicio_escalera: float = 0.0
 var x_inicio_escalera: float = 0.0
-
+func _ready():
+	Global.Armas_activas = false
 func _on_puertas_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):
 		var colision_node = $puertas.get_child(local_shape_index)
@@ -132,7 +133,11 @@ func _on_escaleras_body_shape_exited(body_rid: RID, body: Node, body_shape_index
 					$Node/Profe_2.visible=false
 					$Player.collision_layer = 4
 					$Player.collision_mask = 4
-					
+					$Portal3.visible = true
+					$Portal5.visible = true
+					$Portal.visible = false
+					$Portal2.visible = false
+					$Portal4.visible = false
 					$Player/Light2D.range_item_cull_mask = 5
 					$Player/Light2D.shadow_item_cull_mask = 4
 				else:
@@ -141,6 +146,11 @@ func _on_escaleras_body_shape_exited(body_rid: RID, body: Node, body_shape_index
 					$planta_media.visible = false
 					$planta_alta.visible = false
 					$Node/Profe_5.visible = false
+					$Portal3.visible = false
+					$Portal5.visible = false
+					$Portal.visible = true
+					$Portal2.visible = true
+					$Portal4.visible = true
 					$Player.collision_layer = 1
 					$Player.collision_mask = 1
 					$Node/Profe_2.visible=true
