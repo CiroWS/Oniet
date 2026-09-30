@@ -2,7 +2,7 @@ extends Area2D
 
 # --- Disparo ---
 export (PackedScene) var bala_scene
-export var intervalo_disparo := 3.8 # Ajustado a la duración de la animación (38 frames a 10 FPS)
+export var intervalo_disparo := 3.8
 export var velocidad_bala := 400.0
 var danio_bala := 5
 

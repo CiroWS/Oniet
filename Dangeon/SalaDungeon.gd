@@ -3,12 +3,13 @@ extends Node2D
 var EnemigoEscena = preload("res://Dangeon/Enemigo_Peque.tscn")
 var TorretaEscena = preload("res://Dangeon/Torreta.tscn")
 var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
+var Mira = preload("res://Mira, cursor (3).png")
 
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 export (PackedScene) var FIGURITA
 
-var horda_actual = 5
+var horda_actual = 1
 var hordas_totales = 5
 var enemigos_vivos = 0
 var horda_generando = false 
@@ -30,6 +31,8 @@ onready var texto_horda = $CanvasLayer/TextoHorda
 var spawn_queue = []  
 
 func _ready():
+	$Player.visible = true
+	Input.set_custom_mouse_cursor(Mira,Input.CURSOR_ARROW,Vector2(32,32))
 	$musica_pelea.play()
 	var contenedor_spawn = $SpawnPoints
 	$Player/Light2D.visible=false
@@ -44,6 +47,8 @@ func _ready():
 		torretas_pos.append(i.position)
 	randomize()
 	iniciar_horda(horda_actual)
+	
+	
 	
 
 func mostrar_cartel_horda(numero):
@@ -213,6 +218,7 @@ func _on_generador_vida_timeout():
 func _on_Player_muerte():
 	$gameover.play()
 	$gm.visible = true
+	$Player.visible = false
 	yield(get_tree().create_timer(0.7), "timeout")
 	get_tree().paused = true
 	

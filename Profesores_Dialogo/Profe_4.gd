@@ -15,8 +15,13 @@ var dialog_lines = [
 	"¿ Cual es la capital de Tavulu ?"
 ]
 
-# Respuestas que se aceptan como correctas
+# Respuestas que se aceptan como correctas (en minusculas y sin tildes)
 const RESPUESTAS_CORRECTAS = ["funafuti","Funafuti"]
+
+# Textos
+const TEXTO_ACIERTO = "Vete, lo que necesitas esta en 7°C"
+const TEXTO_RESUELTO = "No tengo nada mas que decir, debes ir a 7°C"
+const TEXTO_ERROR = "Incorrecto. ¡Intentalo de nuevo!"
 
 # Estados posibles del diálogo
 enum Estado {INACTIVO, HABLANDO, ESPERANDO_RESPUESTA, RESUELTO}
@@ -25,6 +30,10 @@ var estado = Estado.INACTIVO
 var current_line = 0
 var player_in_area = false
 var player_ref = null
+
+# Evita que el Enter con el que se envía la respuesta se cuente también
+# como "avanzar diálogo" en ese mismo frame
+var _ignorar_accept = false
 
 
 func _ready():
@@ -35,19 +44,18 @@ func _ready():
 		balloon.hide()
 
 
-func _input(event):
-	if event.is_action_pressed("esc"):
-		player_in_area = false
-		cerrar_dialogo()
-
-
 func _process(_delta):
 	if balloon:
 		balloon.visible = player_in_area and estado == Estado.INACTIVO
 
+	if _ignorar_accept:
+		_ignorar_accept = false
+		return
+
 	if not player_in_area:
 		return
 
+	# Mientras escribe la respuesta, el InputBox maneja las acciones
 	if estado == Estado.ESPERANDO_RESPUESTA:
 		return
 
@@ -61,10 +69,21 @@ func _process(_delta):
 				Global.emit_signal("nopausa", true)
 				advance_dialog()
 			Estado.RESUELTO:
-				Global.emit_signal("nopausa", true)
-				text_label.text = "No tengo nada mas que decir, debes ir a 7°C"
+				if panel.visible:
+					# Ya leyó el mensaje de acierto: se cierra
+					cerrar_dialogo()
+				else:
+					# Vuelve a hablar con el profe: solo muestra el mensaje final
+					Global.emit_signal("nopausa", true)
+					panel.show()
+					text_label.text = TEXTO_RESUELTO
+					_bloquear_jugador(true)
 
-	if estado != Estado.INACTIVO and Input.is_action_just_pressed("ui_cancel"):
+
+# Esc cierra el diálogo, pero NO saca al jugador del área
+# (si no, habría que salir y volver a entrar para poder hablar de nuevo)
+func _input(event):
+	if panel.visible and (event.is_action_pressed("esc") or event.is_action_pressed("ui_cancel")):
 		cerrar_dialogo()
 
 
@@ -81,6 +100,7 @@ func advance_dialog():
 	if current_line < dialog_lines.size():
 		show_line()
 	else:
+		# Llegó al final de las frases, mostramos la caja de texto
 		estado = Estado.ESPERANDO_RESPUESTA
 		input_box.show()
 		input_box.text = ""
@@ -91,16 +111,19 @@ func show_line():
 	text_label.text = dialog_lines[current_line]
 
 
+# Señal conectada del Area2D (body_entered)
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Jugador"):
 		player_in_area = true
 		player_ref = body
 
 
+# Señal conectada del Area2D (body_exited)
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("Jugador"):
 		player_in_area = false
-		cerrar_dialogo()
+		if panel.visible:
+			cerrar_dialogo()
 
 
 func cerrar_dialogo():
@@ -110,27 +133,41 @@ func cerrar_dialogo():
 	if input_box.has_focus():
 		input_box.release_focus()
 	_bloquear_jugador(false)
+
+	# Si ya lo resolvió, se queda en RESUELTO (no repite el acertijo)
 	if estado != Estado.RESUELTO:
 		estado = Estado.INACTIVO
 	current_line = 0
 	Global.emit_signal("nopausa", false)
 
 
+# Minusculas, sin tildes y sin punto final
+func _normalizar(texto: String) -> String:
+	var t = texto.strip_edges().to_lower()
+	for par in [["á", "a"], ["é", "e"], ["í", "i"], ["ó", "o"], ["ú", "u"], ["ü", "u"]]:
+		t = t.replace(par[0], par[1])
+	if t.ends_with("."):
+		t = t.substr(0, t.length() - 1)
+	return t
+
+
+# Señal conectada del LineEdit (text_entered) -> Se activa al pulsar Enter
 func _on_InputBox_text_entered(new_text):
 	if estado != Estado.ESPERANDO_RESPUESTA:
 		return
 
-	var answer = new_text.strip_edges().to_lower()
+	var answer = _normalizar(new_text)
 
 	if answer in RESPUESTAS_CORRECTAS:
-		text_label.text = "Vete, lo que necesitas esta en 7°C"
+		_ignorar_accept = true
+		text_label.text = TEXTO_ACIERTO
 		input_box.hide()
 		input_box.release_focus()
 		estado = Estado.RESUELTO
 		_bloquear_jugador(false)
 		Global.resolver_acertijo(4)
 	else:
-		text_label.text = "Incorrecto. ¡Intentalo de nuevo!"
+		text_label.text = TEXTO_ERROR
 		input_box.text = ""
 		input_box.grab_focus()
 

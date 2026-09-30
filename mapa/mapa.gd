@@ -3,11 +3,13 @@ extends Node2D
 export (PackedScene) var CANTINA
 
 var cantina = null
+var Mano = preload("res://Mano_Cursor.png")
 
 
 var y_inicio_escalera: float = 0.0
 var x_inicio_escalera: float = 0.0
 func _ready():
+	Input.set_custom_mouse_cursor(Mano,Input.CURSOR_ARROW,Vector2(16,16))
 	Global.Armas_activas = false
 func _on_puertas_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):

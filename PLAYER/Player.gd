@@ -4,6 +4,7 @@ export (int) var speed = 100
 export (int) var vida_max = 200
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Idle_Costado"
+var eje_activo = "y"
 export (PackedScene) var Cremona
 export (PackedScene) var Cartulina
 export (PackedScene) var Lapiz
@@ -11,6 +12,7 @@ export (PackedScene) var Piedrapapeltijera
 export (PackedScene) var Capacitor
 var arma = "cartulina"
 var canshoot = true
+
 
 var dialog_active = false
 
@@ -23,7 +25,6 @@ func _ready():
 	add_to_group("Jugador")
 	Global.vidajugador = vida_max
 	$AnimatedSprite.connect("frame_changed", self, "_on_AnimatedSprite_frame_changed")
-
 
 
 func _input(event):
@@ -57,20 +58,32 @@ func set_dialog_active(value: bool) -> void:
 		motion = Vector2.ZERO
 
 
+func actualizar_eje_activo():
+	# Se llama una vez por frame de fisica: recuerda cual fue el ultimo eje presionado
+	if Input.is_action_just_pressed("W") or Input.is_action_just_pressed("S"):
+		eje_activo = "y"
+	if Input.is_action_just_pressed("A") or Input.is_action_just_pressed("D"):
+		eje_activo = "x"
+
+
 func get_axis() -> Vector2:
 	var axis = Vector2.ZERO
 	if dialog_active:
 		return axis
-	if axis.y == 0:
-		axis.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
-	if axis.x == 0:
-		axis.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
+	axis.x = int(Input.is_action_pressed("D")) - int(Input.is_action_pressed("A"))
+	axis.y = int(Input.is_action_pressed("S")) - int(Input.is_action_pressed("W"))
+
+	if axis.x != 0 and axis.y != 0:
+		if eje_activo == "x":
+			axis.y = 0
+		else:
+			axis.x = 0
 	return axis
 
 
 func motion_ctrl():
 	if get_axis() == Vector2.ZERO:
-		motion = Vector2.ZERO
+		motion = Vector2.ZERO	
 	else:
 		motion = get_axis().normalized() * speed
 
@@ -98,7 +111,9 @@ func motion_ctrl():
 
 
 func _physics_process(delta):
+	
 	emit_signal("vida_cambiada",Global.vidajugador)
+	actualizar_eje_activo()
 	motion_ctrl()
 	var collision = move_and_collide(motion * delta)
 
