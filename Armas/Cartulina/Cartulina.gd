@@ -1,7 +1,7 @@
 extends Node2D
 
 var estado_ataque = false
-var danio = 25
+var danio = 25000
 var ya_golpeados = []
 
 func _ready():

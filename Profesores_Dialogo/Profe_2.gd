@@ -9,10 +9,10 @@ onready var input_box = $CanvasLayer/Panel/VBoxContainer/InputBox
 # Secuencia de frases iniciales
 var dialog_lines = [
 	"¡ Hola !",
-	"Me imagino que no estas saltenado tus clases, no ?",
+	"Me imagino que no estas salteando tus clases, no ?",
 	"Si lo que quieres es recuperar tus figuritas tienes que contestarme una simple pregunta ",
 	"¿ Cual elemento de la tabla periodica cumple con la siguiente caracteristica ?",
-	"Es el único elemento cuyo isotopo más abundante no tiene neutrones"
+	"Es el unico elemento cuyo isotopo mas abundante no tiene neutrones"
 ]
 
 # Respuestas que se aceptan como correctas

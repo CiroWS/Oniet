@@ -16,7 +16,7 @@ var dialog_lines = [
 ]
 
 # Respuestas que se aceptan como correctas
-const RESPUESTAS_CORRECTAS = ["funafuti"]
+const RESPUESTAS_CORRECTAS = ["funafuti","Funafuti"]
 
 # Estados posibles del diálogo
 enum Estado {INACTIVO, HABLANDO, ESPERANDO_RESPUESTA, RESUELTO}
