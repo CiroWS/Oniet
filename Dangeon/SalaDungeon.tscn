@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Dangeon/figu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=10]
 [ext_resource path="res://musica/game_over.wav" type="AudioStream" id=11]
+[ext_resource path="res://Dangeon/New Piskel (6).png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -38,6 +39,11 @@ script = ExtResource( 1 )
 MONEDA = ExtResource( 6 )
 VIDA = ExtResource( 7 )
 FIGURITA = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 460.5, 268.5 )
+scale = Vector2( 2.80664, 2.96333 )
+texture = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 514, 300 )

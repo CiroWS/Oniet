@@ -121,17 +121,17 @@ scale = Vector2( 4.75, 2.6875 )
 frames = SubResource( 2 )
 
 [node name="moneda" type="Sprite" parent="."]
-position = Vector2( 993.465, 35 )
+position = Vector2( 913, 35 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 3
 vframes = 3
 
 [node name="Label" type="Label" parent="moneda"]
-margin_left = -28.528
-margin_top = -7.0
-margin_right = 11.472
-margin_bottom = 9.0
+margin_left = 11.7675
+margin_top = -8.0
+margin_right = 51.7675
+margin_bottom = 12.0
 custom_fonts/font = ExtResource( 5 )
 text = "10"
 

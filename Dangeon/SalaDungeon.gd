@@ -36,10 +36,6 @@ func _ready():
 	$musica_pelea.play()
 	var contenedor_spawn = $SpawnPoints
 	$Player/Light2D.visible=false
-	$Player/Camera2D.limit_left = 0
-	$Player/Camera2D.limit_top = 0
-	$Player/Camera2D.limit_bottom = 600
-	$Player/Camera2D.limit_right = 1024
 	var nuevo_tamano = Vector2(1360, 768)
 	OS.set_window_size(nuevo_tamano)
 	OS.center_window()
