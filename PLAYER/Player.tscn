@@ -170,8 +170,6 @@ shape = SubResource( 21 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-limit_right = 1024
-limit_bottom = 600
 
 [node name="Menu_paused" parent="." instance=ExtResource( 10 )]
 

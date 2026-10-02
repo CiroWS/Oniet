@@ -11,7 +11,7 @@
 [ext_resource path="res://Dangeon/figu.tscn" type="PackedScene" id=9]
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=10]
 [ext_resource path="res://musica/game_over.wav" type="AudioStream" id=11]
-[ext_resource path="res://Dangeon/New Piskel (6).png" type="Texture" id=12]
+[ext_resource path="res://PLAYER/New Piskel.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -41,8 +41,8 @@ VIDA = ExtResource( 7 )
 FIGURITA = ExtResource( 9 )
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 460.5, 268.5 )
-scale = Vector2( 2.80664, 2.96333 )
+position = Vector2( 748.5, 379.5 )
+scale = Vector2( 8.27148, 7.05 )
 texture = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="."]
