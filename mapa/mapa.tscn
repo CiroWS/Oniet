@@ -1088,8 +1088,6 @@ autoplay = true
 
 [node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
 position = Vector2( -1194, 152 )
-collision_layer = 2
-collision_mask = 2
 
 [node name="Profe_2" parent="Node" instance=ExtResource( 20 )]
 position = Vector2( -390, -695 )

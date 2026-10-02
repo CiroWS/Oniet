@@ -5,8 +5,8 @@
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=3]
 [ext_resource path="res://musica/dialogo.wav" type="AudioStream" id=4]
 
-[sub_resource type="CircleShape2D" id=10]
-radius = 14.0
+[sub_resource type="CapsuleShape2D" id=10]
+height = 9.33333
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
@@ -44,6 +44,8 @@ bg_color = Color( 1, 1, 1, 0 )
 
 [node name="Profe_1" type="KinematicBody2D"]
 scale = Vector2( 1.5, 1.5 )
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -112,7 +114,6 @@ rect_min_size = Vector2( 24, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 9 )
-placeholder_text = "0"
 placeholder_alpha = 1.0
 
 [node name="Balloon" type="CanvasLayer" parent="."]

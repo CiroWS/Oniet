@@ -5,8 +5,8 @@
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=3]
 [ext_resource path="res://musica/dialogo.wav" type="AudioStream" id=4]
 
-[sub_resource type="CircleShape2D" id=13]
-radius = 14.6818
+[sub_resource type="CapsuleShape2D" id=13]
+height = 8.0
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
@@ -105,7 +105,6 @@ rect_min_size = Vector2( 24, 0 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 custom_styles/normal = SubResource( 9 )
-placeholder_text = "0"
 placeholder_alpha = 1.0
 
 [node name="Balloon" type="CanvasLayer" parent="."]
