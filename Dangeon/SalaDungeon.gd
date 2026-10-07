@@ -145,12 +145,15 @@ func _on_enemigo_muerto():
 	enemigos_vivos -= 1
 	verificar_horda_completa()
 	if Global.bicho=="peque":
-# warning-ignore:unused_variable
 		for i in range(2):
 			var moneda = MONEDA.instance()
 			add_child(moneda)
 			Global.posicion.x+=16.0
-			moneda.global_position = Global.posicion
+			if Global.posicion.x<1000:
+				moneda.global_position = Global.posicion
+			if Global.posicion.x>1000:
+				Global.posicion.x-=32.0
+				moneda.global_position = Global.posicion
 	elif Global.bicho=="golem":
 		for i in range(50):
 			var moneda = MONEDA.instance()
