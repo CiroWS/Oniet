@@ -49,6 +49,7 @@ shape = SubResource( 7 )
 
 [node name="bomba" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -13.0
 autoplay = true
 
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]

@@ -65,12 +65,13 @@ func _ready() -> void:
 
 func _on_Timer_timeout() -> void:
 	# Reinicia y reproduce la animación desde el frame 0
+	$cargarlaser.play()
 	$AnimatedSprite.frame = 0
 	$AnimatedSprite.play()
 
 
 func _on_AnimatedSprite_frame_changed() -> void:
-	$cargarlaser.play()
+	
 	# Activa el disparo exactamente en el frame 17
 	if $AnimatedSprite.frame == 17:
 		_disparar()
