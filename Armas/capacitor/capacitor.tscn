@@ -34,7 +34,7 @@ animations = [ {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "boom",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
@@ -42,8 +42,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 11.5 )
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 12.5, 7.50001 )
 
 [node name="capacitor" type="Node2D"]
 scale = Vector2( 0.2, 0.2 )
@@ -53,14 +53,16 @@ BOOM = ExtResource( 3 )
 [node name="Sprite" type="AnimatedSprite" parent="."]
 rotation = 1.5708
 frames = SubResource( 8 )
-animation = "boom"
+animation = "capacitor"
 
 [node name="Area2D" type="Area2D" parent="."]
 rotation = 1.5708
 
 [node name="capacitor" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, -4.5 )
-shape = SubResource( 1 )
+position = Vector2( -1.81198e-05, -5 )
+rotation = 1.5708
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 14 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 4.5, -4.76837e-07 )

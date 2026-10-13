@@ -69,7 +69,7 @@ radius = 100.0
 height = 148.0
 
 [node name="vida" type="Node2D"]
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 0.05, 0.05 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

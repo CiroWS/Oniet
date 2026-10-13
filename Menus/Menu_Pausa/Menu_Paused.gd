@@ -15,8 +15,6 @@ func a(k):
 
 func _input(event):
 	if event.is_action_pressed("esc"):
-		# Si la cantina está abierta, no hacemos nada aquí ni consumimos el evento,
-		# dejando que el script del MAPA maneje el cierre.
 		if cantina:
 			return
 			
@@ -41,7 +39,10 @@ func _on_Cont_pressed():
 func _on_Sal_pressed():
 	$BG.visible = false
 	get_tree().paused = false
-	get_tree().change_scene("res://Menus/Menu_principal/Menu_principal.tscn")
+	if Global.Armas_activas:
+		get_tree().change_scene("res://mapa/mapa.tscn")
+	else:
+		get_tree().change_scene("res://Menus/Menu_principal/Menu_principal.tscn")
 
 
 func _on_pausa_finished():

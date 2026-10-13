@@ -10,13 +10,13 @@ var monedas : int = 0
 
 var moneda : int = 0
 
-var armas = [false , false , false , false , false ]
+var armas = [false , false , true , true , false ]
 
 var posicion
 
 var bicho
 
-var Armas_activas = false
+var Armas_activas = true
 var figus : int = 5
 
 signal nopausa(k)
