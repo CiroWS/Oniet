@@ -68,6 +68,9 @@ func _evaluar_cambio_de_posicion():
 		
 		print("¡TE ATRAPÓ! Restando 1 vida y volviendo al principio...")
 		Global.Llamdos_de_atencion += 1
+		if Global.Llamdos_de_atencion==3:
+			Global.sancion+=1
+			Global.Llamdos_de_atencion=0
 		print("Llamados de atención: ", Global.Llamdos_de_atencion)
 		
 		# Mandar al alumno al inicio del camino

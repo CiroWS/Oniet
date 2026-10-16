@@ -6,7 +6,7 @@
 [ext_resource path="res://musica/puerta.wav" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.141176, 0.054902, 0.054902, 1 )
+bg_color = Color( 0, 0.117647, 0.435294, 1 )
 
 [sub_resource type="Animation" id=1]
 length = 0.001

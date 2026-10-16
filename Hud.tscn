@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://HUd/Piedra_papel_o_tijeras.png" type="Texture" id=1]
 [ext_resource path="res://HUd/Lapiz.png" type="Texture" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://HUd/Cartulina.png" type="Texture" id=8]
 [ext_resource path="res://HUd/capacitor_.png" type="Texture" id=9]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://New Piskel (7).png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 0, 0, 1 )
@@ -32,11 +38,6 @@ animations = [ {
 "name": "default",
 "speed": 3.0
 } ]
-
-[sub_resource type="DynamicFont" id=6]
-size = 40
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 10 )
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -102,6 +103,14 @@ disabled = true
 icon = ExtResource( 1 )
 flat = true
 
+[node name="tecla" type="Label" parent="Control"]
+margin_left = 413.0
+margin_top = 23.0
+margin_right = 712.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 6 )
+text = " 1    2   3   4   5"
+
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 modulate = Color( 0.980392, 0, 0, 1 )
 self_modulate = Color( 0.886275, 0.819608, 0.819608, 1 )
@@ -121,7 +130,7 @@ scale = Vector2( 4.75, 2.6875 )
 frames = SubResource( 2 )
 
 [node name="moneda" type="Sprite" parent="."]
-position = Vector2( 913, 35 )
+position = Vector2( 952, 35 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 hframes = 3
@@ -143,3 +152,16 @@ margin_bottom = 614.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 6 )
 text = "   1     2     3     4    5"
+
+[node name="sancion" type="Sprite" parent="."]
+position = Vector2( 943, 90 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="sancion"]
+margin_left = 17.0
+margin_top = -8.0
+margin_right = 57.0
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 5 )
+text = "1"
