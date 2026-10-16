@@ -67,14 +67,14 @@ alignment = 1
 
 [node name="Button" type="Button" parent="Control/HBoxContainer"]
 margin_right = 44.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 icon = ExtResource( 8 )
 flat = true
 
 [node name="Button2" type="Button" parent="Control/HBoxContainer"]
 margin_left = 48.0
 margin_right = 92.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 7 )
 flat = true
@@ -82,7 +82,7 @@ flat = true
 [node name="Button3" type="Button" parent="Control/HBoxContainer"]
 margin_left = 96.0
 margin_right = 140.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 9 )
 flat = true
@@ -90,7 +90,7 @@ flat = true
 [node name="Button4" type="Button" parent="Control/HBoxContainer"]
 margin_left = 144.0
 margin_right = 188.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 2 )
 flat = true
@@ -98,18 +98,19 @@ flat = true
 [node name="Button5" type="Button" parent="Control/HBoxContainer"]
 margin_left = 192.0
 margin_right = 236.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 1 )
 flat = true
 
 [node name="tecla" type="Label" parent="Control"]
-margin_left = 413.0
+margin_left = 401.544
 margin_top = 23.0
-margin_right = 712.0
+margin_right = 804.544
 margin_bottom = 74.0
+rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 6 )
-text = " 1    2   3   4   5"
+text = "   1     2     3     4    5"
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 modulate = Color( 0.980392, 0, 0, 1 )
@@ -143,15 +144,6 @@ margin_right = 51.7675
 margin_bottom = 12.0
 custom_fonts/font = ExtResource( 5 )
 text = "10"
-
-[node name="tecla" type="Label" parent="."]
-margin_left = 401.544
-margin_top = 563.0
-margin_right = 700.544
-margin_bottom = 614.0
-rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = SubResource( 6 )
-text = "   1     2     3     4    5"
 
 [node name="sancion" type="Sprite" parent="."]
 position = Vector2( 943, 90 )
