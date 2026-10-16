@@ -16,7 +16,11 @@ func _ready():
 	
 func _process(delta):
 	$moneda/Label.text=str(Global.moneda)
-
+	$sancion/Label.text=str(Global.sancion)
+	if Global.dungeon==false:
+		$Control.visible=false
+	else:
+		$Control.visible=true
 
 func _on_vida_cambiada(nueva_vida: int) -> void:
 	Vida.value = nueva_vida

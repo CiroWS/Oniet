@@ -31,6 +31,7 @@ onready var texto_horda = $CanvasLayer/TextoHorda
 var spawn_queue = []  
 
 func _ready():
+	Global.dungeon=true
 	$Player.visible = true
 	Input.set_custom_mouse_cursor(Mira,Input.CURSOR_ARROW,Vector2(32,32))
 	$musica_pelea.play()

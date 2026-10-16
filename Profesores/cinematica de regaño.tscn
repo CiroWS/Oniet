@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fuente.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Profesores/cinematica de regaño.gd" type="Script" id=2]
+[ext_resource path="res://musica/puerta.wav" type="AudioStream" id=3]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0.117647, 0.435294, 1 )
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("transicion:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "transicion"
+tracks/0/type = "value"
+tracks/0/path = NodePath("transicion:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="imagen" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -71.0
+expand = true
+
+[node name="transicion" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+
+[node name="dialogo" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel" type="Panel" parent="dialogo"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -76.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="prota" type="Label" parent="dialogo"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -75.0
+margin_bottom = -55.0
+custom_fonts/font = ExtResource( 1 )
+text = "Lujan Bot"
+align = 1
+
+[node name="texto" type="Label" parent="dialogo"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 9.0
+margin_top = -48.0
+margin_right = -12.0
+margin_bottom = -7.0
+custom_fonts/font = ExtResource( 1 )
+text = "67"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/transicion = SubResource( 2 )
+
+[node name="introduccion" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -350.0
+margin_top = -25.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_fonts/font = ExtResource( 1 )
+text = "Preciona ESPACIO para continuar"
+
+[node name="p" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

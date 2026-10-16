@@ -1,16 +1,42 @@
 extends Node2D
 
+export (PackedScene) var PROFE
 export (PackedScene) var CANTINA
 
+var giro : float = 2.0
+var frena = true
 var cantina = null
 var Mano = preload("res://Mano_Cursor.png")
-
+var profe = null
 
 var y_inicio_escalera: float = 0.0
 var x_inicio_escalera: float = 0.0
 func _ready():
+	randomize()
+	$Timer.wait_time=Global.random(1,10)
+	$Timer.start()
+	Global.dungeon=false
+	profe = PROFE.instance()
+	$recorrido1/PathFollow2D.set_offset(randi())
+	profe.position = $recorrido1/PathFollow2D.position
+	add_child(profe)
 	Input.set_custom_mouse_cursor(Mano,Input.CURSOR_ARROW,Vector2(16,16))
 	Global.Armas_activas = false
+	
+func _physics_process(delta):
+	if frena:
+		$recorrido1/PathFollow2D.offset+= 0.5
+		profe.position = $recorrido1/PathFollow2D.position
+		profe.rotation = $recorrido1/PathFollow2D.rotation
+	else:
+		profe.rotation += giro * delta
+		yield(get_tree().create_timer(3), "timeout")
+		frena=true
+		$Timer.wait_time=Global.random(1,10)
+		$Timer.start()
+func _on_Timer_timeout():
+	frena=false
+
 func _on_puertas_body_shape_entered(body_rid: RID, body: Node, body_shape_index: int, local_shape_index: int) -> void:
 	if body.is_in_group("player"):
 		var colision_node = $puertas.get_child(local_shape_index)
@@ -186,3 +212,7 @@ func _on_puertacantina_body_entered(body):
 		cantina = CANTINA.instance()
 		add_child(cantina)
 		$Player.speed = 0
+
+
+
+

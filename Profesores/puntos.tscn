@@ -1,0 +1,33 @@
+[gd_scene format=2]
+
+[node name="puntos" type="Node2D"]
+
+[node name="Punto1" type="Position2D" parent="."]
+position = Vector2( 15, -658 )
+
+[node name="Punto2" type="Position2D" parent="."]
+position = Vector2( 304, 80 )
+
+[node name="Punto3" type="Position2D" parent="."]
+position = Vector2( -355, 215 )
+
+[node name="Punto4" type="Position2D" parent="."]
+position = Vector2( -345, -269 )
+
+[node name="Punto5" type="Position2D" parent="."]
+position = Vector2( -654, -685 )
+
+[node name="Punto6" type="Position2D" parent="."]
+position = Vector2( -654, 97 )
+
+[node name="Punto7" type="Position2D" parent="."]
+position = Vector2( -1036, 209 )
+
+[node name="Punto8" type="Position2D" parent="."]
+position = Vector2( -301, 593 )
+
+[node name="Punto9" type="Position2D" parent="."]
+position = Vector2( 293, 391 )
+
+[node name="Punto10" type="Position2D" parent="."]
+position = Vector2( -10, 72 )
