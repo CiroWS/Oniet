@@ -6,6 +6,7 @@ var ya_golpeados = []
 
 func _ready():
 	ataque()
+	
 
 func ataque():
 	estado_ataque = true

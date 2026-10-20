@@ -5,6 +5,7 @@ var direccion_recta: Vector2 = Vector2.ZERO
 
 func _ready():
 	add_to_group("Cremona")
+	
 
 func _physics_process(delta):
 	if has_node("Sprite"):

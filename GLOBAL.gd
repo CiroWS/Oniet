@@ -10,7 +10,7 @@ var monedas : int = 0
 
 var moneda : int = 0
 
-var armas = [false , false , true , true , false ]
+var armas = [true , true , true , true , true ]
 
 var posicion
 

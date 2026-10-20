@@ -2,7 +2,7 @@
 
 [ext_resource path="res://lapiz.gd" type="Script" id=1]
 [ext_resource path="res://Armas/lapiz/lapiz.png" type="Texture" id=2]
-[ext_resource path="res://musica/dash.wav" type="AudioStream" id=3]
+[ext_resource path="res://musica/sword_slice.wav" type="AudioStream" id=3]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 4, 15, -5, 15, -5, -8, 0, -17, 4, -8 )

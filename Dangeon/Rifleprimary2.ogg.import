@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Rifleprimary2.ogg-bd77db03e40b52c838e5ada520a295a1.oggstr"
+
+[deps]
+
+source_file="res://Dangeon/Rifleprimary2.ogg"
+dest_files=[ "res://.import/Rifleprimary2.ogg-bd77db03e40b52c838e5ada520a295a1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

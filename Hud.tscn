@@ -66,14 +66,14 @@ alignment = 1
 
 [node name="Button" type="Button" parent="Control/HBoxContainer"]
 margin_right = 44.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 icon = ExtResource( 8 )
 flat = true
 
 [node name="Button2" type="Button" parent="Control/HBoxContainer"]
 margin_left = 48.0
 margin_right = 92.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 7 )
 flat = true
@@ -81,7 +81,7 @@ flat = true
 [node name="Button3" type="Button" parent="Control/HBoxContainer"]
 margin_left = 96.0
 margin_right = 140.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 9 )
 flat = true
@@ -89,7 +89,7 @@ flat = true
 [node name="Button4" type="Button" parent="Control/HBoxContainer"]
 margin_left = 144.0
 margin_right = 188.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 2 )
 flat = true
@@ -97,7 +97,7 @@ flat = true
 [node name="Button5" type="Button" parent="Control/HBoxContainer"]
 margin_left = 192.0
 margin_right = 236.0
-margin_bottom = 39.0
+margin_bottom = 40.0
 disabled = true
 icon = ExtResource( 1 )
 flat = true

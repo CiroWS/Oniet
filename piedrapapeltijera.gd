@@ -3,6 +3,9 @@ extends Node2D
 export (int) var speed = 100
 var direccion_recta: Vector2 = Vector2.ZERO
 
+
+	
+
 func set_forward_direction(direccion: Vector2):
 	direccion_recta = direccion.normalized()
 
