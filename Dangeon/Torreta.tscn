@@ -4,7 +4,7 @@
 [ext_resource path="res://Dangeon/Torreta.gd" type="Script" id=2]
 [ext_resource path="res://Dangeon/Bala.tscn" type="PackedScene" id=3]
 [ext_resource path="res://musica/torreta_laser_carga.wav" type="AudioStream" id=4]
-[ext_resource path="res://musica/rayo_plasma.wav" type="AudioStream" id=5]
+[ext_resource path="res://Dangeon/laser2.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=40]
 extents = Vector2( 10, 26 )

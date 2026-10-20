@@ -8,6 +8,7 @@ export (PackedScene) var BOOM
 func _ready():
 	$Sprite.play("capacitor")
 	add_to_group("Capacitor")
+	
 
 func _physics_process(delta):
 	position += direccion_recta * speed * delta
@@ -27,6 +28,7 @@ func Explosion():
 	boom.global_position=$Position2D.global_position
 	$Sprite.play("boom")
 	scale = Vector2(0.8,0.8)
+	$Explosion_boom.play()
 	get_tree().call_group("dun", "add_child", boom)
 	
 	

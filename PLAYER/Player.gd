@@ -36,18 +36,23 @@ func _input(event):
 		$cooldown.start()
 	elif event.is_action_pressed("cartulina") :
 		$cooldown.wait_time = 0.2
+		$Equip.play()
 		arma = "cartulina"
 	elif event.is_action_pressed("cremona")and Global.armas[1]:
-		$cooldown.wait_time = 0.5
+		$cooldown.wait_time = 1
+		$Equip.play()
 		arma = "cremona"
 	elif event.is_action_pressed("lapiz")and Global.armas[3]:
-		$cooldown.wait_time = 0.5
+		$cooldown.wait_time = 0.2
+		$Equip.play()
 		arma = "lapiz"
 	elif event.is_action_pressed("piedrapapeltijera")and Global.armas[4]:
-		$cooldown.wait_time = 1.0
+		$cooldown.wait_time = 2
+		$Equip.play()
 		arma = "piedrapapeltijera"
 	elif event.is_action_pressed("capacitor")and Global.armas[2]:
-		$cooldown.wait_time = 0.5
+		$cooldown.wait_time = 3
+		$Equip.play()
 		arma = "capacitor"
 
 
@@ -178,6 +183,6 @@ func _on_cooldown_timeout():
 
 
 func _on_AnimatedSprite_frame_changed():
-	if get_axis() != Vector2.ZERO:
-		$"sonido de caminata".pitch_scale = rand_range(0.85, 1.15)
-		$"sonido de caminata".play()
+	if get_axis() != Vector2.ZERO and ($AnimatedSprite.animation=="Caminar" or $AnimatedSprite.animation=="Costado" or $AnimatedSprite.animation=="Espalda"):
+		if $AnimatedSprite.frame==1 or $AnimatedSprite.frame==3:
+			$"sonido de caminata".play()
