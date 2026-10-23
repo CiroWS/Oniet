@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Armas/piedrapapeltijera/piedrapapeltijera.png" type="Texture" id=1]
 [ext_resource path="res://piedrapapeltijera.gd" type="Script" id=2]
+[ext_resource path="res://Armas/Cremona/270332__littlerobotsoundfactory__hit_03.wav" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 11.0
@@ -73,6 +74,9 @@ shape = SubResource( 4 )
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 7.15256e-07, -1.66893e-06 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="body_entered" from="ataque/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="tijera/secu" to="." method="_on_secu_body_entered"]

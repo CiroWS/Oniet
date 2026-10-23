@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Industrial Institute Cristo Obrero.mp3-6e474d0393d5c8b05340bd6c4deb318a.mp3str"
+
+[deps]
+
+source_file="res://Industrial Institute Cristo Obrero.mp3"
+dest_files=[ "res://.import/Industrial Institute Cristo Obrero.mp3-6e474d0393d5c8b05340bd6c4deb318a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

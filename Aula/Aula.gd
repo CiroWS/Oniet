@@ -28,6 +28,7 @@ func reiniciar_alumno():
 	alumno_sprite.position = hijo_camino.position
 
 
+
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("Jugador"):
 		get_tree().change_scene("res://mapa/mapa.tscn")

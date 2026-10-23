@@ -6,6 +6,7 @@ var ya_golpeados = []
 
 func _ready():
 	ataque()
+	$Swoosh.play()
 	
 
 func ataque():

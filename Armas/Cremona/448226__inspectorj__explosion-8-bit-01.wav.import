@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/448226__inspectorj__explosion-8-bit-01.wav-d7386d6da230a514d05c2e88dca1ecd5.sample"
+
+[deps]
+
+source_file="res://Armas/Cremona/448226__inspectorj__explosion-8-bit-01.wav"
+dest_files=[ "res://.import/448226__inspectorj__explosion-8-bit-01.wav-d7386d6da230a514d05c2e88dca1ecd5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

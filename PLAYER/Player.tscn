@@ -14,7 +14,7 @@
 [ext_resource path="res://Armas/piedrapapeltijera/piedrapapeltijera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Armas/capacitor/capacitor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://musica/foley_footstep_concrete_1.wav" type="AudioStream" id=14]
-[ext_resource path="res://musica/swipe.wav" type="AudioStream" id=15]
+[ext_resource path="res://Armas/Cremona/448226__inspectorj__explosion-8-bit-01.wav" type="AudioStream" id=15]
 [ext_resource path="res://musica/weapon_equip_short.wav" type="AudioStream" id=16]
 [ext_resource path="res://Hud.tscn" type="PackedScene" id=17]
 
@@ -185,8 +185,9 @@ shadow_color = Color( 0, 0, 0, 1 )
 
 [node name="sonido de caminata" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+volume_db = -5.909
 
-[node name="daño" type="AudioStreamPlayer" parent="."]
+[node name="Damage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 volume_db = -10.0
 

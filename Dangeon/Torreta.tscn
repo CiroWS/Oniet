@@ -186,9 +186,12 @@ frames = SubResource( 39 )
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="ataque" type="AudioStreamPlayer" parent="."]
+[node name="ataque" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -3.546
+max_distance = 1000.0
 
-[node name="cargarlaser" type="AudioStreamPlayer" parent="."]
+[node name="cargarlaser" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = -10.636
+volume_db = -3.545
+max_distance = 1000.0
