@@ -12,11 +12,13 @@ func _ready():
 	var botones = $Control/HBoxContainer.get_children()
 	for i in range(Global.armas.size()):
 		botones[i].disabled = not Global.armas[i]
+		
 	
 	
 func _process(delta):
 	$moneda/Label.text=str(Global.moneda)
 	$sancion/Label.text=str(Global.sancion)
+
 	if Global.dungeon==false:
 		$Control.visible=false
 	else:

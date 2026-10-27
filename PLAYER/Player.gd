@@ -10,7 +10,7 @@ export (PackedScene) var Cartulina
 export (PackedScene) var Lapiz
 export (PackedScene) var Piedrapapeltijera
 export (PackedScene) var Capacitor
-var arma = "cartulina"
+
 var canshoot = true
 
 
@@ -37,23 +37,23 @@ func _input(event):
 	elif event.is_action_pressed("cartulina") :
 		$cooldown.wait_time = 0.2
 		$Equip.play()
-		arma = "cartulina"
+		Global.arma = "cartulina"
 	elif event.is_action_pressed("cremona")and Global.armas[1]:
 		$cooldown.wait_time = 1
 		$Equip.play()
-		arma = "cremona"
+		Global.arma = "cremona"
 	elif event.is_action_pressed("lapiz")and Global.armas[3]:
 		$cooldown.wait_time = 0.2
 		$Equip.play()
-		arma = "lapiz"
+		Global.arma = "lapiz"
 	elif event.is_action_pressed("piedrapapeltijera")and Global.armas[4]:
 		$cooldown.wait_time = 2
 		$Equip.play()
-		arma = "piedrapapeltijera"
+		Global.arma = "piedrapapeltijera"
 	elif event.is_action_pressed("capacitor")and Global.armas[2]:
 		$cooldown.wait_time = 3
 		$Equip.play()
-		arma = "capacitor"
+		Global.arma = "capacitor"
 
 
 
@@ -125,7 +125,7 @@ func _physics_process(delta):
 
 func Disparo_ctrl():
 	var direccion_mouse = (get_global_mouse_position() - global_position).normalized()
-	if arma == "cremona":
+	if Global.arma == "cremona":
 		if Cremona == null:
 			return
 		var CREMONA = Cremona.instance()
@@ -133,14 +133,14 @@ func Disparo_ctrl():
 		CREMONA.global_position = global_position
 		CREMONA.set_forward_direction(direccion_mouse)
 
-	elif arma == "cartulina":
+	elif Global.arma == "cartulina":
 		if Cartulina == null:
 			return
 		var CARTULINA = Cartulina.instance()
 		add_child(CARTULINA)
 		CARTULINA.position = Vector2.ZERO
 		CARTULINA.rotation = direccion_mouse.angle()
-	elif arma == "lapiz":
+	elif Global.arma == "lapiz":
 		var LAPIZ = Lapiz.instance()
 		add_child(LAPIZ)
 		var direccion = (get_global_mouse_position() - global_position).normalized()
@@ -152,11 +152,11 @@ func Disparo_ctrl():
 		global_position = inicio + (direccion * (distancia+10))
 		yield(get_tree().create_timer(0.2), "timeout")
 		LAPIZ.queue_free()
-	elif arma == "piedrapapeltijera":
+	elif Global.arma == "piedrapapeltijera":
 		var PIEDRA = Piedrapapeltijera.instance()
 		add_child(PIEDRA)
 		PIEDRA.set_forward_direction(direccion_mouse)
-	elif arma == "capacitor":
+	elif Global.arma == "capacitor":
 		var cap = Capacitor.instance()
 		add_child(cap)
 		cap.rotation = direccion_mouse.angle()

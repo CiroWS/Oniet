@@ -18,6 +18,8 @@ var armas = [true , true , true , true , true ]
 
 var posicion
 
+var arma = "cartulina"
+
 var bicho
 
 var Armas_activas = true
