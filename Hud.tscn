@@ -59,9 +59,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -118.0
-margin_top = -66.327
+margin_top = -78.244
 margin_right = 118.0
-margin_bottom = -26.327
+margin_bottom = -38.244
 rect_scale = Vector2( 1.3, 1.3 )
 alignment = 1
 
@@ -104,13 +104,13 @@ icon = ExtResource( 1 )
 flat = true
 
 [node name="tecla" type="Label" parent="Control"]
-margin_left = 401.544
+margin_left = 392.884
 margin_top = 23.0
-margin_right = 804.544
+margin_right = 795.885
 margin_bottom = 74.0
 rect_scale = Vector2( 0.8, 0.8 )
 custom_fonts/font = SubResource( 6 )
-text = "   1     2     3     4    5"
+text = "    1     2     3    4    5"
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 modulate = Color( 0.980392, 0, 0, 1 )

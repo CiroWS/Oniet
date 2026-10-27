@@ -90,9 +90,9 @@ anims/RESET = SubResource( 1 )
 anims/escenas = SubResource( 2 )
 
 [node name="instruccion" type="Label" parent="."]
-margin_left = 773.0
+margin_left = 674.237
 margin_top = 584.0
-margin_right = 1118.0
+margin_right = 1019.24
 margin_bottom = 604.0
 custom_fonts/font = ExtResource( 2 )
 text = "Preciona ESPACIO para continuar"

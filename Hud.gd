@@ -18,6 +18,37 @@ func _ready():
 func _process(delta):
 	$moneda/Label.text=str(Global.moneda)
 	$sancion/Label.text=str(Global.sancion)
+	if Global.arma == "cartulina":
+		$Control/HBoxContainer/Button.rect_scale = Vector2(1.2,1.2)
+		$Control/HBoxContainer/Button2.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button3.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button4.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button5.rect_scale = Vector2(1,1)
+	elif Global.arma == "cremona":
+		$Control/HBoxContainer/Button2.rect_scale = Vector2(1.2,1.2)
+		$Control/HBoxContainer/Button.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button3.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button4.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button5.rect_scale = Vector2(1,1)
+	elif Global.arma == "capacitor":
+		$Control/HBoxContainer/Button3.rect_scale = Vector2(1.2,1.2)
+		$Control/HBoxContainer/Button2.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button4.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button5.rect_scale = Vector2(1,1)
+	elif Global.arma == "lapiz":
+		$Control/HBoxContainer/Button4.rect_scale =Vector2(1.2,1.2)
+		$Control/HBoxContainer/Button2.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button3.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button5.rect_scale = Vector2(1,1)
+	elif Global.arma == "piedrapapeltijera":
+		$Control/HBoxContainer/Button5.rect_scale =Vector2(1.2,1.2)
+		$Control/HBoxContainer/Button2.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button3.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button4.rect_scale = Vector2(1,1)
+		$Control/HBoxContainer/Button.rect_scale = Vector2(1,1)
+
 
 	if Global.dungeon==false:
 		$Control.visible=false
