@@ -1105,13 +1105,16 @@ stream = ExtResource( 19 )
 volume_db = -10.0
 autoplay = true
 
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 69, 122 )
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
 position = Vector2( -1194, 152 )
 
 [node name="Profe_2" parent="Node" instance=ExtResource( 20 )]
-position = Vector2( -390, -695 )
+position = Vector2( -558, -721 )
 
 [node name="Profe_3" parent="Node" instance=ExtResource( 22 )]
 position = Vector2( -1070, -286 )
@@ -1124,9 +1127,6 @@ position = Vector2( 378, 506 )
 [node name="Profe_5" parent="Node" instance=ExtResource( 24 )]
 visible = false
 position = Vector2( 63, -80 )
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 69, 122 )
 
 [node name="puertacantina" type="Area2D" parent="."]
 position = Vector2( 22, 0 )

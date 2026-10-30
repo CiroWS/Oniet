@@ -140,7 +140,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$10"
+text = "$0"
 align = 1
 
 [node name="comprar1" type="Button" parent="ITEM/tarjeta1"]
@@ -182,7 +182,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$50"
+text = "$10"
 align = 1
 
 [node name="comprar2" type="Button" parent="ITEM/tarjeta2"]
@@ -225,7 +225,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$100"
+text = "$25"
 align = 1
 
 [node name="comprar3" type="Button" parent="ITEM/tarjeta3"]
@@ -268,7 +268,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$200"
+text = "$50"
 align = 1
 
 [node name="comprar4" type="Button" parent="ITEM/tarjeta4"]
@@ -310,7 +310,7 @@ margin_top = 70.0
 margin_right = 103.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 1 )
-text = "$400"
+text = "$100"
 align = 1
 
 [node name="comprar5" type="Button" parent="ITEM/tarjeta5"]

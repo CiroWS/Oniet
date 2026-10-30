@@ -6,19 +6,19 @@ onready var panel = $CanvasLayer/Panel
 onready var text_label = $CanvasLayer/Panel/VBoxContainer/TextLabel
 onready var input_box = $CanvasLayer/Panel/VBoxContainer/InputBox
 
-# Secuencia de frases iniciales
+
 var dialog_lines = [
 	"No me molestes nene",
 	"¿ Que es lo que quieres ?",
 	"Con que quieres recuperar tus figuritas",
 	"Primero debes contestar mi pregunta",
-	"¿ Cual es la capital de Tavulu ?"
+	"¿ Cual es la capital de Irlanda ?"
 ]
 
-# Respuestas que se aceptan como correctas (en minusculas y sin tildes)
-const RESPUESTAS_CORRECTAS = ["funafuti","Funafuti"]
 
-# Textos
+const RESPUESTAS_CORRECTAS = ["Dublin","dublin","DUBLIN"]
+
+
 const TEXTO_ACIERTO = "Vete, lo que necesitas esta en 7°C"
 const TEXTO_RESUELTO = "No tengo nada mas que decir, debes ir a 7°C"
 const TEXTO_ERROR = "Incorrecto. ¡Intentalo de nuevo!"
@@ -31,8 +31,7 @@ var current_line = 0
 var player_in_area = false
 var player_ref = null
 
-# Evita que el Enter con el que se envía la respuesta se cuente también
-# como "avanzar diálogo" en ese mismo frame
+
 var _ignorar_accept = false
 
 
@@ -55,7 +54,6 @@ func _process(_delta):
 	if not player_in_area:
 		return
 
-	# Mientras escribe la respuesta, el InputBox maneja las acciones
 	if estado == Estado.ESPERANDO_RESPUESTA:
 		return
 
@@ -80,8 +78,6 @@ func _process(_delta):
 					_bloquear_jugador(true)
 
 
-# Esc cierra el diálogo, pero NO saca al jugador del área
-# (si no, habría que salir y volver a entrar para poder hablar de nuevo)
 func _input(event):
 	if panel.visible and (event.is_action_pressed("esc") or event.is_action_pressed("ui_cancel")):
 		cerrar_dialogo()

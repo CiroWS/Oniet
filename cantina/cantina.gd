@@ -19,10 +19,10 @@ func _process(delta):
 	$moneda/cant.text=str(Global.moneda)
 
 func _on_comprar2_pressed():
-	if Global.moneda>=50:
+	if Global.moneda>=10:
 		Global.armas[1]=true
 		$ITEM/tarjeta2/comprar2.disabled=true
-		Global.moneda-=50
+		Global.moneda-=10
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true
@@ -30,10 +30,10 @@ func _on_comprar2_pressed():
 		$noplata.visible=false
 
 func _on_comprar3_pressed():
-	if Global.moneda>=100:
+	if Global.moneda>=25:
 		Global.armas[2]=true
 		$ITEM/tarjeta3/comprar3.disabled=true
-		Global.moneda-=100
+		Global.moneda-=25
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true
@@ -41,10 +41,10 @@ func _on_comprar3_pressed():
 		$noplata.visible=false
 
 func _on_comprar4_pressed():
-	if Global.moneda>=200:
+	if Global.moneda>=50:
 		Global.armas[3]=true
 		$ITEM/tarjeta4/comprar4.disabled=true
-		Global.moneda-=200
+		Global.moneda-=50
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true
@@ -52,10 +52,10 @@ func _on_comprar4_pressed():
 		$noplata.visible=false
 
 func _on_comprar5_pressed():
-	if Global.moneda>=400:
+	if Global.moneda>=100:
 		Global.armas[4]=true
 		$ITEM/tarjeta5/comprar5.disabled=true
-		Global.moneda-=400
+		Global.moneda-=100
 		$moneda/cant.text=str(Global.moneda)
 	else:
 		$noplata.visible=true

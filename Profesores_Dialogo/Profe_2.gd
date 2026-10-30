@@ -11,12 +11,12 @@ var dialog_lines = [
 	"¡ Hola !",
 	"Me imagino que no estas salteando tus clases, no ?",
 	"Si lo que quieres es recuperar tus figuritas tienes que contestarme una simple pregunta ",
-	"¿ Cual elemento de la tabla periodica cumple con la siguiente caracteristica ?",
-	"Es el unico elemento cuyo isotopo mas abundante no tiene neutrones"
+	" En una mezcla homogenea,¿ como se le llama al solido que va a ser disuelto ?",
+
 ]
 
 # Respuestas que se aceptan como correctas (en minusculas y sin tildes)
-const RESPUESTAS_CORRECTAS = ["hidrogeno"]
+const RESPUESTAS_CORRECTAS = ["Soluto","SOLUTO","soluto"]
 
 # Textos
 const TEXTO_ACIERTO = "Lo que buscas se encuentra en 1°C"

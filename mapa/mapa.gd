@@ -3,7 +3,7 @@ extends Node2D
 export (PackedScene) var PROFE
 export (PackedScene) var CANTINA
 
-var giro : float = 2.0
+
 var frena = true
 var cantina = null
 var Mano = preload("res://Mano_Cursor.png")
@@ -17,23 +17,12 @@ func _ready():
 	$Timer.start()
 	Global.dungeon=false
 	profe = PROFE.instance()
-	$recorrido1/PathFollow2D.set_offset(randi())
-	profe.position = $recorrido1/PathFollow2D.position
+	profe.path_follow = $recorrido1/PathFollow2D   # el profe se mueve solo por el path
 	add_child(profe)
 	Input.set_custom_mouse_cursor(Mano,Input.CURSOR_ARROW,Vector2(16,16))
 	Global.Armas_activas = false
 	
-func _physics_process(delta):
-	if frena:
-		$recorrido1/PathFollow2D.offset+= 0.5
-		profe.position = $recorrido1/PathFollow2D.position
-		profe.rotation = $recorrido1/PathFollow2D.rotation
-	else:
-		profe.rotation += giro * delta
-		yield(get_tree().create_timer(3), "timeout")
-		frena=true
-		$Timer.wait_time=Global.random(1,10)
-		$Timer.start()
+
 func _on_Timer_timeout():
 	frena=false
 
@@ -212,7 +201,3 @@ func _on_puertacantina_body_entered(body):
 		cantina = CANTINA.instance()
 		add_child(cantina)
 		$Player.speed = 0
-
-
-
-
