@@ -6,6 +6,7 @@ var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 var Mira = preload("res://Mira, cursor (3).png")
 var Minimapa = preload("res://Dangeon/Minimapa.gd")
 
+export (PackedScene) var MATE
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
 export (PackedScene) var FIGURITA
@@ -16,6 +17,7 @@ var enemigos_vivos = 0
 var horda_generando = false 
 var saliendo = false
 
+
 var enemigos_por_horda = {
 	1: 6,
 	2: 15,
@@ -25,7 +27,8 @@ var enemigos_por_horda = {
 }
 
 var torretas_pos : Array=[]
-var enemigos_lista = []   # lo lee el minimapa
+var enemigos_lista = []   
+var ayudas_lista = [] 
 
 
 onready var spawn_points = $SpawnPoints.get_children()
@@ -37,6 +40,7 @@ func _ready():
 	var minimapa = Minimapa.new()
 	minimapa.jugador = $Player
 	minimapa.enemigos = enemigos_lista
+	minimapa.ayuda = ayudas_lista
 	$CanvasLayer.add_child(minimapa)
 	$Player.visible = true
 	Input.set_custom_mouse_cursor(Mira,Input.CURSOR_ARROW,Vector2(32,32))
@@ -220,6 +224,7 @@ func _on_generador_vida_timeout():
 	var vida = VIDA.instance()
 	add_child(vida)
 	vida.global_position=Vector2(Global.random(15, 990), Global.random(15,590))
+	ayudas_lista.append(vida)
 	$generador_vida.start()
 
 
@@ -242,3 +247,11 @@ func _on_Button2_pressed():
 	saliendo = true
 	get_tree().paused = false
 	get_tree().change_scene("res://mapa/mapa.tscn")
+
+
+func _on_Mates_Spawn_timeout():
+	var mate = MATE.instance()
+	add_child(mate)
+	mate.global_position =  Vector2(Global.random(15, 990), Global.random(15,590))
+	ayudas_lista.append(mate)
+	$Mates_Spawn.start()

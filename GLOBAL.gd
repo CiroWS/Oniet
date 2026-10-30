@@ -8,6 +8,8 @@ var Llamdos_de_atencion : int = 0
 
 var sancion : int = 0
 
+var Mates = 0
+
 var dungeon : bool = false
 
 var monedas : int = 0

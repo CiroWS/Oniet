@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Dangeon/Torreta.png" type="Texture" id=1]
 [ext_resource path="res://Dangeon/Torreta.gd" type="Script" id=2]
@@ -169,6 +169,9 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=41]
+extents = Vector2( 12.5, 26 )
+
 [node name="Torreta" type="Area2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -195,3 +198,9 @@ max_distance = 1000.0
 stream = ExtResource( 4 )
 volume_db = -3.545
 max_distance = 1000.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0.5, 4 )
+shape = SubResource( 41 )

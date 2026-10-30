@@ -68,7 +68,7 @@ animations = [ {
 radius = 100.0
 height = 148.0
 
-[node name="vida" type="Node2D"]
+[node name="vida" type="Node2D" groups=["ayuda"]]
 scale = Vector2( 0.05, 0.05 )
 script = ExtResource( 2 )
 

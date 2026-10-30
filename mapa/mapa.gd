@@ -17,7 +17,7 @@ func _ready():
 	$Timer.start()
 	Global.dungeon=false
 	profe = PROFE.instance()
-	profe.path_follow = $recorrido1/PathFollow2D   # el profe se mueve solo por el path
+	profe.path_follow = $recorrido1/PathFollow2D   
 	add_child(profe)
 	Input.set_custom_mouse_cursor(Mano,Input.CURSOR_ARROW,Vector2(16,16))
 	Global.Armas_activas = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Dangeon/SalaDungeon.gd" type="Script" id=1]
 [ext_resource path="res://Dangeon/Minecraft - copia.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://fuente.tres" type="DynamicFont" id=10]
 [ext_resource path="res://musica/game_over.wav" type="AudioStream" id=11]
 [ext_resource path="res://PLAYER/New Piskel.png" type="Texture" id=12]
+[ext_resource path="res://PLAYER/mate.tscn" type="PackedScene" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -36,6 +37,7 @@ font_data = ExtResource( 2 )
 
 [node name="SalaDungeon" type="Node2D"]
 script = ExtResource( 1 )
+MATE = ExtResource( 13 )
 MONEDA = ExtResource( 6 )
 VIDA = ExtResource( 7 )
 FIGURITA = ExtResource( 9 )
@@ -69,9 +71,6 @@ position = Vector2( 210, 45 )
 
 [node name="Spawn_6" type="Position2D" parent="SpawnPoints/Spawn_5"]
 position = Vector2( -155, 517 )
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 491, 291 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -170,8 +169,16 @@ custom_fonts/font = SubResource( 5 )
 text = "SALIR"
 flat = true
 
-[connection signal="muerte" from="Player" to="." method="_on_Player_muerte"]
+[node name="Mates_Spawn" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 491, 291 )
+
 [connection signal="finished" from="musica_pelea" to="." method="_on_musica_pelea_finished"]
 [connection signal="timeout" from="generador_vida" to="." method="_on_generador_vida_timeout"]
 [connection signal="pressed" from="gm/VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="gm/VBoxContainer/HBoxContainer/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="timeout" from="Mates_Spawn" to="." method="_on_Mates_Spawn_timeout"]
+[connection signal="muerte" from="Player" to="." method="_on_Player_muerte"]

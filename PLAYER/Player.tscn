@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=55 format=2]
 
 [ext_resource path="res://PLAYER/Assets/Camina_costado.png" type="Texture" id=1]
 [ext_resource path="res://PLAYER/Assets/idle_frente.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Armas/Cremona/448226__inspectorj__explosion-8-bit-01.wav" type="AudioStream" id=15]
 [ext_resource path="res://musica/weapon_equip_short.wav" type="AudioStream" id=16]
 [ext_resource path="res://Hud.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cantina/mate.png" type="Texture" id=18]
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 6 )
@@ -90,6 +91,58 @@ region = Rect2( 0, 0, 32, 32 )
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 18 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 18 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 18 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 18 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 18 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 18 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 18 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 18 )
+region = Rect2( 512, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 18 )
+region = Rect2( 576, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 18 )
+region = Rect2( 640, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 18 )
+region = Rect2( 704, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 18 )
+region = Rect2( 1216, 0, 64, 64 )
+
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
@@ -121,6 +174,11 @@ animations = [ {
 "loop": true,
 "name": "Idle_Frente",
 "speed": 4.0
+}, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
+"loop": false,
+"name": "Tomar_Mate",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -153,7 +211,7 @@ Capacitor = ExtResource( 13 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3125, 0.328125 )
 frames = SubResource( 1 )
-animation = "Idle_Costado"
+animation = "Idle_Frente"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -196,5 +254,6 @@ stream = ExtResource( 16 )
 
 [node name="Hud" parent="." instance=ExtResource( 17 )]
 
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite" to="." method="_on_AnimatedSprite_frame_changed"]
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

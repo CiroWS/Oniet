@@ -18,6 +18,7 @@ func _ready():
 func _process(delta):
 	$moneda/Label.text=str(Global.moneda)
 	$sancion/Label.text=str(Global.sancion)
+	$Mate/Label.text = str("X", Global.Mates)
 	if Global.arma == "cartulina":
 		$Control/HBoxContainer/Button.rect_scale = Vector2(1.2,1.2)
 		$Control/HBoxContainer/Button2.rect_scale = Vector2(1,1)
@@ -52,8 +53,10 @@ func _process(delta):
 
 	if Global.dungeon==false:
 		$Control.visible=false
+		$Mate.visible = false
 	else:
 		$Control.visible=true
+		$Mate.visible = true
 
 func _on_vida_cambiada(nueva_vida: int) -> void:
 	Vida.value = nueva_vida

@@ -8,6 +8,7 @@ const SALA = Rect2(0, -9, 1028, 618)
 
 var jugador = null
 var enemigos = []
+var ayuda = []
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE  
@@ -24,13 +25,19 @@ func _draw():
 	draw_rect(Rect2(Vector2.ZERO, TAMANO), Color(0, 0, 0, 0.6))
 	draw_rect(Rect2(Vector2.ZERO, TAMANO), Color(1, 1, 1, 0.8), false)
 
+
 	for e in enemigos:
 		if is_instance_valid(e) and e.is_inside_tree():
 			var radio = 3
 			if e.filename.find("Golem") != -1:
-				radio = 6   # el jefe se ve mas grande
+				radio = 6   
 			draw_circle(_a_minimapa(e.global_position), radio, Color.red)
-
+			
+	for e in ayuda:
+		if is_instance_valid(e) and e.is_inside_tree():
+			var radio = 3
+			draw_circle(_a_minimapa(e.global_position), radio, Color.yellow)
+			
 	if is_instance_valid(jugador):
 		draw_circle(_a_minimapa(jugador.global_position), 3, Color.green)
 

@@ -13,6 +13,7 @@ export (PackedScene) var Capacitor
 
 var canshoot = true
 
+var Mate_on = false 
 
 var dialog_active = false
 
@@ -54,6 +55,15 @@ func _input(event):
 		$cooldown.wait_time = 3
 		$Equip.play()
 		Global.arma = "capacitor"
+	elif event.is_action_pressed("Curacion") and Global.Armas_activas and Global.Mates>0:
+		motion = Vector2.ZERO
+		$AnimatedSprite.play("Tomar_Mate")
+		$AnimatedSprite.scale = Vector2(0.1565,0.164)
+		canshoot = false 
+		Mate_on = true 
+
+		
+		
 
 
 
@@ -87,32 +97,33 @@ func get_axis() -> Vector2:
 
 
 func motion_ctrl():
-	if get_axis() == Vector2.ZERO:
-		motion = Vector2.ZERO	
-	else:
-		motion = get_axis().normalized() * speed
+	if not Mate_on:
+		if get_axis() == Vector2.ZERO:
+			motion = Vector2.ZERO	
+		else:
+			motion = get_axis().normalized() * speed
 
-	if motion == Vector2(0, -100):
-		$AnimatedSprite.play("Espalda")
-		ultimo_mov = "Espalda"
-	elif motion == Vector2(0, 100):
-		$AnimatedSprite.play("Caminar")
-		ultimo_mov = "Frente"
-	elif motion == Vector2(100, 0):
-		$AnimatedSprite.flip_h = true
-		$AnimatedSprite.play("Costado")
-		ultimo_mov = "Costado"
-	elif motion == Vector2(-100, 0):
-		$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("Costado")
-		ultimo_mov = "Costado"
-	elif motion == Vector2.ZERO:
-		if ultimo_mov == "Espalda":
-			$AnimatedSprite.play("Idle_Espalda")
-		elif ultimo_mov == "Frente":
-			$AnimatedSprite.play("Idle_Frente")
-		elif ultimo_mov == "Costado":
-			$AnimatedSprite.play("Idle_Costado")
+		if motion == Vector2(0, -100):
+			$AnimatedSprite.play("Espalda")
+			ultimo_mov = "Espalda"
+		elif motion == Vector2(0, 100):
+			$AnimatedSprite.play("Caminar")
+			ultimo_mov = "Frente"
+		elif motion == Vector2(100, 0):
+			$AnimatedSprite.flip_h = true
+			$AnimatedSprite.play("Costado")
+			ultimo_mov = "Costado"
+		elif motion == Vector2(-100, 0):
+			$AnimatedSprite.flip_h = false
+			$AnimatedSprite.play("Costado")
+			ultimo_mov = "Costado"
+		elif motion == Vector2.ZERO :
+			if ultimo_mov == "Espalda":
+				$AnimatedSprite.play("Idle_Espalda")
+			elif ultimo_mov == "Frente":
+				$AnimatedSprite.play("Idle_Frente")
+			elif ultimo_mov == "Costado":
+				$AnimatedSprite.play("Idle_Costado")
 
 
 func _physics_process(delta):
@@ -187,3 +198,15 @@ func _on_AnimatedSprite_frame_changed():
 	if get_axis() != Vector2.ZERO and ($AnimatedSprite.animation=="Caminar" or $AnimatedSprite.animation=="Costado" or $AnimatedSprite.animation=="Espalda"):
 		if $AnimatedSprite.frame==1 or $AnimatedSprite.frame==3:
 			$"sonido de caminata".play()
+
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Tomar_Mate":
+		canshoot = true 
+		Global.vidajugador = 200
+		Mate_on = false 
+		Global.Mates -= 1 
+		$AnimatedSprite.scale = Vector2(0.313,0.328)
+		$AnimatedSprite.play("Idle_Frente")
+		
+		
