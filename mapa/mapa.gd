@@ -21,6 +21,7 @@ func _ready():
 	add_child(profe)
 	Input.set_custom_mouse_cursor(Mano,Input.CURSOR_ARROW,Vector2(16,16))
 	Global.Armas_activas = false
+	$Player/Camera2D.current = true
 	
 
 func _on_Timer_timeout():

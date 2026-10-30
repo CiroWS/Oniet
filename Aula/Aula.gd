@@ -7,6 +7,7 @@ var c = 1
 func _ready():
 	alumno_sprite.position = hijo_camino.position
 	$musica_tensionante.play()
+	$Player/Camera2D.current = false 
 
 func _process(delta):
 	if $Profesor/tension.playing==true: 
@@ -22,10 +23,20 @@ func _input(event):
 		hijo_camino.offset += 10
 		alumno_sprite.position = hijo_camino.position
 
-# Función que invoca el profesor cuando detecta movimiento
+
 func reiniciar_alumno():
 	hijo_camino.offset = 0
 	alumno_sprite.position = hijo_camino.position
+	Global.Llamdos_de_atencion += 1 
+	if Global.Llamdos_de_atencion > 3 :
+		Global.Llamdos_de_atencion = 0 
+		Global.sancion+= 1 
+		if Global.sancion == 12:
+			get_tree().change_scene("res://Menus/Menu_principal/Menu_principal.tscn")
+			Global.armas = [true , false , false , false , false ]
+			Global.sancion = 0 
+			Global.moneda = 0 
+			Global.Llamdos_de_atencion = 0 
 
 
 

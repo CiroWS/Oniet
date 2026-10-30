@@ -301,14 +301,22 @@ func _atrapar():
 	_actualizar_sprite(false)
 	_actualizar_etiqueta()
 	if is_instance_valid(_jugador):
-		_jugador.set_physics_process(false)   # el alumno queda congelado
+		_jugador.set_physics_process(false)  
 	emit_signal("jugador_atrapado")
 	Global.sancion += 1
-	yield(get_tree().create_timer(0.7), "timeout")   # tiempo para ver el "!"
+	if Global.sancion == 12:
+		get_tree().change_scene("res://Menus/Menu_principal/Menu_principal.tscn")
+		Global.armas = [true , false , false , false , false ]
+		Global.sancion = 0 
+		Global.moneda = 0 
+		Global.Llamdos_de_atencion = 0 
+		
+		
+	yield(get_tree().create_timer(0.7), "timeout")   
 	get_tree().change_scene(escena_castigo)
 
 
-# Cada sancion lo vuelve un poco mas rapido y mas atento (maximo 5 niveles)
+
 func _dificultad() -> float:
 	var s = Global.get("sancion")
 	if s == null:
