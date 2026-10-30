@@ -1,4 +1,5 @@
 extends Control
+
 var Mano = preload("res://Mano_Cursor.png")
 
 func _on_Button2_pressed():

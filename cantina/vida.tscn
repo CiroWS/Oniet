@@ -85,4 +85,5 @@ shape = SubResource( 15 )
 [node name="vida" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
+[connection signal="area_entered" from="AnimatedSprite/Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="AnimatedSprite/Area2D" to="." method="_on_Area2D_body_entered"]
