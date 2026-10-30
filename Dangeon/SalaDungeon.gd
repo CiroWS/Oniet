@@ -4,6 +4,7 @@ var EnemigoEscena = preload("res://Dangeon/Enemigo_Peque.tscn")
 var TorretaEscena = preload("res://Dangeon/Torreta.tscn")
 var GolemEscena = preload("res://Dangeon/Golem/Golem.tscn")
 var Mira = preload("res://Mira, cursor (3).png")
+var Minimapa = preload("res://Dangeon/Minimapa.gd")
 
 export (PackedScene) var MONEDA
 export (PackedScene) var VIDA
@@ -24,6 +25,7 @@ var enemigos_por_horda = {
 }
 
 var torretas_pos : Array=[]
+var enemigos_lista = []   # lo lee el minimapa
 
 
 onready var spawn_points = $SpawnPoints.get_children()
@@ -32,6 +34,10 @@ var spawn_queue = []
 
 func _ready():
 	Global.dungeon=true
+	var minimapa = Minimapa.new()
+	minimapa.jugador = $Player
+	minimapa.enemigos = enemigos_lista
+	$CanvasLayer.add_child(minimapa)
 	$Player.visible = true
 	Input.set_custom_mouse_cursor(Mira,Input.CURSOR_ARROW,Vector2(32,32))
 	$musica_pelea.play()
@@ -95,6 +101,7 @@ func spawn_enemigo():
 
 	nuevo_enemigo.connect("tree_exited", self, "_on_enemigo_muerto")
 	add_child(nuevo_enemigo)
+	enemigos_lista.append(nuevo_enemigo)
 	enemigos_vivos += 1
 func spawn_golem_boss():
 	var golem = GolemEscena.instance()
@@ -107,6 +114,7 @@ func spawn_golem_boss():
 		
 	golem.connect("tree_exited", self, "_on_enemigo_muerto")
 	add_child(golem)
+	enemigos_lista.append(golem)
 	enemigos_vivos += 1
 	
 func spawn_torreta():
