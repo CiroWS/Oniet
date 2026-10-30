@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://mapa/paredinvisible.png" type="Texture" id=1]
 [ext_resource path="res://mapa/piso de piedra laja irregular.png" type="Texture" id=2]
@@ -923,53 +923,8 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, -658, 74, 0, 0, 0, 0, -673, -642, 0, 0, 0, 0, -1, -625, 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, -36, 223, 0, 0, 0, 0, 279, 214, 0, 0, 0, 0, 296, 526, 0, 0, 0, 0, 309, -675, 0, 0, 0, 0, -324, -611, 0, 0, 0, 0, -456, 49, 0, 0, 0, 0, -166, 45, 0, 0, 0, 0, -143, -730, 0, 0, 0, 0, -492, -730, 0, 0, 0, 0, -498, 109, 0, 0, 0, 0, -563, 115, 0, 0, 0, 0, 0, 78, 0, 0, 0, 0, -642, 74, 0, 0, 0, 0, -608, 220, 0, 0, 0, 0, -1057, 185, 0, 0, 0, 0, -1052, 233, 0, 0, 0, 0, -640, 225, 0, 0, 0, 0, -631, 571, 0, 0, 0, 0, -176, 582, 0, 0, 0, 0, -175, 609, 0, 0, 0, 0, -956, 614, 0, 0, 0, 0, -958, 284, 0, 0, 0, 0, -1085, 280, 0, 0, 0, 0, -1080, 464, 0, 0, 0, 0, -674, 471, 0, 0, 0, 0, -679, 276, 0, 0, 0, 0, -491, 202, 0, 0, 0, 0, -15, 209, 0, 0, 0, 0, 0, 78 )
 }
 
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 29 )
-region = Rect2( 0, 0, 47, 64 )
-
-[sub_resource type="SpriteFrames" id=47]
-animations = [ {
-"frames": [ SubResource( 46 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=48]
-extents = Vector2( 12.25, 25 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 28 )
-region = Rect2( 368, 0, 46, 63 )
-
-[sub_resource type="SpriteFrames" id=50]
-animations = [ {
-"frames": [ SubResource( 49 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=51]
-extents = Vector2( 19, 14 )
-
 [sub_resource type="RectangleShape2D" id=52]
 extents = Vector2( 27.5, 15.5 )
-
-[sub_resource type="AtlasTexture" id=53]
-atlas = ExtResource( 29 )
-region = Rect2( 266, 0, 66, 64 )
-
-[sub_resource type="SpriteFrames" id=54]
-animations = [ {
-"frames": [ SubResource( 53 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=55]
-extents = Vector2( 28, 21 )
 
 [sub_resource type="AtlasTexture" id=56]
 atlas = ExtResource( 29 )
@@ -1034,8 +989,8 @@ extents = Vector2( 20, 24.75 )
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 15 )
 __meta__ = {
-"_edit_horizontal_guides_": [ -1056.0, 698.0 ],
-"_edit_vertical_guides_": [ -1454.0, 526.0 ]
+"_edit_horizontal_guides_": [ -1056.0, 698.0, 453.0, 388.0 ],
+"_edit_vertical_guides_": [ -1454.0, 526.0, -163.0 ]
 }
 PROFE = ExtResource( 27 )
 CANTINA = ExtResource( 25 )
@@ -1215,9 +1170,6 @@ stream = ExtResource( 19 )
 volume_db = -10.0
 autoplay = true
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 69, 122 )
-
 [node name="Node" type="Node" parent="."]
 
 [node name="Profe_1" parent="Node" instance=ExtResource( 21 )]
@@ -1283,28 +1235,8 @@ rotation = -3.13552
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Maquinas3" type="StaticBody2D" parent="Node2D"]
-position = Vector2( -303, 304 )
-
-[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas3"]
-frames = SubResource( 47 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas3"]
-position = Vector2( -2.25, 2 )
-shape = SubResource( 48 )
-
-[node name="Maquinas" type="StaticBody2D" parent="Node2D"]
-position = Vector2( -216, 304 )
-
-[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas"]
-frames = SubResource( 50 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas"]
-position = Vector2( 0, 7 )
-shape = SubResource( 51 )
-
 [node name="Maquinas2" type="StaticBody2D" parent="Node2D"]
-position = Vector2( -393, 304 )
+position = Vector2( -389, 366 )
 
 [node name="Sprite" type="Sprite" parent="Node2D/Maquinas2"]
 texture = ExtResource( 28 )
@@ -1314,18 +1246,41 @@ hframes = 6
 position = Vector2( 2.5, 5.5 )
 shape = SubResource( 52 )
 
-[node name="Maquinas4" type="StaticBody2D" parent="Node2D"]
-position = Vector2( -136, 306 )
+[node name="Maquinas10" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -298, 366 )
 
-[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas4"]
-frames = SubResource( 54 )
+[node name="Sprite" type="Sprite" parent="Node2D/Maquinas10"]
+texture = ExtResource( 28 )
+hframes = 6
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas4"]
-position = Vector2( -2, 4 )
-shape = SubResource( 55 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas10"]
+position = Vector2( 2.5, 5.5 )
+shape = SubResource( 52 )
+
+[node name="Maquinas11" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -298, 432 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/Maquinas11"]
+texture = ExtResource( 28 )
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas11"]
+position = Vector2( 2.5, 5.5 )
+shape = SubResource( 52 )
+
+[node name="Maquinas12" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -389, 431 )
+
+[node name="Sprite" type="Sprite" parent="Node2D/Maquinas12"]
+texture = ExtResource( 28 )
+hframes = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas12"]
+position = Vector2( 2.5, 5.5 )
+shape = SubResource( 52 )
 
 [node name="Maquinas5" type="StaticBody2D" parent="Node2D"]
-position = Vector2( -67, 311 )
+position = Vector2( -397, 289 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas5"]
 frames = SubResource( 57 )
@@ -1334,18 +1289,28 @@ frames = SubResource( 57 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 58 )
 
+[node name="Maquinas9" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -285, 289 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas9"]
+frames = SubResource( 57 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas9"]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 58 )
+
 [node name="Maquinas6" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 18, 314 )
+position = Vector2( -339, 294 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas6"]
 frames = SubResource( 60 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas6"]
-position = Vector2( -1, -2.5 )
+position = Vector2( 0, -3 )
 shape = SubResource( 61 )
 
 [node name="Maquinas7" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 103, 307 )
+position = Vector2( -138, 426 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas7"]
 frames = SubResource( 63 )
@@ -1354,8 +1319,38 @@ frames = SubResource( 63 )
 position = Vector2( 0.5, 7.5 )
 shape = SubResource( 64 )
 
+[node name="Maquinas13" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -137, 361 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas13"]
+frames = SubResource( 63 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas13"]
+position = Vector2( 0.5, 7.5 )
+shape = SubResource( 64 )
+
+[node name="Maquinas14" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -36, 361 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas14"]
+frames = SubResource( 63 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas14"]
+position = Vector2( 0.5, 7.5 )
+shape = SubResource( 64 )
+
+[node name="Maquinas15" type="StaticBody2D" parent="Node2D"]
+position = Vector2( -36, 426 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas15"]
+frames = SubResource( 63 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas15"]
+position = Vector2( 0.5, 7.5 )
+shape = SubResource( 64 )
+
 [node name="Maquinas8" type="StaticBody2D" parent="Node2D"]
-position = Vector2( 177, 307 )
+position = Vector2( 91, 361 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas8"]
 frames = SubResource( 66 )
@@ -1363,6 +1358,19 @@ frames = SubResource( 66 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas8"]
 position = Vector2( -1, 0.75 )
 shape = SubResource( 67 )
+
+[node name="Maquinas16" type="StaticBody2D" parent="Node2D"]
+position = Vector2( 189, 362 )
+
+[node name="Sprite" type="AnimatedSprite" parent="Node2D/Maquinas16"]
+frames = SubResource( 66 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Maquinas16"]
+position = Vector2( -1, 0.75 )
+shape = SubResource( 67 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 69, 122 )
 
 [connection signal="body_shape_entered" from="puertas" to="." method="_on_puertas_body_shape_entered"]
 [connection signal="body_shape_exited" from="puertas" to="." method="_on_puertas_body_shape_exited"]
