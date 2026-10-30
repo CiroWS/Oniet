@@ -46,7 +46,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 12.5, 7.50001 )
 
-[node name="capacitor" type="Node2D"]
+[node name="capacitor" type="Node2D" groups=["capacitor"]]
 scale = Vector2( 0.2, 0.2 )
 script = ExtResource( 2 )
 BOOM = ExtResource( 3 )
@@ -56,7 +56,7 @@ rotation = 1.5708
 frames = SubResource( 8 )
 animation = "capacitor"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["capacitor"]]
 rotation = 1.5708
 
 [node name="capacitor" type="CollisionShape2D" parent="Area2D"]
@@ -76,4 +76,5 @@ position = Vector2( 5, 0 )
 stream = ExtResource( 5 )
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

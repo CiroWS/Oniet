@@ -37,3 +37,8 @@ func Explosion():
 func _on_Sprite_animation_finished():
 	if $Sprite.animation == "boom":
 		queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("torreta"):
+		Explosion()

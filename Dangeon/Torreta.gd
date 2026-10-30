@@ -1,5 +1,7 @@
 extends Area2D
 
+var vida = 4
+
 # --- Disparo ---
 export (PackedScene) var bala_scene
 export var intervalo_disparo := 3.8
@@ -184,3 +186,11 @@ func _destruir() -> void:
 	emit_signal("torreta_destruida")
 	$Timer.stop()
 	queue_free()
+
+
+func _on_Torreta_area_entered(area):
+	if area.is_in_group("capacitor"):
+		print("hola")
+		vida -= 1
+		if vida == 0:
+			queue_free()

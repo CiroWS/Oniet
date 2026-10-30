@@ -29,6 +29,7 @@ var enemigos_por_horda = {
 var torretas_pos : Array=[]
 var enemigos_lista = []   
 var ayudas_lista = [] 
+var torretas_lista = []
 
 
 onready var spawn_points = $SpawnPoints.get_children()
@@ -41,6 +42,7 @@ func _ready():
 	minimapa.jugador = $Player
 	minimapa.enemigos = enemigos_lista
 	minimapa.ayuda = ayudas_lista
+	minimapa.torretas = torretas_lista
 	$CanvasLayer.add_child(minimapa)
 	$Player.visible = true
 	Input.set_custom_mouse_cursor(Mira,Input.CURSOR_ARROW,Vector2(32,32))
@@ -150,6 +152,7 @@ func spawn_torreta():
 		nueva_torreta.position = torretas_pos[rng]
 		torretas_pos.remove(rng)
 	add_child(nueva_torreta)
+	torretas_lista.append((nueva_torreta))
 
 
 func _on_enemigo_muerto():

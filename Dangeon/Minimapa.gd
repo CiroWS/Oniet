@@ -9,6 +9,7 @@ const SALA = Rect2(0, -9, 1028, 618)
 var jugador = null
 var enemigos = []
 var ayuda = []
+var torretas = []
 
 func _ready():
 	mouse_filter = Control.MOUSE_FILTER_IGNORE  
@@ -38,6 +39,11 @@ func _draw():
 			var radio = 3
 			draw_circle(_a_minimapa(e.global_position), radio, Color.yellow)
 			
+	for e in torretas:
+		if is_instance_valid(e) and e.is_inside_tree():
+			var radio = 3
+			draw_circle(_a_minimapa(e.global_position), radio, Color.purple)
+				
 	if is_instance_valid(jugador):
 		draw_circle(_a_minimapa(jugador.global_position), 3, Color.green)
 

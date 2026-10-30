@@ -172,11 +172,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=41]
 extents = Vector2( 12.5, 26 )
 
-[node name="Torreta" type="Area2D"]
+[node name="Torreta" type="Area2D" groups=["torreta"]]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 bala_scene = ExtResource( 3 )
 vida_maxima = 10000000
 
@@ -204,3 +201,5 @@ max_distance = 1000.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0.5, 4 )
 shape = SubResource( 41 )
+
+[connection signal="area_entered" from="." to="." method="_on_Torreta_area_entered"]
