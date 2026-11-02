@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export (int) var speed = 100
-export (int) var vida_max = 200
+export (int) var vida_max = 100
 onready var motion = Vector2.ZERO
 var ultimo_mov = "Idle_Costado"
 var eje_activo = "y"
@@ -203,7 +203,7 @@ func _on_AnimatedSprite_frame_changed():
 func _on_AnimatedSprite_animation_finished():
 	if $AnimatedSprite.animation == "Tomar_Mate":
 		canshoot = true 
-		Global.vidajugador = 200
+		Global.vidajugador = 100
 		Mate_on = false 
 		Global.Mates -= 1 
 		$AnimatedSprite.scale = Vector2(0.313,0.328)

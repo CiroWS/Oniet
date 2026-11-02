@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node) -> void:
 	if body == origen:
 		return
-	if body.is_in_group("Jugador"):
+	if body.is_in_group("player"):
 		if body.has_method("recibir_danio"):
 			body.recibir_danio(danio)
 		queue_free()
@@ -29,11 +29,13 @@ func _on_body_entered(body: Node) -> void:
 func _on_area_entered(area: Node) -> void:
 	if area == origen:
 		return
-	if area.is_in_group("Jugador"):
+	if area.is_in_group("player"):
 		if area.has_method("recibir_danio"):
 			area.recibir_danio(danio)
 		queue_free()
 
 
-func _on_screen_exited() -> void:
+
+
+func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

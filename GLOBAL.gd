@@ -2,7 +2,7 @@ extends Node
 
 var Vidas : int = 2
 
-var vidajugador : int = 200
+var vidajugador : int = 100
 
 var Llamdos_de_atencion : int = 0 
 
